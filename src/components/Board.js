@@ -3,7 +3,7 @@ import { New } from "./New";
 
 export const Board = () => {
   return (
-    <div>
+    <div className="border-solid bg-black">
       <Column />
       <Column />
       <Column />

@@ -1,7 +1,7 @@
 export const New = () => {
   return (
     <>
-      <button>+</button>
+      <button>+ New Column</button>
     </>
   );
 };

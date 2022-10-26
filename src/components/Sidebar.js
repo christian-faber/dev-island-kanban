@@ -1,6 +1,6 @@
-export const Menu = () => {
+export const Sidebar = () => {
   return (
-    <div>
+    <div className="border">
       <h4>All boards (#)</h4>
       <ul>
         <li>item 1</li>
