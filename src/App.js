@@ -5,10 +5,12 @@ import "./index.css";
 
 function App() {
   return (
-    <div className="border-solid border-2">
-      <Top />
+    <div className="border-solid border-2 flex flex-row">
       <Sidebar />
-      <Board />
+      <div>
+        <Top />
+        <Board />
+      </div>
     </div>
   );
 }
