@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Board } from "./components/Board";
 import { Sidebar } from "./components/Sidebar";
 import { Top } from "./components/Top";
@@ -23,6 +24,10 @@ function App() {
       </div>
     </div>
   );
+=======
+function App() {
+  return <div>Hello World</div>;
+>>>>>>> 96be5219a56ba0d1979615802c1c9e6ce0f8dd07
 }
 
 export default App;
