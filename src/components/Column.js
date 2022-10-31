@@ -3,20 +3,22 @@ import { Droppable } from "react-beautiful-dnd";
 import InitialData from "./InitialData";
 import { Task } from "./Task";
 
-export const Column = ({ prefix, elements }) => {
+export const Column = ({{id, title, taskIds} , index}) => {
   const [data, setData] = useState(InitialData);
+
+  console.log(data);
+  console.log(setData);
 
   return (
     <div>
-      <h2>{prefix}</h2>
-      <Droppable droppableId={`${prefix}`}>
+      <h2>{data?.columns?.column?.title}</h2>
+      <Droppable droppableId="column">
         {(provided) => (
-          <div {...provided.droppableProps} ref={provided.innerRef}>
-            {elements.map((item, index) => (
-              <Task key={item.id} item={item} index={index} />
-            ))}
+          <ul {...provided.droppableProps} ref={provided.innerRef}>
+            {columns.map({ id, title, taskIds }, index) =>
+            {(<Task key={id} draggableId={id} index={index}/>)}
             {provided.placeholder}
-          </div>
+          </ul>
         )}
       </Droppable>
     </div>

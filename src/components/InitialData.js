@@ -1,19 +1,19 @@
-export const initialData = {
+export const InitialData = {
   columns: {
     c1: {
       id: "c1",
       title: "To Do",
-      taskIDs: ["t-1", "t-2"],
+      taskIds: ["t-1", "t-2"],
     },
     c2: {
       id: "c2",
       title: "Doing",
-      taskIDs: ["t-3", "t-4"],
+      taskIds: ["t-3", "t-4"],
     },
     c3: {
       id: "c3",
       title: "Done",
-      taskIDs: ["t-5", "t-6"],
+      taskIds: ["t-5", "t-6"],
     },
   },
   tasks: {
@@ -76,4 +76,4 @@ export const initialData = {
   },
 };
 
-export default initialData;
+export default InitialData;
