@@ -1,7 +1,7 @@
 export const New = () => {
   return (
     <>
-      <button>+</button>
+      <button className="cursor-pointer">+ New Column</button>
     </>
   );
 };

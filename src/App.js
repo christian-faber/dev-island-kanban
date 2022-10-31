@@ -1,11 +1,10 @@
 import { Kanban } from "./components/Kanban";
+import "./index.css";
 
-function App() {
+export default function App() {
   return (
-    <div>
+    <div className=" px-5 py-5">
       <Kanban />
     </div>
   );
 }
-
-export default App;
