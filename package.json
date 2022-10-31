@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "kanban",
-=======
-  "name": "redux-kanban",
->>>>>>> 96be5219a56ba0d1979615802c1c9e6ce0f8dd07
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,10 +8,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "react": "^18.2.0",
-<<<<<<< HEAD
     "react-beautiful-dnd": "^13.1.1",
-=======
->>>>>>> 96be5219a56ba0d1979615802c1c9e6ce0f8dd07
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
     "react-scripts": "5.0.1",
@@ -44,14 +37,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
     "msw": "^0.47.4",
     "postcss": "^8.4.18",
     "tailwindcss": "^3.2.1"
-=======
->>>>>>> 96be5219a56ba0d1979615802c1c9e6ce0f8dd07
   }
 }
