@@ -1,29 +1,19 @@
 import { useState } from "react";
 import { Draggable, Droppable } from "react-beautiful-dnd";
-import InitialData from "./InitialData";
+import { initialdata } from "../data/initial-data";
 import { Task } from "./Task";
 
-export const Column = ({ id, tasks, index }) => {
-  const [data, setData] = useState(InitialData);
-
-  console.log(data);
-  console.log(setData);
-
+export const Column = ({ data }, id, title, taskIds) => {
   return (
     <div>
       <h2>{data?.columns?.column?.title}</h2>
       <Droppable droppableId="column">
         {(provided) => (
           <ul {...provided.droppableProps} ref={provided.innerRef}>
-            {/* {columns.map({id, title, taskIds}, index) => {
-          return(
-          <Draggable key={id} draggableId={id} index={index}>
-            {(provided) => (<Task />)}
-          </Draggable> */}
-            {/* );
-}} {provided.placeholder} */}
-
-            <li>test </li>
+            {data?.map(({ id, title, taskIds }, index) => (
+              <Task key={id} title={title} index={index} />
+            ))}
+            {provided.placeholder}
           </ul>
         )}
       </Droppable>
