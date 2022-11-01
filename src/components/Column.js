@@ -10,7 +10,7 @@ export const Column = ({ data }, id, title, taskIds) => {
       <Droppable droppableId="column">
         {(provided) => (
           <ul {...provided.droppableProps} ref={provided.innerRef}>
-            {data?.map(({ id, title, taskIds }, index) => (
+            {data?.columns.map(({ id, title, taskIds }, index) => (
               <Task key={id} title={title} index={index} />
             ))}
             {provided.placeholder}
