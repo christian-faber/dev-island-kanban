@@ -1,20 +1,29 @@
-import { useState } from "react";
-import { Draggable, Droppable } from "react-beautiful-dnd";
-import { initialdata } from "../data/initial-data";
+import { Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
 
-export const Column = ({ data }, id, title, taskIds) => {
+export const Column = ({ column, tasks, setData }) => {
   return (
-    <div>
-      <h2>{data?.columns?.column?.title}</h2>
-      <Droppable droppableId="column">
+    <div className="h-50 w-50">
+      <h2>{column.title}</h2>
+      <Droppable droppableId={column.id}>
         {(provided) => (
-          <ul {...provided.droppableProps} ref={provided.innerRef}>
-            {data?.columns.map(({ id, title, taskIds }, index) => (
-              <Task key={id} title={title} index={index} />
-            ))}
+          <div
+            className="w-25 h-10 border border-blue"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {tasks
+              .filter((task) => column.taskIds.includes(task.id))
+              .map((task, index) => (
+                <Task
+                  key={task.id}
+                  task={task}
+                  index={index}
+                  className="w-25 h-25 gap-5 border-solid border-orange-700"
+                />
+              ))}
             {provided.placeholder}
-          </ul>
+          </div>
         )}
       </Droppable>
     </div>

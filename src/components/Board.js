@@ -9,29 +9,28 @@ export const Board = () => {
   const handleOnDragEnd = (result) => {
     if (!result.destination) return;
 
-    const items = Array.from(data);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+    // const items = Array.from(data);
+    // const [reorderedItem] = items.splice(result.source.index, 1);
+    // items.splice(result.destination.index, 0, reorderedItem);
 
-    setData(items);
+    // setData(items);
   };
 
   console.log(data);
 
   return (
-    <div className="border-solid flex flex-row">
-      <DragDropContext onDragEnd={handleOnDragEnd}>
-        <div>
+    <DragDropContext onDragEnd={handleOnDragEnd}>
+      <div className="border-black border-solid flex flex-row h-80 gap-5 ">
+        {data?.columns?.map((column) => (
           <Column
-            data={data}
+            column={column}
+            tasks={data.tasks}
             setData={setData}
-            elements={""}
-            key={""}
-            prefix={""}
+            key={column.id}
           />
-        </div>
-        <New />
-      </DragDropContext>
-    </div>
+        ))}
+      </div>
+      <New />
+    </DragDropContext>
   );
 };

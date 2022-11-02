@@ -1,19 +1,17 @@
 import { Draggable } from "react-beautiful-dnd";
 
-export const Task = ({ data }, index) => {
+export const Task = ({ task, index }) => {
   return (
-    <Draggable draggableId="draggable-1" index={0}>
+    <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
-        <div>
-          <li
-            ref={provided.innerRef}
-            snapshot={snapshot}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            <h4>{data?.tasks?.task?.content}</h4>
-            <p># of # subtasks complete</p>
-          </li>
+        <div
+          snapshot={snapshot}
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <h4>{task.content}</h4>
+          <p> subtasks</p>
         </div>
       )}
     </Draggable>

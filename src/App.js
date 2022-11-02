@@ -5,9 +5,9 @@ import "./index.css";
 
 export const App = () => {
   return (
-    <div className="border-solid border-2 flex flex-row">
+    <div className="w-96 h-96 border-solid border-2 border-red flex flex-row">
       <Sidebar />
-      <div>
+      <div className="w-80 h-80 border-blue">
         <Top />
         <Board />
       </div>
