@@ -1,3 +1,5 @@
+# Kanban
+
 In this project, you'll build a fully-functional task management app with a light/dark mode toggle.
 
 Colors:
