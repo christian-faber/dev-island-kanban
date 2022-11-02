@@ -3,14 +3,16 @@ import { Sidebar } from "./components/Sidebar";
 import { Top } from "./components/Top";
 import "./index.css";
 
-function App() {
+export const App = () => {
   return (
-    <div className="border-solid border-2">
-      <Top />
+    <div className="w-96 h-96 border-solid border-2 border-red flex flex-row">
       <Sidebar />
-      <Board />
+      <div className="w-80 h-80 border-blue">
+        <Top />
+        <Board />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
