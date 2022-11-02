@@ -1,6 +1,9 @@
 import { Draggable } from "react-beautiful-dnd";
+import counterSlice from "../features/counter/counterSlice";
 
 export const Task = ({ task, index }) => {
+  const length = task.subtasks.length;
+
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
@@ -11,7 +14,9 @@ export const Task = ({ task, index }) => {
           {...provided.dragHandleProps}
         >
           <h4>{task.content}</h4>
-          <p> subtasks</p>
+          <p>
+            {length} {length < 2 ? "subtask" : "subtasks"}
+          </p>
         </div>
       )}
     </Draggable>
