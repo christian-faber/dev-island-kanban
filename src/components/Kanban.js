@@ -2,7 +2,7 @@ import { Board } from "./Board";
 import { Menu } from "./Menu";
 import { Sidebar } from "./Sidebar";
 import { Top } from "./Top";
-
+import "../index.css";
 export const Kanban = () => {
   return (
     <>
