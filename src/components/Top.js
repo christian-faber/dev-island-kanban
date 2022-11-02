@@ -1,9 +1,19 @@
+// import { AddTaskMobile } from "./Icons/AddTaskMobile";
+import { VerticalEllipsis } from "./Icons/VerticalEllipsis";
+import { Title } from "./Title";
+
 export const Top = () => {
   return (
-    <div className="flex border">
-      <h2>title</h2>
-      <button>Add New +</button>
-      <p>...</p>
+    <div className="flex flex-row  text-black ">
+      <div className="pr-2">
+        <Title />
+      </div>
+      <div className="flex flex-row ">
+        <button className="p-2 rounded-full bg-purple-btn">
+          +Add New Task
+        </button>
+        <VerticalEllipsis />
+      </div>
     </div>
   );
 };

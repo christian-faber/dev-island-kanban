@@ -3,12 +3,12 @@ import { Task } from "./Task";
 
 export const Column = ({ column, tasks, setData }) => {
   return (
-    <div className="h-50 w-50">
+    <div className="h-50 w-50 bg-slate-200 text-black">
       <h2>{column.title}</h2>
       <Droppable droppableId={column.id}>
         {(provided) => (
           <div
-            className="w-25 h-10 border border-blue"
+            className="shadow-lg rounded-lg w-25 h-10 border border-blue"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
