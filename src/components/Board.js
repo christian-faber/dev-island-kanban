@@ -3,23 +3,26 @@ import { New } from "./New";
 import { DragDropContext } from "react-beautiful-dnd";
 import { useState } from "react";
 import initialdata from "../data/initial-data";
+import { useDispatch } from "react-redux";
+import { handleOnDragEnd } from "../features/columnSlice";
 
 export const Board = () => {
   const [data, setData] = useState(initialdata);
-  const handleOnDragEnd = (result) => {
-    if (!result.destination) return;
+  const dispatch = useDispatch();
+  // const handleOnDragEnd = (result) => {
+  //   if (!result.destination) return;
 
-    // const items = Array.from(data);
-    // const [reorderedItem] = items.splice(result.source.index, 1);
-    // items.splice(result.destination.index, 0, reorderedItem);
+  // const items = Array.from(data);
+  // const [reorderedItem] = items.splice(result.source.index, 1);
+  // items.splice(result.destination.index, 0, reorderedItem);
 
-    // setData(items);
-  };
+  // setData(items);
+  // };
 
   console.log(data);
 
   return (
-    <DragDropContext onDragEnd={handleOnDragEnd}>
+    <DragDropContext onDragEnd={() => dispatch(handleOnDragEnd())}>
       <div className="border-black border-solid flex flex-row h-80 gap-5 ">
         {data?.columns?.map((column) => (
           <Column
