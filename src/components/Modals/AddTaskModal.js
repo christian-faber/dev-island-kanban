@@ -3,7 +3,7 @@ import { closeTaskModal } from "../../features/modalSlice";
 import { handleAddTask } from "../../features/taskSlice";
 
 export const AddTaskModal = () => {
-  const { dispatch } = useDispatch();
+  const dispatch = useDispatch();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const value = evt.target.elements.newTask.value;
