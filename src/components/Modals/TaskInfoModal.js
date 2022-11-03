@@ -1,12 +1,25 @@
 import initialdata from "../../data/initial-data";
 import { SubtaskList } from "../SubtaskList";
+import { useDispatch } from "react-redux";
+import { closeInfoModal } from "../../features/modalSlice";
 
 export const TaskInfoModal = () => {
   const data = initialdata;
   const length = data.tasks.subtasks.length;
+  const { dispatch } = useDispatch();
+
   return (
     <div>
-      <h1>{data.tasks.title}</h1>
+      <div>
+        <h1>{data.tasks.title}</h1>
+        <button
+          onClick={() => {
+            dispatch(closeInfoModal());
+          }}
+        >
+          X
+        </button>
+      </div>
       <p>{data.tasks.description}</p>
       <div>
         <p>

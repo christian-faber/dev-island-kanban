@@ -1,16 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
-import initialdata from "../data/initial-data";
+
+const initialState = {
+  taskOpen: false,
+  columnOpen: false,
+  infoOpen: false,
+};
 
 export const modalSlice = createSlice({
   name: "modal",
-  initialState: { initialdata },
+  initialState,
   reducers: {
-    handleAddTaskModal: {},
-    handleAddColumnModal: {},
-    handleTaskInfoModal: {},
+    openTaskModal: (state, actions) => {
+      state.taskOpen = true;
+    },
+    openColumnModal: (state, actions) => {
+      state.columnOpen = true;
+    },
+    openInfoModal: (state, actions) => {
+      state.infoOpen = true;
+    },
+    closeTaskModal: (state, actions) => {
+      state.taskOpen = false;
+    },
+    closeColumnModal: (state, actions) => {
+      state.columnOpen = false;
+    },
+    closeInfoModal: (state, actions) => {
+      state.infoOpen = false;
+    },
   },
 });
 
-export const { handleOnDragEnd } = modalSlice.actions;
+export const {
+  openTaskModal,
+  openColumnModal,
+  openInfoModal,
+  closeColumnModal,
+  closeInfoModal,
+  closeTaskModal,
+} = modalSlice.actions;
 
 export default modalSlice.reducer;
