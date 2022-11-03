@@ -8,3 +8,4 @@ export const VerticalEllipsis = () => (
   </svg>
 );
 //i'm pretty sure this brings up the sidebar when collapsed
+//(Christian): I think this could have options with the columns. Like deleting and reordering.

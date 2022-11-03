@@ -7,6 +7,7 @@ export const Task = ({ task, index }) => {
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
         <div
+          className="m-5 gap-5 border-solid border-orange-700"
           snapshot={snapshot}
           ref={provided.innerRef}
           {...provided.draggableProps}

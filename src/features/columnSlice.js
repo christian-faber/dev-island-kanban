@@ -4,9 +4,13 @@ import initialdata from "../data/initial-data";
 export const columnSlice = createSlice({
   name: "column",
   initialState: { initialdata },
-  reducers: {},
+  reducers: {
+    handleOnDragEnd: (result) => {
+      if (!result.destination) return;
+    },
+  },
 });
 
-export const {} = columnSlice.actions;
+export const { handleOnDragEnd } = columnSlice.actions;
 
 export default columnSlice.reducer;
