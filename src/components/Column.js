@@ -1,5 +1,6 @@
 import { Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
+import { useSelector, useDispatch } from "react-redux";
 
 export const Column = ({ column, tasks, setData }) => {
   return (
