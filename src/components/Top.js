@@ -5,7 +5,7 @@ import { Title } from "./Title";
 import { openTaskModal } from "../features/modalSlice";
 
 export const Top = () => {
-  const { dispatch } = useDispatch();
+  const dispatch = useDispatch();
   return (
     <div className="flex flex-row  text-black ">
       <div className="pr-2">

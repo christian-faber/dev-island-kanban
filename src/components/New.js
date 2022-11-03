@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { openColumnModal } from "../features/modalSlice";
 
 export const New = () => {
-  const { dispatch } = useDispatch();
+  const dispatch = useDispatch();
 
   return (
     <>

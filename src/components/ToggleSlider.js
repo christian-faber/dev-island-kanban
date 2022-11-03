@@ -7,11 +7,13 @@ export const ToggleSlider = () => {
 
   return (
     <div
-      class={`flex items-center justify-center flex-col ${darkMode && "dark"}`}
+      className={`flex items-center justify-center flex-col ${
+        darkMode && "dark"
+      }`}
     >
-      <label class="switch">
+      <label className="switch">
         <input type="checkbox" onClick={() => setDarkMode(!darkMode)} />
-        <span class="slider round"></span>
+        <span className="slider round"></span>
       </label>
     </div>
   );

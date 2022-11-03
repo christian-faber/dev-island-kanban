@@ -3,7 +3,7 @@ import { addColumn } from "../../features/columnSlice";
 import { closeColumnModal } from "../../features/modalSlice";
 
 export const AddColumnModal = () => {
-  const { dispatch } = useDispatch();
+  const dispatch = useDispatch();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const value = evt.target.elements.newColumn.value;
@@ -19,7 +19,7 @@ export const AddColumnModal = () => {
         <h2>Add New Column</h2>
         <button onClick={() => dispatch(closeColumnModal())}>X</button>
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <p>title</p>
           <input name="newColumn" placeholder="Column Title"></input>
