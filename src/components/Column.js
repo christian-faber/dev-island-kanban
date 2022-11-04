@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 
 export const Column = ({ column, tasks, setData }) => {
   return (
-    <div className="h-50 w-50 bg-slate-200 text-black">
+    <div className="">
       <h2>{column.title}</h2>
       <Droppable droppableId={column.id}>
         {(provided) => (
           <div
-            className="flex flex-col shadow-lg rounded-lg w-25 h-10 border border-blue p-40"
+            className="w-full h-full border-rounded text-blackflex flex-col shadow-lg   border border-blue p-2"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
