@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { closeInfoModal } from "../../features/modalSlice";
 
 export const TaskInfoModal = () => {
+  // TODO: replace with the slice data
   const data = initialdata;
   const length = data.tasks.subtasks.length;
   const { dispatch } = useDispatch();

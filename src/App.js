@@ -14,7 +14,7 @@ export const App = () => {
   );
 
   return (
-    <div className="p-5 h-full w-full flex flex-row">
+    <div className="p-5 h-full w-full flex flex-row font-sans">
       {taskOpen && <AddTaskModal />}
       {columnOpen && <AddColumnModal />}
       {infoOpen && <TaskInfoModal />}
