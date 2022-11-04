@@ -9,15 +9,11 @@ import { Top } from "./components/Top";
 import "./index.css";
 import { Title } from "./components/Title";
 export const App = () => {
-  const { taskOpen, infoOpen, columnOpen } = useSelector(
-    (store) => store.modal
-  );
-
   return (
-    <div className="p-5 h-full w-full flex flex-row font-sans">
-      {taskOpen && <AddTaskModal />}
-      {columnOpen && <AddColumnModal />}
-      {infoOpen && <TaskInfoModal />}
+    <div className="p-5 h-full w-full flex flex-row font-sans ">
+      <AddTaskModal />
+      <AddColumnModal />
+      <TaskInfoModal />
       <div className="p-2 position absolute">
         <Title />
       </div>
