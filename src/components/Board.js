@@ -20,8 +20,8 @@ export const Board = () => {
         {data?.columns?.map((column) => (
           <Column column={column} tasks={data.tasks} key={column.id} />
         ))}
+        <New />
       </div>
-      <New />
     </DragDropContext>
   );
 };
