@@ -24,9 +24,9 @@ export const App = () => {
       <div className="">
         <Sidebar />
       </div>
-      <div className="p-4">
+      <div className="position-absolute p-4">
         <Top />
-        <div className="p-2">
+        <div className="p-2 h-full bg-slate-300">
           <Board />
         </div>
       </div>

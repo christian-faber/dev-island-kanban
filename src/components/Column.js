@@ -9,7 +9,7 @@ export const Column = ({ column, tasks, setData }) => {
       <Droppable droppableId={column.id}>
         {(provided) => (
           <div
-            className="w-full h-full border-rounded text-blackflex flex-col shadow-lg   border border-blue p-2"
+            className="w-full h-full bg-white rounded-md text-black flex flex-col shadow-lg"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

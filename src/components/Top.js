@@ -10,12 +10,9 @@ export const Top = () => {
   const [isOpen, setOpen] = useState(false);
   return (
     <div className="pl-80 flex flex-row text-black ">
-      <div className="pr-2">
-        <Title />
-      </div>
       <div className="flex flex-row ">
         <button
-          className="p-2 rounded-full bg-purple-btn"
+          className="position-absolute p-2 rounded-full bg-purple-btn"
           onClick={() => {
             dispatch(openTaskModal());
           }}

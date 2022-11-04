@@ -32,8 +32,8 @@ export const Board = () => {
             key={column.id}
           />
         ))}
+        <New />
       </div>
-      <New />
     </DragDropContext>
   );
 };
