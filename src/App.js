@@ -7,22 +7,28 @@ import { TaskInfoModal } from "./components/Modals/TaskInfoModal";
 import { Sidebar } from "./components/Sidebar";
 import { Top } from "./components/Top";
 import "./index.css";
-
+import { Title } from "./components/Title";
 export const App = () => {
   const { taskOpen, infoOpen, columnOpen } = useSelector(
     (store) => store.modal
   );
 
   return (
-    <div className="p-5 w-96 h-96 border-solid border-2 border-red flex flex-row">
+    <div className="p-5 h-full w-full flex flex-row">
       {taskOpen && <AddTaskModal />}
       {columnOpen && <AddColumnModal />}
       {infoOpen && <TaskInfoModal />}
-
-      <Sidebar />
-      <div className="w-80 h-80 border-blue border">
+      <div className="p-2 position absolute">
+        <Title />
+      </div>
+      <div className="">
+        <Sidebar />
+      </div>
+      <div className="p-4">
         <Top />
-        <Board />
+        <div className="p-2">
+          <Board />
+        </div>
       </div>
     </div>
   );

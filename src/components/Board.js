@@ -23,7 +23,7 @@ export const Board = () => {
 
   return (
     <DragDropContext onDragEnd={() => dispatch(handleOnDragEnd())}>
-      <div className="border-black border-solid flex flex-row h-80 gap-5 ">
+      <div className="p-4 flex flex-row h-80 gap-4 ">
         {data?.columns?.map((column) => (
           <Column
             column={column}

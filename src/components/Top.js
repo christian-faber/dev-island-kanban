@@ -1,7 +1,7 @@
 // import { AddTaskMobile } from "./Icons/AddTaskMobile";
 import { useDispatch } from "react-redux";
 import { VerticalEllipsis } from "./Icons/VerticalEllipsis";
-import { Title } from "./Title";
+// import { Title } from "./Title";
 import { openTaskModal } from "../features/modalSlice";
 import { useState } from "react";
 
@@ -9,7 +9,8 @@ export const Top = () => {
   const dispatch = useDispatch();
   const [isOpen, setOpen] = useState(false);
   return (
-    <div className="flex flex-row  text-black ">
+
+    <div className="pl-80 flex flex-row text-black ">
       <div className="pr-2">
         <Title />
       </div>
@@ -32,6 +33,7 @@ export const Top = () => {
           <VerticalEllipsis />
         </div>
       </div>
+
     </div>
   );
 };
