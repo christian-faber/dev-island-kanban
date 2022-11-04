@@ -45,9 +45,7 @@ export const AddTaskModal = () => {
           {/* dropdown in fragment below! */}
           <></>
         </span>
-        <button type="submit" onClick={handleSubmit()}>
-          Create Task
-        </button>
+        <button type="submit">Create Task</button>
       </div>
     </form>
     ;

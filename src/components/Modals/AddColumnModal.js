@@ -38,7 +38,12 @@ export const AddColumnModal = () => {
             {/* dropdown in fragment below! */}
             <></>
           </span>
-          <button onClick={handleSubmit()}>Create Column</button>
+          <button
+            type="submit"
+            onClick={() => setTimeout(dispatch(closeColumnModal()), 2000)}
+          >
+            Create Column
+          </button>
         </div>
       </form>
     </div>
