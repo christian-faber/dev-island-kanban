@@ -22,14 +22,14 @@ export const AddColumnModal = () => {
         "bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10 flex justify-center align-center"
       )}
     >
-      <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
-        <div className="flex justify-between text-black w-96">
-          <h2>Add New Column</h2>
-          <button onClick={() => dispatch(closeColumnModal())}>x</button>
-        </div>
+      <form>
+        <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
+          <div className="flex justify-between text-black w-96">
+            <h2>Add New Column</h2>
+            <button onClick={() => dispatch(closeColumnModal())}>x</button>
+          </div>
 
-        <div className="my-4 flex flex-col">
-          <span>
+          <div className="my-4 flex flex-col">
             <p className="text-light-gray text-sm leading-8">Board</p>
             {/* dropdown in fragment below! */}
 
@@ -66,8 +66,8 @@ export const AddColumnModal = () => {
               Create Column
             </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };
