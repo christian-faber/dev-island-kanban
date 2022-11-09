@@ -22,14 +22,31 @@ export const Top = () => {
           >
             +Add New Task
           </button>
-          {isOpen && (
-            <div className="">
-              <button>Edit Boards</button>
-              <button>Edit Columns</button>
+
+          <div
+          // container
+          >
+            <div
+              //trigger
+              onClick={() => setOpen(!isOpen)}
+              // className="p-10 absolute h-15 w-15 rounded-lg overflow-hidden cursor-pointer"
+            >
+              <VerticalEllipsis className="p-10 absolute h-15 w-15 rounded-lg overflow-hidden cursor-pointer" />
             </div>
-          )}
-          <div onClick={() => setOpen(!isOpen)} className="p-3">
-            <VerticalEllipsis />
+
+            {isOpen && (
+              <div className="absolute top-25 right-5 rounded-lg p-5 w-50 border border-solid shadow-md bg-white">
+                <ul className="py-2.5">
+                  <li className="hover:bg-almost-white rounded-lg p-1">
+                    Edit Boards
+                  </li>
+                  <li className="hover:bg-almost-white rounded-lg p-1">
+                    Edit Columns
+                  </li>
+                </ul>
+              </div>
+            )}
+
           </div>
         </div>
       </div>

@@ -16,9 +16,7 @@ export const App = () => {
   );
 
   return (
-
     <div className="font-jakarta h-full w-full flex flex-row font-sans bg-blue-50">
-
       {taskOpen && <AddTaskModal />}
       {columnOpen && <AddColumnModal />}
       {infoOpen && <TaskInfoModal />}
