@@ -5,10 +5,12 @@ import { useDispatch } from "react-redux";
 import { handleOnDragEnd } from "../features/columnSlice";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useState } from "react";
 
 export const Board = () => {
   const data = useSelector((state) => state.column);
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     console.log(data);
