@@ -19,10 +19,10 @@ export const AddColumnModal = () => {
     <div
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
-        "inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10"
+        "bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10 flex justify-center align-center"
       )}
     >
-      <div className="border bg-almost-white p-5 absolute m-auto z-50 rounded-lg">
+      <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
         <div className="flex justify-between text-black w-96">
           <h2>Add New Column</h2>
           <button onClick={() => dispatch(closeColumnModal())}>x</button>
