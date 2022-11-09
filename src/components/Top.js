@@ -13,7 +13,9 @@ export const Top = () => {
     <div className="pl-80 flex flex-row text-black ">
       <div className="flex flex-row ">
         <button
+
           className="position-absolute p-2 rounded-full bg-purple-btn"
+
           onClick={() => {
             dispatch(openTaskModal());
           }}

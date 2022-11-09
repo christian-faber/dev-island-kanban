@@ -16,11 +16,9 @@ export const App = () => {
   );
 
   return (
-<<<<<<< Updated upstream
-    <div className="p-5 h-full w-full flex flex-row">
-=======
+
     <div className="font-jakarta h-full w-full flex flex-row font-sans bg-blue-50">
->>>>>>> Stashed changes
+
       {taskOpen && <AddTaskModal />}
       {columnOpen && <AddColumnModal />}
       {infoOpen && <TaskInfoModal />}
