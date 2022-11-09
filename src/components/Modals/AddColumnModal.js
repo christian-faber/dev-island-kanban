@@ -27,9 +27,12 @@ export const AddColumnModal = () => {
           <h2>Add New Column</h2>
           <button onClick={() => dispatch(closeColumnModal())}>x</button>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="my-4">
-            <p className="text-light-gray text-sm">Title</p>
+
+        <div className="my-4 flex flex-col">
+          <span>
+            <p className="text-light-gray text-sm leading-8">Board</p>
+            {/* dropdown in fragment below! */}
+
             <input
               name="newColumn"
               placeholder="Column Title"
