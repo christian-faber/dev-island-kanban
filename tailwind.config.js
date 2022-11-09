@@ -2,13 +2,9 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  darkMode: "class",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
-      },
       colors: {
         "purple-btn": "#635FC7",
         "hover-purple": "#A8A4FF",
@@ -23,6 +19,10 @@ module.exports = {
         "almost-white": "#F4F7FD",
       },
     },
+    fontFamily: {
+      sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+    },
   },
+  darkMode: "class",
   plugins: [],
 };

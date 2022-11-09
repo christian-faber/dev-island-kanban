@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { store } from "./app/store";
 import { Board } from "./components/Board";
@@ -9,20 +10,27 @@ import { Top } from "./components/Top";
 import "./index.css";
 import { Title } from "./components/Title";
 export const App = () => {
+  const [light, setLight] = useState(true);
+  const { taskOpen, infoOpen, columnOpen } = useSelector(
+    (store) => store.modal
+  );
+
   return (
-    <div className="p-5 h-full w-full flex flex-row font-sans ">
-      <AddTaskModal />
-      <AddColumnModal />
-      <TaskInfoModal />
-      <div className="p-2 position absolute">
-        <Title />
+    <div className="font-jakarta h-full w-full flex flex-row font-sans bg-blue-50">
+      {taskOpen && <AddTaskModal />}
+      {columnOpen && <AddColumnModal />}
+      {infoOpen && <TaskInfoModal />}
+      <div className="flex flex-col bg-white border-2  border-r-neutral-100">
+        <div className="p-2">
+          <Title />
+        </div>
+        <div className="">
+          <Sidebar />
+        </div>
       </div>
-      <div className="">
-        <Sidebar />
-      </div>
-      <div className="position-absolute p-4">
+      <div className="position-absolute p-4 bg-white">
         <Top />
-        <div className="p-2 h-full bg-slate-300">
+        <div className="p-2">
           <Board />
         </div>
       </div>

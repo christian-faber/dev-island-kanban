@@ -10,7 +10,7 @@ export const Task = ({ task, index }) => {
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
         <div
-          className="m-5 gap-5 border-solid"
+          className="bg-white w-60 h-min shadow-lg p-2 m-5 gap-5 border-solid"
           snapshot={snapshot}
           ref={provided.innerRef}
           {...provided.draggableProps}
@@ -19,7 +19,7 @@ export const Task = ({ task, index }) => {
             dispatch(openTaskModal());
           }}
         >
-          <h4>{task.title}</h4>
+          <h1>{task.title}</h1>
           <p>
             {length} {length < 2 ? "subtask" : "subtasks"}
           </p>

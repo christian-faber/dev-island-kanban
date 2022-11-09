@@ -1,7 +1,6 @@
 // import { AddTaskMobile } from "./Icons/AddTaskMobile";
 import { useDispatch } from "react-redux";
 import { VerticalEllipsis } from "./Icons/VerticalEllipsis";
-import { Title } from "./Title";
 import { openTaskModal } from "../features/modalSlice";
 import { useState } from "react";
 
