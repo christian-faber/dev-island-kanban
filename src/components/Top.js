@@ -9,6 +9,7 @@ export const Top = () => {
   const dispatch = useDispatch();
   const [isOpen, setOpen] = useState(false);
   return (
+<<<<<<< Updated upstream
     <div className="pl-80 flex flex-row text-black ">
       <div className="flex flex-row ">
         <button
@@ -25,10 +26,31 @@ export const Top = () => {
           <div className="w-5">
             <button>Edit Boards</button>
             <button>Edit Columns</button>
+=======
+    <div className="flex flex-row">
+      <div className="basis-9/12 flex flex-row">
+        <p className="text-black">Dev-Island Kanban App</p>
+      </div>
+      <div className="">
+        <div className="flex flex-row">
+          <button
+            className="text-white p-2 rounded-full bg-purple-btn"
+            onClick={() => {
+              dispatch(openTaskModal());
+            }}
+          >
+            +Add New Task
+          </button>
+          {isOpen && (
+            <div className="">
+              <button>Edit Boards</button>
+              <button>Edit Columns</button>
+            </div>
+          )}
+          <div onClick={() => setOpen(!isOpen)} className="p-3">
+            <VerticalEllipsis />
+>>>>>>> Stashed changes
           </div>
-        )}
-        <div onClick={() => setOpen(!isOpen)} className="p-10">
-          <VerticalEllipsis />
         </div>
       </div>
     </div>

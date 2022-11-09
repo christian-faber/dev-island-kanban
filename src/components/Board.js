@@ -15,13 +15,20 @@ export const Board = () => {
   }, [data]);
 
   return (
-    <DragDropContext onDragEnd={(result) => dispatch(handleOnDragEnd(result))}>
-      <div className="p-4 flex flex-row h-80 gap-4 ">
-        {data?.columns?.map((column) => (
-          <Column column={column} tasks={data.tasks} key={column.id} />
-        ))}
-        <New />
-      </div>
-    </DragDropContext>
+
+    
+    <div className="bg-blue-50  pl-3  h-full flex items-center justify-center">
+      <DragDropContext
+        onDragEnd={(result) => dispatch(handleOnDragEnd(result))}
+      >
+        <div className="p-4 flex flex-row gap-4 ">
+          {data?.columns?.map((column) => (
+            <Column column={column} tasks={data.tasks} key={column.id} />
+          ))}
+          <New />
+        </div>
+      </DragDropContext>
+    </div>
+
   );
 };
