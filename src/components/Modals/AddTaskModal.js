@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeTaskModal } from "../../features/modalSlice";
-import { handleAddTask } from "../../features/taskSlice";
+import { addTask } from "../../features/taskSlice";
 
 import { Dropdown } from "./Dropdown";
 
@@ -14,7 +14,7 @@ export const AddTaskModal = () => {
     const value = evt.target.elements.newTask.value;
     const description = evt.target.elements.newDescription.value;
     if (!value || !description) return;
-    dispatch(handleAddTask(value, description));
+    dispatch(addTask(value, description));
 
     evt.target.elements.newTask.value = "";
   };
