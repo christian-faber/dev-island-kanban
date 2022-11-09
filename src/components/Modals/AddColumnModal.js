@@ -37,7 +37,6 @@ export const AddColumnModal = () => {
             className="border w-96"
           ></textarea>
         </div>
-
         <div className="my-4 flex flex-col">
           <span>
             <p className="text-light-gray text-sm leading-8">Board</p>

@@ -1,7 +1,6 @@
 // import { AddTaskMobile } from "./Icons/AddTaskMobile";
 import { useDispatch } from "react-redux";
 import { VerticalEllipsis } from "./Icons/VerticalEllipsis";
-import { Title } from "./Title";
 import { openTaskModal } from "../features/modalSlice";
 import { useState } from "react";
 
@@ -9,24 +8,6 @@ export const Top = () => {
   const dispatch = useDispatch();
   const [isOpen, setOpen] = useState(false);
   return (
-<<<<<<< Updated upstream
-    <div className="pl-80 flex flex-row text-black ">
-      <div className="flex flex-row ">
-        <button
-
-          className="position-absolute p-2 rounded-full bg-purple-btn"
-
-          onClick={() => {
-            dispatch(openTaskModal());
-          }}
-        >
-          +Add New Task
-        </button>
-        {isOpen && (
-          <div className="w-5">
-            <button>Edit Boards</button>
-            <button>Edit Columns</button>
-=======
     <div className="flex flex-row">
       <div className="basis-9/12 flex flex-row">
         <p className="text-black">Dev-Island Kanban App</p>
@@ -49,7 +30,6 @@ export const Top = () => {
           )}
           <div onClick={() => setOpen(!isOpen)} className="p-3">
             <VerticalEllipsis />
->>>>>>> Stashed changes
           </div>
         </div>
       </div>
