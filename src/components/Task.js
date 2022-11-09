@@ -1,5 +1,5 @@
 import { Draggable } from "react-beautiful-dnd";
-import { openTaskModal } from "../features/modalSlice";
+import { openInfoModal } from "../features/modalSlice";
 import { useDispatch } from "react-redux";
 
 export const Task = ({ task, index }) => {
@@ -16,7 +16,7 @@ export const Task = ({ task, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           onDoubleClick={() => {
-            dispatch(openTaskModal());
+            dispatch(openInfoModal());
           }}
         >
           <h1>{task.title}</h1>
