@@ -34,12 +34,12 @@ export const Top = () => {
               <VerticalEllipsis className="p-10 absolute h-15 w-15 rounded-lg overflow-hidden cursor-pointer" />
             </div>
             {isOpen && (
-              <div className="absolute top-25 right-5 rounded-lg p-5 w-50 border border-solid shadow-md">
+              <div className="absolute top-25 right-5 rounded-lg p-5 w-50 border border-solid shadow-md bg-white">
                 <ul className="py-2.5">
-                  <li className="hover:bg-slate-400 rounded-lg p-1">
+                  <li className="hover:bg-almost-white rounded-lg p-1">
                     Edit Boards
                   </li>
-                  <li className="hover:bg-slate-400 rounded-lg p-1">
+                  <li className="hover:bg-almost-white rounded-lg p-1">
                     Edit Columns
                   </li>
                 </ul>
