@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import initialState from "../data/initial-data";
+// import initialState from "../data/initial-data";
+
+const initialState = {
+  columns: [],
+};
 
 export const columnSlice = createSlice({
   name: "column",
@@ -30,11 +34,25 @@ export const columnSlice = createSlice({
     addColumn: (state, action) => {
       const length = state.columns.length;
 
-      return state.push({
-        id: `c-${length + 1}`,
-        title: action.payload,
-        taskIds: [],
-      });
+      // state.columns.push({
+      //   id: `c-${length + 1}`,
+      //   title: action.payload.title,
+      //   description: action.payload.description,
+      //   taskIds: [],
+      // });
+
+      return {
+        ...state,
+        columns: [
+          ...state.columns,
+          {
+            id: `c-${length + 1}`,
+            title: action.payload.title,
+            description: action.payload.description,
+            taskIds: [],
+          },
+        ],
+      };
     },
     deleteColumn: () => {},
     editColumn: () => {},
