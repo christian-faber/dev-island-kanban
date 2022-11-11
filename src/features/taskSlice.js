@@ -1,24 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-import initialdata from "../data/initial-data";
+import { v4 } from "uuid";
 
-const initialState = initialdata;
+// import initialdata from "../data/initial-data";
+
+const initialState = [];
 
 export const taskSlice = createSlice({
   name: "task",
   initialState,
   reducers: {
-    handleAddTask: (state, action) => {
-      return state.push({
-        id: `t-${state.tasks.length + 1}`,
+    addTask: (state, action) => {
+      state.push({
+        id: v4(),
         title: action.payload,
         description: action.payload,
-        complete: false,
       });
     },
-    handleDeleteTask: (state, action) => {
+
+    deleteTask: (state, action) => {
       return state.filter((t) => t.id !== action.payload);
     },
-    handleEditTask: (state, action) => {
+    editTask: (state, action) => {
       return state.map((t) =>
         t.id === action.payload.id ? { ...t, title: action.payload.title } : t
       );
@@ -26,7 +28,6 @@ export const taskSlice = createSlice({
   },
 });
 
-export const { handleAddTask, handleDeleteTask, handleEditTask } =
-  taskSlice.actions;
+export const { addTask, deleteTask, editTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

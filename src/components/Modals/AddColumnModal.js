@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { addColumn } from "../../features/columnSlice";
 import { closeColumnModal } from "../../features/modalSlice";
+import { Dropdown } from "./Dropdown";
 
 export const AddColumnModal = () => {
   const dispatch = useDispatch();
@@ -28,11 +29,9 @@ export const AddColumnModal = () => {
             <h2>Add New Column</h2>
             <button onClick={() => dispatch(closeColumnModal())}>x</button>
           </div>
-
           <div className="my-4 flex flex-col">
             <p className="text-light-gray text-sm leading-8">Board</p>
-            {/* dropdown in fragment below! */}
-
+            <Dropdown />
             <input
               name="newColumn"
               placeholder="Column Title"
@@ -49,23 +48,22 @@ export const AddColumnModal = () => {
             ></textarea>
           </div>
 
-          <div className="my-4 flex flex-col">
-            <span>
-              <p className="text-light-gray text-sm leading-8">Board</p>
-              {/* dropdown in fragment below! */}
-              <input
+          {/* <div className="my-4 flex flex-col"> */}
+          {/* <span> */}
+          {/* <p className="text-light-gray text-sm leading-8">Board</p> */}
+          {/* dropdown in fragment below! */}
+          {/* <input
                 placeholder="dropdown coming soon!"
                 className="border w-96"
-              ></input>
-            </span>
-            <button
-              type="submit"
-              onClick={() => dispatch(closeColumnModal(), addColumn())}
-              className="align-center h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
-            >
-              Create Column
-            </button>
-          </div>
+              ></input> */}
+          {/* </span> */}
+          <button
+            type="submit"
+            onClick={() => dispatch(closeColumnModal(), addColumn())}
+            className="align-center h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
+          >
+            Create Column
+          </button>
         </div>
       </form>
     </div>

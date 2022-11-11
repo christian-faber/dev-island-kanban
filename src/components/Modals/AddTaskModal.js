@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeTaskModal } from "../../features/modalSlice";
-import { handleAddTask } from "../../features/taskSlice";
+import { addTask } from "../../features/taskSlice";
 
 import { Dropdown } from "./Dropdown";
 
@@ -14,7 +14,7 @@ export const AddTaskModal = () => {
     const value = evt.target.elements.newTask.value;
     const description = evt.target.elements.newDescription.value;
     if (!value || !description) return;
-    dispatch(handleAddTask(value, description));
+    dispatch(addTask(value, description));
 
     evt.target.elements.newTask.value = "";
   };
@@ -23,24 +23,25 @@ export const AddTaskModal = () => {
     <div
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
-        "inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10"
+        "bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10 flex justify-center align-center"
       )}
     >
-      <div className="border bg-white p-5 absolute m-auto z-50 rounded-lg">
-        <div className="flex justify-between text-black w-96 my-4">
-          <h2>Add New Task</h2>
-          <button onClick={() => dispatch(closeTaskModal())}>X</button>
-        </div>
-        <form on onSubmit={handleSubmit}>
+      <form>
+        <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
+          <div className="flex justify-between text-black w-96">
+            <h2>Add New Task</h2>
+            <button onClick={() => dispatch(closeTaskModal())}>X</button>
+          </div>
+          {/* <form on onSubmit={handleSubmit}> */}
           <div className="my-4">
-            <p className="text-light-gray text-sm">Title</p>
+            <p className="text-light-gray text-sm">Task</p>
             <input
               name="newTask"
               placeholder="Task Title"
               className="border w-96"
             ></input>
           </div>
-          <div className="my-4">
+          <div className="my-4 flex flex-col">
             <p className="text-light-gray text-sm leading-8">Description</p>
             <textarea
               rows={8}
@@ -59,7 +60,13 @@ export const AddTaskModal = () => {
               <input></input>
               <button src="/" alt="X"></button>
             </span>
-            <button>+ Add New Subtask</button>
+            <button
+              type="submit"
+              onClick={() => dispatch(addTask())}
+              className="align-center h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
+            >
+              + Add New Subtask
+            </button>
           </div>
 
           <div className="my-4">
@@ -67,10 +74,12 @@ export const AddTaskModal = () => {
               <p>Status</p>
               <Dropdown />
             </span>
-            <button type="submit">Create Task</button>
+            <button onClick={() => dispatch(addTask())} type="submit">
+              Create Task
+            </button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };
