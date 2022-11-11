@@ -7,13 +7,15 @@ export const taskSlice = createSlice({
   name: "task",
   initialState,
   reducers: {
-    handleAddTask: (state, action) => {
+    addTask: (state, action) => {
       return state.push({
         id: `t-${state.tasks.length + 1}`,
         title: action.payload,
         description: action.payload,
         // complete: false,
+
         subtasks: [],
+
       });
     },
     handleDeleteTask: (state, action) => {
@@ -27,7 +29,6 @@ export const taskSlice = createSlice({
   },
 });
 
-export const { handleAddTask, handleDeleteTask, handleEditTask } =
-  taskSlice.actions;
+export const { addTask, handleDeleteTask, handleEditTask } = taskSlice.actions;
 
 export default taskSlice.reducer;
