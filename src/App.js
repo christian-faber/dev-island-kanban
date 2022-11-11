@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { store } from "./app/store";
+import { store } from "./store/store";
 import { Board } from "./components/Board";
 import { AddColumnModal } from "./components/Modals/AddColumnModal";
 import { AddTaskModal } from "./components/Modals/AddTaskModal";
