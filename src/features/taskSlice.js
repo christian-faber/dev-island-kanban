@@ -12,7 +12,8 @@ export const taskSlice = createSlice({
         id: `t-${state.tasks.length + 1}`,
         title: action.payload,
         description: action.payload,
-        complete: false,
+        // complete: false,
+        subtasks: [],
       });
     },
     handleDeleteTask: (state, action) => {
