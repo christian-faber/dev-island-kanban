@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import initialdata from "../data/initial-data";
+import { v4 } from "uuid";
 
-const initialState = initialdata;
+// import initialdata from "../data/initial-data";
+
+const initialState = [];
 
 export const taskSlice = createSlice({
   name: "task",
   initialState,
   reducers: {
     addTask: (state, action) => {
+
       return state.push({
         id: `t-${state.tasks.length + 1}`,
         title: action.payload,
@@ -16,12 +19,14 @@ export const taskSlice = createSlice({
 
         subtasks: [],
 
+
       });
     },
-    handleDeleteTask: (state, action) => {
+
+    deleteTask: (state, action) => {
       return state.filter((t) => t.id !== action.payload);
     },
-    handleEditTask: (state, action) => {
+    editTask: (state, action) => {
       return state.map((t) =>
         t.id === action.payload.id ? { ...t, title: action.payload.title } : t
       );
@@ -29,6 +34,8 @@ export const taskSlice = createSlice({
   },
 });
 
-export const { addTask, handleDeleteTask, handleEditTask } = taskSlice.actions;
+
+export const { addTask, deleteTask, editTask } = taskSlice.actions;
+
 
 export default taskSlice.reducer;
