@@ -13,6 +13,9 @@ export const taskSlice = createSlice({
         title: action.payload,
         description: action.payload,
         // complete: false,
+
+        subtasks: [],
+
       });
     },
     handleDeleteTask: (state, action) => {
