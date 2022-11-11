@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { store } from "./store/store";
+// import { store } from "./store/store";
 import { Board } from "./components/Board";
 import { AddColumnModal } from "./components/Modals/AddColumnModal";
 import { AddTaskModal } from "./components/Modals/AddTaskModal";
@@ -11,7 +11,7 @@ import { Top } from "./components/Top";
 import "./index.css";
 import { Title } from "./components/Title";
 export const App = () => {
-  const [light, setLight] = useState(true);
+  // const [light, setLight] = useState(true);
   const { taskOpen, infoOpen, columnOpen, boardOpen } = useSelector(
     (store) => store.modal
   );
