@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 
 export const initialdata = {
   boards: [

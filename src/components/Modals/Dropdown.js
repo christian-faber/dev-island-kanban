@@ -6,6 +6,7 @@ export const Dropdown = ({ handleColumn }) => {
   return (
     <div className="pr-5 bg-white rounded-md shadow-md">
       <select
+        name="board"
         onChange={handleChange}
         className="outline-none rounded-md p-5 text-gray-500"
       >
