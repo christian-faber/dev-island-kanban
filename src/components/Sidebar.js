@@ -6,13 +6,19 @@ import { openBoardModal } from "../features/modalSlice";
 
 export const Sidebar = () => {
   const dispatch = useDispatch();
+  const data = useSelector((state) => state.board);
+  const length = data.boards.length;
   return (
     <div className="p-5 bg-white">
-      <h1 className="pt-8 text-middle-gray">ALL BOARDS (1)</h1>
+      <h1 className="pt-8 text-middle-gray">ALL BOARDS ({length})</h1>
       <br />
-      <SidebarIcon />
       <div className=" text-middle-gray hover:text-violet-900">
-        Dev-Island Kanban App
+        {data?.boards?.map((board) => (
+          <div>
+            <SidebarIcon />
+            <h2>{board.title}</h2>
+          </div>
+        ))}
       </div>
       <button
         className="text-violet-700"

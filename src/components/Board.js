@@ -17,8 +17,6 @@ export const Board = () => {
   }, [data]);
 
   return (
-
-    
     <div className="bg-blue-50  pl-3  h-full flex items-center justify-center">
       <DragDropContext
         onDragEnd={(result) => dispatch(handleOnDragEnd(result))}
@@ -31,6 +29,5 @@ export const Board = () => {
         </div>
       </DragDropContext>
     </div>
-
   );
 };
