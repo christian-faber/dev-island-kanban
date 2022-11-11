@@ -74,7 +74,12 @@ export const AddTaskModal = () => {
               <p>Status</p>
               <Dropdown />
             </span>
-            <button onClick={() => dispatch(addTask())} type="submit">
+            <button
+              onClick={() => {
+                dispatch(addTask());
+              }}
+              type="submit"
+            >
               Create Task
             </button>
           </div>

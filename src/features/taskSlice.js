@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { v4 } from "uuid";
+// import { v4 } from "uuid";
 
 // import initialdata from "../data/initial-data";
 
@@ -10,16 +10,13 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-
       return state.push({
         id: `t-${state.tasks.length + 1}`,
         title: action.payload,
         description: action.payload,
         // complete: false,
 
-        subtasks: [],
-
-
+        subtasks: [action.payload],
       });
     },
 
@@ -34,8 +31,6 @@ export const taskSlice = createSlice({
   },
 });
 
-
 export const { addTask, deleteTask, editTask } = taskSlice.actions;
-
 
 export default taskSlice.reducer;
