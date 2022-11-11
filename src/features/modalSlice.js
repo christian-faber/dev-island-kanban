@@ -4,6 +4,7 @@ const initialState = {
   taskOpen: false,
   columnOpen: false,
   infoOpen: false,
+  boardOpen: false,
 };
 
 export const modalSlice = createSlice({
@@ -19,6 +20,9 @@ export const modalSlice = createSlice({
     openInfoModal: (state, actions) => {
       state.infoOpen = true;
     },
+    openBoardModal: (state, actions) => {
+      state.boardOpen = true;
+    },
     closeTaskModal: (state, actions) => {
       state.taskOpen = false;
     },
@@ -28,6 +32,9 @@ export const modalSlice = createSlice({
     closeInfoModal: (state, actions) => {
       state.infoOpen = false;
     },
+    closeBoardModal: (state, actions) => {
+      state.boardOpen = false;
+    },
   },
 });
 
@@ -35,9 +42,11 @@ export const {
   openTaskModal,
   openColumnModal,
   openInfoModal,
+  openBoardModal,
   closeColumnModal,
   closeInfoModal,
   closeTaskModal,
+  closeBoardModal,
 } = modalSlice.actions;
 
 export default modalSlice.reducer;
