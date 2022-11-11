@@ -1,20 +1,24 @@
 import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
-import { addColumn } from "../../features/columnSlice";
-import { closeColumnModal } from "../../features/modalSlice";
+import { addBoard } from "../../features/boardSlice";
+import { closeBoardModal } from "../../features/modalSlice";
 import { Dropdown } from "./Dropdown";
 
-export const AddColumnModal = () => {
+// Title
+// Columns
+// Description
+
+export const AddBoardModal = () => {
   const dispatch = useDispatch();
-  const modalIsOpen = useSelector((state) => state.modal.columnOpen);
+  const modalIsOpen = useSelector((state) => state.modal.boardOpen);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const value = evt.target.elements.newColumn.value;
+    const value = evt.target.elements.newBoard.value;
     const description = evt.target.elements.newDescription.value;
     if (!value || !description) return;
-    dispatch(addColumn(value, description));
+    dispatch(addBoard(value, description));
 
-    evt.target.elements.newColumn.value = "";
+    evt.target.elements.newBoard.value = "";
   };
   return (
     <div
@@ -26,15 +30,15 @@ export const AddColumnModal = () => {
       <form>
         <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
           <div className="flex justify-between text-black w-96">
-            <h2>Add New Column</h2>
-            <button onClick={() => dispatch(closeColumnModal())}>x</button>
+            <h2>Add New Board</h2>
+            <button onClick={() => dispatch(closeBoardModal())}>x</button>
           </div>
           <div className="my-4 flex flex-col">
             <p className="text-light-gray text-sm leading-8">Board</p>
             <Dropdown />
             <input
-              name="newColumn"
-              placeholder="Column Title"
+              name="newBoard"
+              placeholder="Board Title"
               className="border w-96"
             ></input>
           </div>
@@ -60,11 +64,11 @@ export const AddColumnModal = () => {
           <button
             type="submit"
             onClick={() => {
-              dispatch(closeColumnModal(), addColumn());
+              dispatch(closeBoardModal(), addBoard());
             }}
             className="align-center h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
           >
-            Create Column
+            Create Board
           </button>
         </div>
       </form>
