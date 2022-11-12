@@ -1,6 +1,6 @@
 // import { AddTaskMobile } from "./Icons/AddTaskMobile";
 import { useDispatch } from "react-redux";
-import { VerticalEllipsis } from "./Icons/VerticalEllipsis";
+import { VerticalEllipsis } from "../assets/VerticalEllipsis";
 import { openTaskModal } from "../features/modalSlice";
 import { useState } from "react";
 
@@ -41,12 +41,11 @@ export const Top = () => {
                     Edit Boards
                   </li>
                   <li className="hover:bg-almost-white rounded-lg p-1">
-                    Edit Columns
+                    Delete Board
                   </li>
                 </ul>
               </div>
             )}
-
           </div>
         </div>
       </div>

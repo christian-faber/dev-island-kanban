@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { SidebarIcon } from "./Icons/SidebarIcon";
+import { SidebarIcon } from "../assets/SidebarIcon";
 import { ToggleSlider } from "./ToggleSlider";
 import { openBoardModal } from "../features/modalSlice";
 
@@ -10,7 +10,9 @@ export const Sidebar = () => {
   const length = data.boards.length;
   return (
     <div className="p-5 bg-white">
-      <h1 className="pt-8 text-middle-gray">ALL BOARDS ({length})</h1>
+      <h1 className="border-l-gray-300 dark: border-l-gray-700 dark:text-white border-l h-full flex  pl-6">
+        ALL BOARDS ({length})
+      </h1>
       <br />
       <div className=" text-middle-gray hover:text-violet-900">
         {data?.boards?.map((board) => (
