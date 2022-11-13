@@ -9,12 +9,13 @@ export const Sidebar = () => {
   const data = useSelector((state) => state.board);
   const length = data.boards.length;
   return (
-    <div className="p-5 bg-white">
-      <h1 className="border-l-gray-300 dark: border-l-gray-700 dark:text-white border-l h-full flex  pl-6">
+    <div className=" flex-1 pr-2 pb-4 p-5 bg-white dark:bg-gray-800 ">
+      {/* || pl-6 h-full */}
+      <h1 className=" border-l-gray-300  dark:text-white ">
         ALL BOARDS ({length})
       </h1>
       <br />
-      <div className=" text-middle-gray hover:text-violet-900">
+      <div className="text-middle-gray hover:text-violet-900">
         {data?.boards?.map((board) => (
           <div>
             <SidebarIcon />
@@ -23,12 +24,12 @@ export const Sidebar = () => {
         ))}
       </div>
       <button
-        className="text-violet-700"
+        className="text-violet-900"
         onClick={() => {
           dispatch(openBoardModal());
         }}
       >
-        Create New Board +
+        + Create New Board
       </button>
       <ToggleSlider />
     </div>
