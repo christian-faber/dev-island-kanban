@@ -63,7 +63,7 @@ export const AddBoardModal = () => {
           {/* </span> */}
           <button
             type="submit"
-            onClick={() => {
+            onClick={(handleSubmit) => {
               dispatch(closeBoardModal(), addBoard());
             }}
             className="align-center h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"

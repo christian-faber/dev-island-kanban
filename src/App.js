@@ -29,7 +29,6 @@ export const App = () => {
 
   return (
     <LightContext.Provider value={{ light, setLight }}>
-      {/* <BoardContext.Provider value={board}> */}
       <div className="font-jakarta overflow-x-auto bg-white dark:bg-gray-800">
         {taskOpen && <AddTaskModal />}
         {columnOpen && <AddColumnModal />}
@@ -38,15 +37,14 @@ export const App = () => {
         <div className="">
           <Title />
           <Top />
-          <div className="">
+          <div className="flex">
             <Sidebar />
-            <div className=" ">
+            <div className="w-full">
               <Board />
             </div>
           </div>
         </div>
       </div>
-      {/* </BoardContext.Provider> */}
     </LightContext.Provider>
   );
 };
