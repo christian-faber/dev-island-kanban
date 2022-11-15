@@ -50,15 +50,15 @@ export const AddBoardModal = () => {
             ></textarea>
           </div>
 
-          {/* <div className="my-4 flex flex-col"> */}
-          {/* <span> */}
-          {/* <p className="text-light-gray text-sm leading-8">Board</p> */}
-          {/* dropdown in fragment below! */}
-          {/* <input
-                placeholder="dropdown coming soon!"
-                className="border w-96"
-              ></input> */}
-          {/* </span> */}
+          <button
+            type="submit"
+            onClick={(handleSubmit) => {
+              dispatch(closeBoardModal(), addBoard());
+            }}
+            className="align-center p-2 h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
+          >
+            + Add new column
+          </button>
           <button
             type="submit"
             onClick={(handleSubmit) => {
