@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { addColumn } from "../../features/columnSlice";
 import { closeColumnModal } from "../../features/modalSlice";
-import { Dropdown } from "./Dropdown";
+import { BoardDropdown } from "./BoardDropdown";
 import { useState } from "react";
 
 export const AddColumnModal = () => {
@@ -34,8 +34,9 @@ export const AddColumnModal = () => {
             <button onClick={() => dispatch(closeColumnModal())}>x</button>
           </div>
           <div className="my-4 flex flex-col">
-            <p className="text-light-gray text-sm leading-8">Board</p>
-            <Dropdown handleColumn={setBoard} />
+            {/* <p className="text-light-gray text-sm leading-8">Board</p> */}
+            {/* <BoardDropdown hanldeBoard={setBoard} /> */}
+            <p className="text-light-gray text-sm leading-8">Title</p>
             <input
               name="newColumn"
               placeholder="Column Title"

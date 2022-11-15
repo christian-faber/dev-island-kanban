@@ -19,7 +19,10 @@ export const Task = ({ task, index }) => {
             dispatch(openInfoModal());
           }}
         >
-          <h1>{task.title}</h1>
+          <div>
+            <button className="rounded-full bg-almost-white">x</button>
+            <h1>{task.title}</h1>
+          </div>
           <p>
             {length} {length < 2 ? "subtask" : "subtasks"}
           </p>

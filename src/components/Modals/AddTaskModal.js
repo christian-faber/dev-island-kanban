@@ -2,11 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeTaskModal } from "../../features/modalSlice";
 import { addTask } from "../../features/taskSlice";
 
-import { Dropdown } from "./Dropdown";
+import { ColumnDropdown } from "./ColumnDropdown";
 
 import clsx from "clsx";
+import { useState } from "react";
 
 export const AddTaskModal = () => {
+  const [column, setColumn] = useState("");
   const dispatch = useDispatch();
   const modalIsOpen = useSelector((state) => state.modal.taskOpen);
   const handleSubmit = (evt) => {
@@ -15,7 +17,7 @@ export const AddTaskModal = () => {
     const description = evt.target.elements.newDescription.value;
     if (!value || !description) return;
     dispatch(addTask(value, description));
-
+    dispatch(closeTaskModal());
     evt.target.elements.newTask.value = "";
   };
 
@@ -26,7 +28,7 @@ export const AddTaskModal = () => {
         "bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10 flex justify-center align-center"
       )}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
           <div className="flex justify-between text-black w-96">
             <h2>Add New Task</h2>
@@ -62,7 +64,6 @@ export const AddTaskModal = () => {
             </span>
             <button
               type="submit"
-              onClick={() => dispatch(addTask())}
               className="align-center h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
             >
               + Add New Subtask
@@ -72,7 +73,7 @@ export const AddTaskModal = () => {
           <div className="my-4">
             <span>
               <p>Status</p>
-              <Dropdown />
+              <ColumnDropdown handleColumn={setColumn} />
             </span>
             <button
               onClick={() => {
