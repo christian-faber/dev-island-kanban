@@ -28,26 +28,24 @@ export const AddBoardModal = () => {
       )}
     >
       <form>
-        <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
-          <div className="flex justify-between text-black w-96">
-            <h2>Add New Board</h2>
+        <div className="relative z-50 bg-almost-white dark:bg-[#2B2C37] p-5  rounded-lg max-h-1/4 my-[10%]">
+          <div className="flex justify-between text-black pr-2  items-center ">
+            <h2 className="font-bold text-lg dark:text-white">Add New Board</h2>
             <button onClick={() => dispatch(closeBoardModal())}>x</button>
           </div>
           <div className="my-4 flex flex-col">
-            <p className="text-light-gray text-sm leading-8">Board</p>
-            <Dropdown />
+            <p className="text-light-gray text-sm leading-8">Board name</p>
             <input
               name="newBoard"
-              placeholder="Board Title"
-              className="border w-96"
+              placeholder=""
+              className="border w-96 rounded"
             ></input>
           </div>
           <div className="my-4">
-            <p className="text-light-gray text-sm leading-8">Description</p>
+            <p className="text-light-gray text-sm leading-8">Columns</p>
             <textarea
-              rows={8}
-              name="newDescription"
-              placeholder="Give some details of your category"
+              name="columns"
+              placeholder="columns here"
               className="border w-96"
             ></textarea>
           </div>
@@ -63,10 +61,10 @@ export const AddBoardModal = () => {
           {/* </span> */}
           <button
             type="submit"
-            onClick={() => {
+            onClick={(handleSubmit) => {
               dispatch(closeBoardModal(), addBoard());
             }}
-            className="align-center h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
+            className="align-center p-2 h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
           >
             Create Board
           </button>

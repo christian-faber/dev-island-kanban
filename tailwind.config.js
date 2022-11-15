@@ -4,6 +4,9 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    fontFamily: {
+      sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+    },
     extend: {
       colors: {
         "purple-btn": "#635FC7",
@@ -18,9 +21,6 @@ module.exports = {
         "light-blue": "#E4EBFA",
         "almost-white": "#F4F7FD",
       },
-    },
-    fontFamily: {
-      sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
     },
   },
   darkMode: "class",

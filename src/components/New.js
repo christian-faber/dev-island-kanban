@@ -7,7 +7,7 @@ export const New = () => {
   return (
     <>
       <button
-        className="cursor-pointer text-light-gray"
+        className="absolutecursor-pointer text-light-gray"
         onClick={() => {
           dispatch(openColumnModal());
         }}

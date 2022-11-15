@@ -1,42 +1,51 @@
-// import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-// import { store } from "./store/store";
+import React, { useEffect, useState } from "react";
 import { Board } from "./components/Board";
+import { useSelector } from "react-redux";
 import { AddColumnModal } from "./components/Modals/AddColumnModal";
 import { AddTaskModal } from "./components/Modals/AddTaskModal";
 import { TaskInfoModal } from "./components/Modals/TaskInfoModal";
 import { AddBoardModal } from "./components/Modals/AddBoardModal";
 import { Sidebar } from "./components/Sidebar";
 import { Top } from "./components/Top";
+// import { useSelector } from "react-redux";
 import "./index.css";
 import { Title } from "./components/Title";
+export const LightContext = React.createContext();
+export const BoardContext = React.createContext();
+
 export const App = () => {
-  // const [light, setLight] = useState(true);
+  const [light, setLight] = useState(true);
+
   const { taskOpen, infoOpen, columnOpen, boardOpen } = useSelector(
     (store) => store.modal
   );
+  useEffect(() => {
+    if (!light) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [light]);
 
   return (
-    <div className="font-jakarta h-full w-full flex flex-row font-sans bg-blue-50">
-      {taskOpen && <AddTaskModal />}
-      {columnOpen && <AddColumnModal />}
-      {infoOpen && <TaskInfoModal />}
-      {boardOpen && <AddBoardModal />}
-      <div className="flex flex-col bg-white border-2  border-r-neutral-100">
-        <div className="p-2">
-          <Title />
-        </div>
+    <LightContext.Provider value={{ light, setLight }}>
+      <div className="font-jakarta overflow-x-auto bg-white dark:bg-gray-800">
+        {taskOpen && <AddTaskModal />}
+        {columnOpen && <AddColumnModal />}
+        {infoOpen && <TaskInfoModal />}
+        {boardOpen && <AddBoardModal />}
         <div className="">
-          <Sidebar />
+          <Title />
+          <Top />
+          <div className="flex">
+            <Sidebar />
+            <div className="w-full">
+              <Board />
+            </div>
+          </div>
         </div>
       </div>
-      <div className="position-absolute p-4 bg-white">
-        <Top />
-        <div className="p-2">
-          <Board />
-        </div>
-      </div>
-    </div>
+    </LightContext.Provider>
   );
 };
 
