@@ -1,3 +1,5 @@
+import React from "react";
+
 export const Dropdown = ({ handleColumn }) => {
   const handleChange = (evt) => {
     handleColumn(evt.target.value);

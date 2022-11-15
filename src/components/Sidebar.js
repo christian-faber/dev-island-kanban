@@ -9,7 +9,7 @@ export const Sidebar = () => {
   const data = useSelector((state) => state.board);
   const length = data.boards.length;
   return (
-    <div className="p-5 bg-white dark:bg-gray-800 ">
+    <div className="w-96 p-5 bg-white dark:bg-gray-800 ">
       {/* || pl-6 h-full */}
       <h1 className=" border-l-gray-300  dark:text-white ">
         ALL BOARDS ({length})
@@ -31,7 +31,9 @@ export const Sidebar = () => {
       >
         + Create New Board
       </button>
-      <ToggleSlider />
+      <div className="pt-24">
+        <ToggleSlider />
+      </div>
     </div>
   );
 };
