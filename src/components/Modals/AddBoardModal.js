@@ -13,10 +13,10 @@ export const AddBoardModal = () => {
   const modalIsOpen = useSelector((state) => state.modal.boardOpen);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const value = evt.target.elements.newBoard.value;
-    const description = evt.target.elements.newDescription.value;
-    if (!value || !description) return;
-    dispatch(addBoard(value, description));
+    const title = evt.target.elements.newBoard.value;
+    if (!title) return;
+    dispatch(addBoard(title));
+    dispatch(closeBoardModal());
 
     evt.target.elements.newBoard.value = "";
   };
@@ -27,7 +27,7 @@ export const AddBoardModal = () => {
         "bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10 flex justify-center align-center"
       )}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="relative z-50 bg-almost-white dark:bg-[#2B2C37] p-5  rounded-lg max-h-1/4 my-[10%]">
           <div className="flex justify-between text-black pr-2  items-center ">
             <h2 className="font-bold text-lg dark:text-white">Add New Board</h2>
@@ -49,25 +49,20 @@ export const AddBoardModal = () => {
               className="border w-96"
             ></textarea>
           </div>
-
-          <button
-            type="submit"
-            onClick={(handleSubmit) => {
-              dispatch(closeBoardModal(), addBoard());
-            }}
-            className="align-center p-2 h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
-          >
-            + Add new column
-          </button>
-          <button
-            type="submit"
-            onClick={(handleSubmit) => {
-              dispatch(closeBoardModal(), addBoard());
-            }}
-            className="align-center p-2 h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
-          >
-            Create Board
-          </button>
+          <div className="flex flex-col">
+            <button
+              type="submit"
+              className="align-center p-2 h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
+            >
+              + Add new column
+            </button>
+            <button
+              type="submit"
+              className="align-center p-2 h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
+            >
+              Create Board
+            </button>
+          </div>
         </div>
       </form>
     </div>

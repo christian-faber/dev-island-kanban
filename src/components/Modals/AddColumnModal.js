@@ -37,10 +37,7 @@ export const AddColumnModal = () => {
             <input className="dark:bg-[#2B2C37] border rounded w-96"></input>
           </div>
           <div className="flex justify-center">
-            <button
-              type="submit"
-              className="rounded align-center p-2  shadow-sm text-white bg-purple-btn hover:bg-hover-purple  w-28"
-            >
+            <button className="rounded align-center p-2  shadow-sm text-white bg-purple-btn hover:bg-hover-purple  w-28">
               Add
             </button>
           </div>

@@ -16,12 +16,19 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-      state.push({
-        id: `t-${state.tasks.length + 1}`,
-        title: action.payload,
-        description: action.payload,
-        board: action.payload,
-      });
+      const length = state.task.length;
+      return {
+        ...state,
+
+        tasks: [
+          ...state.tasks,
+          {
+            id: `t-${length + 1}`,
+            title: action.payload,
+            description: action.payload,
+          },
+        ],
+      };
     },
 
     deleteTask: (state, action) => {

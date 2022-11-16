@@ -2,6 +2,7 @@ import { Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
 import { useSelector, useDispatch } from "react-redux";
 import columnSlice from "../features/columnSlice";
+import { v4 } from "uuid";
 
 export const Column = ({ column, tasks }) => {
   return (

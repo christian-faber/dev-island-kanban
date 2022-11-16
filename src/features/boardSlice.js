@@ -6,13 +6,27 @@ export const boardSlice = createSlice({
   initialState,
   reducers: {
     addBoard: (state, action) => {
-      const length = state.board.length;
+      const length = state.boards.length;
 
-      return state.push({
-        id: `b-${length + 1}`,
-        title: action.payload,
-        columnIds: [],
-      });
+      return {
+        ...state,
+        boards: [
+          ...state.boards,
+          { id: `b-${length + 1}`, title: action.payload, columnIds: [] },
+        ],
+      };
+    },
+    addColumnToBoard: (state, action) => {
+      return {
+        ...state,
+        boards: state.boards.map((board) => {
+          if (action.payload.boardId !== board.id) return board;
+          return {
+            ...board,
+            columnIds: [...board.columnIds, action.payload.columnId],
+          };
+        }),
+      };
     },
     deleteBoard: () => {},
     editBoard: () => {},

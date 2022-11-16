@@ -3,12 +3,14 @@ import { closeTaskModal } from "../../features/modalSlice";
 import { addTask } from "../../features/taskSlice";
 import { Dropdown } from "./Dropdown";
 import clsx from "clsx";
+import { v4}
 
 //need to add validation with danger/red ring/border
 //validation - no empties
 
 export const AddTaskModal = () => {
   const dispatch = useDispatch();
+  const id = 
   const modalIsOpen = useSelector((state) => state.modal.taskOpen);
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -20,7 +22,6 @@ export const AddTaskModal = () => {
 
     evt.target.elements.newTask.value = "";
   };
-
   return (
     <div
       className={clsx(
