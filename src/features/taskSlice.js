@@ -3,6 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // import initialdata from "../data/initial-data";
 
+//sharece question
+//where do we implement v4 for unique ids?
+
+//line 17
+//id: `t-${state.tasks.length + 1}`,
+
 const initialState = [];
 
 export const taskSlice = createSlice({
@@ -10,13 +16,11 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-      return state.push({
+      state.push({
         id: `t-${state.tasks.length + 1}`,
         title: action.payload,
         description: action.payload,
-        // complete: false,
-
-        subtasks: [action.payload],
+        board: action.payload,
       });
     },
 

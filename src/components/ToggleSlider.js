@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { LightContext } from "../App";
 import { useContext } from "react";
 import { Switch } from "@headlessui/react";

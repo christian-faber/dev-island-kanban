@@ -4,9 +4,8 @@ import { addTask } from "../../features/taskSlice";
 import { Dropdown } from "./Dropdown";
 import clsx from "clsx";
 
-//need to add active ring/border of purple when clicked inside of textarea
 //need to add validation with danger/red ring/border
-//validation - title and description can't be empty
+//validation - no empties
 
 export const AddTaskModal = () => {
   const dispatch = useDispatch();
@@ -14,6 +13,7 @@ export const AddTaskModal = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const value = evt.target.elements.newTask.value;
+    if (!value) return;
     const description = evt.target.elements.newDescription.value;
     if (!value || !description) return;
     dispatch(addTask(value, description));
@@ -28,7 +28,7 @@ export const AddTaskModal = () => {
         "bg-gray-600 bg-opacity-50 z-10 overflow-y-auto h-full w-full  flex justify-center align-center"
       )}
     >
-      <form className="w-72">
+      <form onSubmit={handleSubmit} className="w-72">
         <div className=" bg-almost-white dark:bg-[#2B2C37] p-5 rounded-lg max-h-1/4 my-[10%]  ">
           <div className="flex text-black w-20">
             <h2 className="absolute font-bold text-lg dark:text-white">
@@ -71,6 +71,7 @@ export const AddTaskModal = () => {
             </span>
             {/* <span>{subtasks}</span> */}
             <button
+              name="newSubtask"
               type="submit"
               onClick={() => dispatch(addTask())}
               className="align-center h-10 my-4 shadow-sm text-indigo-700 font-semibold bg-slate-200  hover:bg-medium-gray rounded-full"
