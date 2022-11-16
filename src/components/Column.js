@@ -12,7 +12,8 @@ export const Column = ({ column, tasks }) => {
       <Droppable droppableId={column.id}>
         {(provided) => (
           <div
-            className="w-full h-full rounded-md text-black flex flex-col"
+            className="rounded-md md:p-4 flex flex-col justify-center items-center space-y-4 bg-transparent"
+            // "w-full h-full rounded-md text-black flex flex-col"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

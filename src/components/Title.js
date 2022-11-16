@@ -1,10 +1,10 @@
-import { DarkLogo } from "./Icons/DarkLogo";
+import { Logo } from "./Logo";
 
 export const Title = () => {
   return (
     <div>
-      <div className="pb-15px ">
-        <DarkLogo />
+      <div className="p-3">
+        <Logo />
       </div>
     </div>
   );

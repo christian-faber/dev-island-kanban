@@ -35,21 +35,18 @@ export const AddBoardModal = () => {
             <button onClick={() => dispatch(closeBoardModal())}>x</button>
           </div>
           <div className="my-4 flex flex-col">
-            {/* <p className="text-light-gray text-sm leading-8">Board</p>
-            <Dropdown /> */}
-            <p className="text-light-gray text-sm leading-8">Title</p>
+            <p className="text-light-gray text-sm leading-8">Board Title</p>
             <input
               name="newBoard"
-              placeholder="Board Title"
-              className="border w-96"
+              placeholder=""
+              className="border w-96 rounded"
             ></input>
           </div>
           <div className="my-4">
-            <p className="text-light-gray text-sm leading-8">Description</p>
+            <p className="text-light-gray text-sm leading-8">Columns</p>
             <textarea
-              rows={8}
-              name="newDescription"
-              placeholder="Give some details of your category"
+              name="columns"
+              placeholder="columns here"
               className="border w-96"
             ></textarea>
           </div>
@@ -65,7 +62,10 @@ export const AddBoardModal = () => {
           {/* </span> */}
           <button
             type="submit"
-            className="align-center h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
+            onClick={(handleSubmit) => {
+              dispatch(closeBoardModal(), addBoard());
+            }}
+            className="align-center p-2 h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
           >
             Create Board
           </button>

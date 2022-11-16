@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { closeTaskModal } from "../../features/modalSlice";
 import { addTask } from "../../features/taskSlice";
-
-import { ColumnDropdown } from "./ColumnDropdown";
-
+import { Dropdown } from "./Dropdown";
 import clsx from "clsx";
 import { useState } from "react";
+
+//need to add active ring/border of purple when clicked inside of textarea
+//need to add validation with danger/red ring/border
+//validation - title and description can't be empty
 
 export const AddTaskModal = () => {
   const [column, setColumn] = useState("");
@@ -25,57 +27,69 @@ export const AddTaskModal = () => {
     <div
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
-        "bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10 flex justify-center align-center"
+        "bg-gray-600 bg-opacity-50 z-10 overflow-y-auto h-full w-full  flex justify-center align-center"
       )}
     >
-      <form onSubmit={handleSubmit}>
-        <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
-          <div className="flex justify-between text-black w-96">
-            <h2>Add New Task</h2>
-            <button onClick={() => dispatch(closeTaskModal())}>X</button>
+      <form className="w-72" onSubmit={handleSubmit}>
+        <div className=" bg-almost-white dark:bg-[#2B2C37] p-5 rounded-lg max-h-1/4 my-[10%]  ">
+          <div className="flex text-black w-20">
+            <h2 className="absolute font-bold text-lg dark:text-white">
+              Add new task
+            </h2>
+            <button
+              className="dark:text-white absolute pl-60"
+              onClick={() => dispatch(closeTaskModal())}
+            >
+              X
+            </button>
           </div>
           {/* <form on onSubmit={handleSubmit}> */}
           <div className="my-4">
-            <p className="text-light-gray text-sm">Task</p>
+            <p className="p-2 border-rounded text-light-gray dark:text-white">
+              Title
+            </p>
             <input
               name="newTask"
-              placeholder="Task Title"
-              className="border w-96"
+              placeholder="enter task here"
+              className="w-60 p-2 border rounded dark:text-white dark:bg-[#2B2C37] "
             ></input>
           </div>
-          <div className="my-4 flex flex-col">
-            <p className="text-light-gray text-sm leading-8">Description</p>
+          <div className="flex flex-col ">
+            <p className="text-light-gray dark:text-white p-2 border-rounded">
+              Description
+            </p>
             <textarea
-              rows={8}
+              rows={2}
               name="newDescription"
-              placeholder="Give some details of your task"
-              className="border w-96"
+              placeholder="enter details here"
+              className="text:black dark:text-white p-2 rounded border dark:bg-[#2B2C37]"
             ></textarea>
           </div>
-          <div className="my-4 flex flex-col">
-            <p>subtasks</p>
+          <div className=" flex flex-col pt-2">
+            <p className="dark:text-white text-light-gray">Subtasks</p>
             <span>
-              <input></input>
-              <button src="/" alt="X"></button>
+              <input className="text:black dark:text-white w-60 p-2 rounded border dark:bg-[#2B2C37] "></input>
+              {/* <button src="/" alt="X"></button> */}
             </span>
-            <span>
-              <input></input>
-              <button src="/" alt="X"></button>
-            </span>
+            {/* <span>{subtasks}</span> */}
             <button
               type="submit"
-              className="align-center h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
+              onClick={() => dispatch(addTask())}
+              className="align-center h-10 my-4 shadow-sm text-indigo-700 font-semibold bg-slate-200  hover:bg-medium-gray rounded-full"
             >
-              + Add New Subtask
+              + Add new Subtask
             </button>
           </div>
 
-          <div className="my-4">
+          <div className="my-4 dark:text-white">
             <span>
-              <p>Status</p>
-              <ColumnDropdown handleColumn={setColumn} />
+              <p className="text-[#828FA3] text-sm font-semibold dark:text-white">
+                Status
+              </p>
+              <Dropdown handleColumn={setColumn} />
             </span>
             <button
+              className="mt-6 w-full font-semibold bg-[#635FC7] py-2 rounded-full text-white"
               onClick={() => {
                 dispatch(addTask());
               }}
