@@ -4,6 +4,8 @@ import { addTask } from "../../features/taskSlice";
 import { Dropdown } from "./Dropdown";
 import clsx from "clsx";
 import { useState } from "react";
+import { v4 } from "uuid";
+import { addTaskToColumn } from "../../features/columnSlice";
 
 //need to add active ring/border of purple when clicked inside of textarea
 //need to add validation with danger/red ring/border
@@ -15,10 +17,13 @@ export const AddTaskModal = () => {
   const modalIsOpen = useSelector((state) => state.modal.taskOpen);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const value = evt.target.elements.newTask.value;
+    const title = evt.target.elements.newTask.value;
     const description = evt.target.elements.newDescription.value;
-    if (!value || !description) return;
-    dispatch(addTask(value, description));
+    const columnId = evt.target.elements.column.value;
+    if (!title) return;
+    const id = v4();
+    dispatch(addTask({ title, description, id }));
+    dispatch(addTaskToColumn({ columnId, taskId: id }));
     dispatch(closeTaskModal());
     evt.target.elements.newTask.value = "";
   };
@@ -72,11 +77,7 @@ export const AddTaskModal = () => {
               {/* <button src="/" alt="X"></button> */}
             </span>
             {/* <span>{subtasks}</span> */}
-            <button
-              type="submit"
-              onClick={() => dispatch(addTask())}
-              className="align-center h-10 my-4 shadow-sm text-indigo-700 font-semibold bg-slate-200  hover:bg-medium-gray rounded-full"
-            >
+            <button className="align-center h-10 my-4 shadow-sm text-indigo-700 font-semibold bg-slate-200  hover:bg-medium-gray rounded-full">
               + Add new Subtask
             </button>
           </div>
@@ -86,13 +87,10 @@ export const AddTaskModal = () => {
               <p className="text-[#828FA3] text-sm font-semibold dark:text-white">
                 Status
               </p>
-              <Dropdown handleColumn={setColumn} />
+              <Dropdown name="column" handleColumn={setColumn} />
             </span>
             <button
               className="mt-6 w-full font-semibold bg-[#635FC7] py-2 rounded-full text-white"
-              onClick={() => {
-                dispatch(addTask());
-              }}
               type="submit"
             >
               Create Task

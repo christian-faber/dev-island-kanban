@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import initialdata from "../data/initial-data";
+import { v4 } from "uuid";
 
-const initialState = initialdata;
-// {
-//   columns: [],
-// };
+const initialState = { columns: [] };
 
 export const columnSlice = createSlice({
   name: "column",
@@ -40,14 +38,27 @@ export const columnSlice = createSlice({
         columns: [
           ...state.columns,
           {
-            id: `c-${length + 1}`,
+            id: v4(),
             title: action.payload.title,
-            description: action.payload.description,
             board: action.payload.board,
+            taskIds: [],
           },
         ],
       };
     },
+    addTaskToColumn: (state, action) => {
+      return {
+        ...state,
+        columns: state.columns.map((column) => {
+          if (action.payload.columnId !== column.id) return column;
+          return {
+            ...column,
+            taskIds: [...column.taskIds, action.payload.taskId],
+          };
+        }),
+      };
+    },
+
     deleteColumn: () => {
       console.log("Eat me!");
     },
@@ -55,7 +66,12 @@ export const columnSlice = createSlice({
   },
 });
 
-export const { handleOnDragEnd, addColumn, deleteColumn, editColumn } =
-  columnSlice.actions;
+export const {
+  handleOnDragEnd,
+  addColumn,
+  deleteColumn,
+  editColumn,
+  addTaskToColumn,
+} = columnSlice.actions;
 
 export default columnSlice.reducer;

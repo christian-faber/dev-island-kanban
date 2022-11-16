@@ -1,21 +1,25 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-export const Dropdown = ({ handleColumn }) => {
+export const Dropdown = ({ handleColumn, name = "column" }) => {
   const handleChange = (evt) => {
     handleColumn(evt.target.value);
   };
+  const data = useSelector((state) => state.column);
 
   return (
     <div className="pr-5 bg-white rounded-md shadow-md">
       <select
-        name="board"
+        name={name}
         onChange={handleChange}
         className="outline-none rounded-md p-5 text-gray-500"
       >
-        <option value="">Select Board</option>
-        <option value="todo">To Do</option>
-        <option value="doing">Doing</option>
-        <option value="done">Done</option>
+        <option>Select Column</option>
+        {data?.columns?.map(({ title, id }) => (
+          <option key={id} value={id}>
+            {title}
+          </option>
+        ))}
       </select>
     </div>
   );

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import columnReducer from "../features/columnSlice";
-import taskReducer from "../features/columnSlice";
+import taskReducer from "../features/taskSlice";
 import modalReducer from "../features/modalSlice";
 import boardReducer from "../features/boardSlice";
 

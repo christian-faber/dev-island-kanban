@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { addBoard } from "../../features/boardSlice";
 import { closeBoardModal } from "../../features/modalSlice";
-import { Dropdown } from "./ColumnDropdown";
 
 // Title
 // Columns
@@ -14,9 +13,8 @@ export const AddBoardModal = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const title = evt.target.elements.newBoard.value;
-    const description = evt.target.elements.newDescription.value;
-    if (!title || !description) return;
-    dispatch(addBoard(title, description));
+    if (!title) return;
+    dispatch(addBoard(title));
     dispatch(closeBoardModal());
     evt.target.elements.newBoard.value = "";
   };
@@ -29,7 +27,7 @@ export const AddBoardModal = () => {
       )}
     >
       <form onSubmit={handleSubmit}>
-        <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
+        <div className=" border bg-almost-white p-5  rounded-lg max-h-1/4 my-[10%]">
           <div className="flex justify-between text-black w-96">
             <h2>Add New Board</h2>
             <button onClick={() => dispatch(closeBoardModal())}>x</button>
@@ -62,9 +60,6 @@ export const AddBoardModal = () => {
           {/* </span> */}
           <button
             type="submit"
-            onClick={(handleSubmit) => {
-              dispatch(closeBoardModal(), addBoard());
-            }}
             className="align-center p-2 h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
           >
             Create Board

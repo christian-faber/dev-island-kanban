@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { addColumn } from "../../features/columnSlice";
 import { closeColumnModal } from "../../features/modalSlice";
-import { BoardDropdown } from "./BoardDropdown";
+import { Dropdown } from "./Dropdown";
 import { useState } from "react";
 
 //new column which appears on board is just a tiny modal
@@ -16,9 +16,8 @@ export const AddColumnModal = () => {
     evt.preventDefault();
 
     const title = evt.target.elements.newColumn.value;
-    const description = evt.target.elements.newDescription.value;
-    if (!title || !description) return;
-    dispatch(addColumn({ title, description }));
+    if (!title) return;
+    dispatch(addColumn({ title }));
     //grab state
     dispatch(closeColumnModal());
     evt.target.elements.newColumn.value = "";
@@ -27,7 +26,7 @@ export const AddColumnModal = () => {
     <div
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
-        " bg-gray-600  bg-opacity-50 h-full w-full z-10 flex justify-center align-center"
+        " bg-gray-600  bg-opacity-50 h-full w-full z-20 flex justify-center align-center"
       )}
     >
       <form onSubmit={handleSubmit}>
@@ -39,21 +38,12 @@ export const AddColumnModal = () => {
           <div className="my-4 flex flex-col">
             {/* <p className="text-light-gray text-sm leading-8">Board</p> */}
             {/* <BoardDropdown hanldeBoard={setBoard} /> */}
-            <p className="text-light-gray text-sm leading-8">Title</p>
+
             <input
               name="newColumn"
               placeholder="Column Title"
               className="border w-96"
             ></input>
-          </div>
-          <div className="my-4">
-            <p className="text-light-gray text-sm leading-8">Description</p>
-            <textarea
-              rows={8}
-              name="newDescription"
-              placeholder="Give some details of your category"
-              className="border w-96"
-            ></textarea>
           </div>
 
           {/* <div className="my-4 flex flex-col"> */}

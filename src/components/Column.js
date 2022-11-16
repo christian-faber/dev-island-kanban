@@ -28,7 +28,9 @@ export const Column = ({ column, tasks }) => {
             </div>
             {column.taskIds.map((id, index) => {
               const task = tasks.find((t) => t.id === id);
-              return <Task key={task.id} task={task} index={index} />;
+              return !task ? null : (
+                <Task key={task.id} task={task} index={index} />
+              );
             })}
             {provided.placeholder}
           </div>

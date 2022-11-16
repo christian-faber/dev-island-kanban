@@ -18,7 +18,7 @@ export const TaskInfoModal = () => {
       )}
     >
       <form>
-        <div className="border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[40%]">
+        <div className="border bg-almost-white p-5  rounded-lg max-h-1/4 my-[40%]">
           <div className="flex justify-between text-black w-96">
             <h2>Title: {data.tasks.title}</h2>
             <button

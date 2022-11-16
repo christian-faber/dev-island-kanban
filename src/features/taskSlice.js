@@ -1,30 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { data } from "autoprefixer";
 import initialdata from "../data/initial-data";
-// import { v4 } from "uuid";
+import { v4 } from "uuid";
 
 // import initialdata from "../data/initial-data";
 
-const initialState = initialdata;
+const initialState = { tasks: [] };
 
 export const taskSlice = createSlice({
   name: "task",
   initialState,
   reducers: {
     addTask: (state, action) => {
-      const length = state.tasks.length;
-      console.log("bite me");
       return {
         ...state,
 
         tasks: [
           ...state.tasks,
           {
-            id: `t-${length + 1}`,
-            title: action.payload,
-            columnId: action.payload,
-            description: action.payload,
-            subtasks: [action.payload],
+            id: action.payload.id,
+            title: action.payload.title,
+            description: action.payload.description,
+            // subtasks: [action.payload],
             complete: false,
           },
         ],

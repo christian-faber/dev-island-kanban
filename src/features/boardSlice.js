@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import initialdata from "../data/initial-data";
 
-const initialState = initialdata;
+const initialState = { boards: [] };
 
 export const boardSlice = createSlice({
   name: "board",
@@ -17,9 +17,21 @@ export const boardSlice = createSlice({
           {
             id: `b-${length + 1}`,
             title: action.payload,
-            description: action.payload,
+            columnIds: [],
           },
         ],
+      };
+    },
+    addColumnToBoard: (state, action) => {
+      return {
+        ...state,
+        boards: state.boards.map((board) => {
+          if (action.payload.boardId !== board.id) return board;
+          return {
+            ...board,
+            columnIds: [...board.columnIds, action.payload.columnId],
+          };
+        }),
       };
     },
 
