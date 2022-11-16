@@ -5,7 +5,7 @@ export const Dropdown = ({ handleColumn, name = "column" }) => {
   const handleChange = (evt) => {
     handleColumn(evt.target.value);
   };
-  const data = useSelector((state) => state.column);
+  const columns = useSelector((state) => state.column);
 
   return (
     <div className="pr-5 bg-white rounded-md shadow-md">
@@ -15,7 +15,7 @@ export const Dropdown = ({ handleColumn, name = "column" }) => {
         className="outline-none rounded-md p-5 text-gray-500"
       >
         <option>Select Column</option>
-        {data?.columns?.map(({ title, id }) => (
+        {columns?.map(({ title, id }) => (
           <option key={id} value={id}>
             {title}
           </option>

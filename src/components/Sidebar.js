@@ -5,9 +5,9 @@ import { ToggleSlider } from "./ToggleSlider";
 import { openBoardModal } from "../features/modalSlice";
 
 export const Sidebar = () => {
-  const data = useSelector((state) => state.board);
+  const boards = useSelector((state) => state.board);
   const dispatch = useDispatch();
-  const length = data.boards.length;
+  const length = boards.length;
   return (
     <div className="w-96 p-5 bg-white dark:bg-gray-800 ">
       {/* || pl-6 h-full */}
@@ -16,8 +16,8 @@ export const Sidebar = () => {
       </h1>
       <br />
       <div className="text-middle-gray hover:text-violet-900">
-        {data?.boards?.map((board) => (
-          <div board={board} columns={data.columns} key={board.id}>
+        {boards?.map((board) => (
+          <div board={board} columns={boards.columns} key={board.id}>
             <SidebarIcon />
             <h2>{board.title}</h2>
           </div>

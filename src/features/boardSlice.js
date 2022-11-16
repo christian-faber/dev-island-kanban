@@ -1,38 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
-import initialdata from "../data/initial-data";
-
-const initialState = { boards: [] };
+import { v4 } from "uuid";
+const initialState = [];
 
 export const boardSlice = createSlice({
   name: "board",
   initialState,
   reducers: {
     addBoard: (state, action) => {
-      const length = state.boards.length;
-
-      return {
+      return [
         ...state,
-        boards: [
-          ...state.boards,
-          {
-            id: `b-${length + 1}`,
-            title: action.payload,
-            columnIds: [],
-          },
-        ],
-      };
+        {
+          id: v4(),
+          title: action.payload,
+          columnIds: [],
+        },
+      ];
     },
     addColumnToBoard: (state, action) => {
-      return {
-        ...state,
-        boards: state.boards.map((board) => {
-          if (action.payload.boardId !== board.id) return board;
-          return {
-            ...board,
-            columnIds: [...board.columnIds, action.payload.columnId],
-          };
-        }),
-      };
+      return state.map((board) => {
+        if (action.payload.boardId !== board.id) return board;
+        return {
+          ...board,
+          columnIds: [...board.columnIds, action.payload.columnId],
+        };
+      });
     },
 
     deleteBoard: () => {},

@@ -5,28 +5,25 @@ import { v4 } from "uuid";
 
 // import initialdata from "../data/initial-data";
 
-const initialState = { tasks: [] };
+const initialState = [];
 
 export const taskSlice = createSlice({
   name: "task",
   initialState,
   reducers: {
     addTask: (state, action) => {
-      return {
+      return [
         ...state,
-
-        tasks: [
-          ...state.tasks,
-          {
-            id: action.payload.id,
-            title: action.payload.title,
-            description: action.payload.description,
-            // subtasks: [action.payload],
-            complete: false,
-          },
-        ],
-      };
+        {
+          id: action.payload.id,
+          title: action.payload.title,
+          description: action.payload.description,
+          subtasks: [],
+          complete: false,
+        },
+      ];
     },
+
     //updating column when task is
     // updateColumn: (state, action) => {
     //   return {
