@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { addBoard } from "../../features/boardSlice";
 import { closeBoardModal } from "../../features/modalSlice";
-import { Dropdown } from "./Dropdown";
+import { Dropdown } from "./ColumnDropdown";
 
 // Title
 // Columns
@@ -13,13 +13,14 @@ export const AddBoardModal = () => {
   const modalIsOpen = useSelector((state) => state.modal.boardOpen);
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    const value = evt.target.elements.newBoard.value;
+    const title = evt.target.elements.newBoard.value;
     const description = evt.target.elements.newDescription.value;
-    if (!value || !description) return;
-    dispatch(addBoard(value, description));
-
+    if (!title || !description) return;
+    dispatch(addBoard(title, description));
+    dispatch(closeBoardModal());
     evt.target.elements.newBoard.value = "";
   };
+
   return (
     <div
       className={clsx(
@@ -27,14 +28,14 @@ export const AddBoardModal = () => {
         "bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10 flex justify-center align-center"
       )}
     >
-      <form>
-        <div className="relative z-50 bg-almost-white dark:bg-[#2B2C37] p-5  rounded-lg max-h-1/4 my-[10%]">
-          <div className="flex justify-between text-black pr-2  items-center ">
-            <h2 className="font-bold text-lg dark:text-white">Add New Board</h2>
+      <form onSubmit={handleSubmit}>
+        <div className=" border bg-almost-white p-5 z-50 rounded-lg max-h-1/4 my-[10%]">
+          <div className="flex justify-between text-black w-96">
+            <h2>Add New Board</h2>
             <button onClick={() => dispatch(closeBoardModal())}>x</button>
           </div>
           <div className="my-4 flex flex-col">
-            <p className="text-light-gray text-sm leading-8">Board name</p>
+            <p className="text-light-gray text-sm leading-8">Board Title</p>
             <input
               name="newBoard"
               placeholder=""

@@ -1,19 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-import initialState from "../data/initial-data";
+import initialdata from "../data/initial-data";
+
+const initialState = initialdata;
 
 export const boardSlice = createSlice({
   name: "board",
   initialState,
   reducers: {
     addBoard: (state, action) => {
-      const length = state.board.length;
+      const length = state.boards.length;
 
-      return state.push({
-        id: `b-${length + 1}`,
-        title: action.payload,
-        columnIds: [],
-      });
+      return {
+        ...state,
+        boards: [
+          ...state.boards,
+          {
+            id: `b-${length + 1}`,
+            title: action.payload,
+            description: action.payload,
+          },
+        ],
+      };
     },
+
     deleteBoard: () => {},
     editBoard: () => {},
   },

@@ -1,9 +1,11 @@
 import { Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
 import { useSelector, useDispatch } from "react-redux";
-import columnSlice from "../features/columnSlice";
+import columnSlice, { deleteColumn } from "../features/columnSlice";
 
 export const Column = ({ column, tasks }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="">
       <h2>{column.title}</h2>
@@ -15,6 +17,15 @@ export const Column = ({ column, tasks }) => {
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
+            <div className="flex-row">
+              <button
+                onClick={() => {
+                  dispatch(deleteColumn());
+                }}
+              >
+                X
+              </button>
+            </div>
             {column.taskIds.map((id, index) => {
               const task = tasks.find((t) => t.id === id);
               return <Task key={task.id} task={task} index={index} />;

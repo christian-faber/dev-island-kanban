@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import initialState from "../data/initial-data";
+import initialdata from "../data/initial-data";
 
-const initialState = {
-  columns: [],
-};
+const initialState = initialdata;
+// {
+//   columns: [],
+// };
 
 export const columnSlice = createSlice({
   name: "column",
@@ -34,13 +35,6 @@ export const columnSlice = createSlice({
     addColumn: (state, action) => {
       const length = state.columns.length;
 
-      // state.columns.push({
-      //   id: `c-${length + 1}`,
-      //   title: action.payload.title,
-      //   description: action.payload.description,
-      //   taskIds: [],
-      // });
-
       return {
         ...state,
         columns: [
@@ -49,12 +43,14 @@ export const columnSlice = createSlice({
             id: `c-${length + 1}`,
             title: action.payload.title,
             description: action.payload.description,
-            taskIds: [],
+            board: action.payload.board,
           },
         ],
       };
     },
-    deleteColumn: () => {},
+    deleteColumn: () => {
+      console.log("Eat me!");
+    },
     editColumn: () => {},
   },
 });

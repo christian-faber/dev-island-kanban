@@ -1,24 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { data } from "autoprefixer";
+import initialdata from "../data/initial-data";
 // import { v4 } from "uuid";
 
 // import initialdata from "../data/initial-data";
 
-const initialState = [];
+const initialState = initialdata;
 
 export const taskSlice = createSlice({
   name: "task",
   initialState,
   reducers: {
     addTask: (state, action) => {
-      return state.push({
-        id: `t-${state.tasks.length + 1}`,
-        title: action.payload,
-        description: action.payload,
-        // complete: false,
+      const length = state.tasks.length;
+      console.log("bite me");
+      return {
+        ...state,
 
-        subtasks: [action.payload],
-      });
+        tasks: [
+          ...state.tasks,
+          {
+            id: `t-${length + 1}`,
+            title: action.payload,
+            columnId: action.payload,
+            description: action.payload,
+            subtasks: [action.payload],
+            complete: false,
+          },
+        ],
+      };
     },
+    //updating column when task is
+    // updateColumn: (state, action) => {
+    //   return {
+    //     ...state,
+    //     columns: state.columns.map((col) =>
+    //       if (col.id !== action.payload.columnId) return col;
+    //     ),
+    //   };
+    // },
 
     deleteTask: (state, action) => {
       return state.filter((t) => t.id !== action.payload);
