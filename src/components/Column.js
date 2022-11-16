@@ -2,13 +2,14 @@ import { Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
 import { useSelector, useDispatch } from "react-redux";
 import columnSlice, { deleteColumn } from "../features/columnSlice";
-
 export const Column = ({ column, tasks }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="">
-      <h2>{column.title}</h2>
+    <div className="flex flex-col">
+      <p className="pl-6 dark:text-slate-400">
+        {column.title}({tasks.length})
+      </p>
       <Droppable droppableId={column.id}>
         {(provided) => (
           <div

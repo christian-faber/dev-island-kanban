@@ -11,15 +11,20 @@ export const Sidebar = () => {
   return (
     <div className="w-96 p-5 bg-white dark:bg-gray-800 ">
       {/* || pl-6 h-full */}
-      <h1 className=" border-l-gray-300  dark:text-white ">
+      <h1 className=" border-l-gray-300  dark:text-slate-400 ">
         ALL BOARDS ({length})
       </h1>
       <br />
-      <div className="text-middle-gray hover:text-violet-900">
+      <div className="dark:text-slate-400 hover:text-violet-900">
         {boards?.map((board) => (
-          <div board={board} columns={boards.columns} key={board.id}>
+          <div
+            board={board}
+            columns={boards.columns}
+            key={board.id}
+            className="flex p-2"
+          >
             <SidebarIcon />
-            <h2>{board.title}</h2>
+            <h2 className="pl-2 pb-8 dark:text-slate-400">{board.title}</h2>
           </div>
         ))}
       </div>

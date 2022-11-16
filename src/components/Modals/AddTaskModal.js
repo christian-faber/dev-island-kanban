@@ -56,6 +56,8 @@ export const AddTaskModal = () => {
             <input
               name="newTask"
               placeholder="enter task here"
+              type="text"
+              required
               className="w-60 p-2 border rounded dark:text-white dark:bg-[#2B2C37] "
             ></input>
           </div>

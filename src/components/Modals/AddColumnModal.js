@@ -30,9 +30,9 @@ export const AddColumnModal = () => {
       )}
     >
       <form onSubmit={handleSubmit}>
-        <div className="border relative bg-almost-white p-5  rounded-lg max-h-1/4 my-[10%]">
-          <div className="flex justify-between text-black w-96">
-            <h2>Add New Column</h2>
+        <div className=" bg-almost-white dark:bg-[#2B2C37]  p-5  w-64 rounded-lg max-h-1/4 my-[10%]">
+          <div className="flex justify-between text-black dark:text-white">
+            <h2>Column name</h2>
             <button onClick={() => dispatch(closeColumnModal())}>x</button>
           </div>
           <div className="my-4 flex flex-col">
@@ -41,26 +41,25 @@ export const AddColumnModal = () => {
 
             <input
               name="newColumn"
-              placeholder="Column Title"
-              className="border w-96"
+              className="border dark:text-white rounded dark:bg-[#2B2C37] "
             ></input>
-          </div>
 
-          {/* <div className="my-4 flex flex-col"> */}
-          {/* <span> */}
-          {/* <p className="text-light-gray text-sm leading-8">Board</p> */}
-          {/* dropdown in fragment below! */}
-          {/* <input
+            {/* <div className="my-4 flex flex-col"> */}
+            {/* <span> */}
+            {/* <p className="text-light-gray text-sm leading-8">Board</p> */}
+            {/* dropdown in fragment below! */}
+            {/* <input
                 placeholder="dropdown coming soon!"
                 className="border w-96"
               ></input> */}
-          {/* </span> */}
-          <button
-            type="submit"
-            className="align-center p-2 h-10 my-4 border shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
-          >
-            Create Column
-          </button>
+            {/* </span> */}
+            <button
+              type="submit"
+              className=" p-2 my-4  shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded w-20"
+            >
+              Add
+            </button>
+          </div>
         </div>
       </form>
     </div>
