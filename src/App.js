@@ -7,6 +7,7 @@ import { TaskInfoModal } from "./components/Modals/TaskInfoModal";
 import { AddBoardModal } from "./components/Modals/AddBoardModal";
 import { Sidebar } from "./components/Sidebar";
 import { Top } from "./components/Top";
+import { Routes, Route, Navigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import "./index.css";
 import { Title } from "./components/Title";
@@ -15,7 +16,7 @@ export const BoardContext = React.createContext();
 
 export const App = () => {
   const [light, setLight] = useState(true);
-
+  const board = useSelector((state) => state);
   const { taskOpen, infoOpen, columnOpen, boardOpen } = useSelector(
     (store) => store.modal
   );
@@ -36,11 +37,15 @@ export const App = () => {
         {boardOpen && <AddBoardModal />}
         <div className="">
           <Title />
-          <Top />
+          <Top board={board} />
           <div className="flex">
             <Sidebar />
             <div className="w-full">
-              <Board />
+              {/* <Board /> */}
+              <Routes>
+                <Route path="/" element={<Navigate to="" />} />
+                <Route path="/:boardId" element={<Board />} />
+              </Routes>
             </div>
           </div>
         </div>

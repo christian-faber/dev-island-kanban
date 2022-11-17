@@ -1,20 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SidebarIcon } from "../assets/SidebarIcon";
 import { ToggleSlider } from "./ToggleSlider";
 import { openBoardModal } from "../features/modalSlice";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export const Sidebar = () => {
   const boards = useSelector((state) => state.board);
   const dispatch = useDispatch();
   const length = boards.length;
-  // const [board, setBoard] = useState();
   return (
     <div className="w-96 p-5 bg-white dark:bg-gray-800 ">
       {/* || pl-6 h-full */}
@@ -22,10 +16,9 @@ export const Sidebar = () => {
         ALL BOARDS ({length})
       </h1>
       <br />
-      <ul className="dark:text-slate-400 hover:text-violet-900">
+      <div className="dark:text-slate-400 hover:text-violet-900">
         {boards?.map((board) => (
-          <NavLink
-            to={`/${board.id}`}
+          <div
             board={board}
             columns={boards.columns}
             key={board.id}
@@ -33,9 +26,9 @@ export const Sidebar = () => {
           >
             <SidebarIcon />
             <h2 className="pl-2 pb-8 dark:text-slate-400">{board.title}</h2>
-          </NavLink>
+          </div>
         ))}
-      </ul>
+      </div>
       <button
         className="text-violet-900"
         onClick={() => {
