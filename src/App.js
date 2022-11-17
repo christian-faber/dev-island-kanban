@@ -7,6 +7,7 @@ import { TaskInfoModal } from "./components/Modals/TaskInfoModal";
 import { AddBoardModal } from "./components/Modals/AddBoardModal";
 import { Sidebar } from "./components/Sidebar";
 import { Top } from "./components/Top";
+import { Routes, Route, Navigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import "./index.css";
 import { Title } from "./components/Title";
@@ -41,6 +42,10 @@ export const App = () => {
             <Sidebar />
             <div className="w-full">
               <Board />
+              {/* <Routes>
+                <Route path="/" element={<Navigate to="" />} />
+                <Route path="/:boardId" element={<Board />} />
+              </Routes> */}
             </div>
           </div>
         </div>

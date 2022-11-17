@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SidebarIcon } from "../assets/SidebarIcon";
 import { ToggleSlider } from "./ToggleSlider";
@@ -9,7 +9,6 @@ export const Sidebar = () => {
   const boards = useSelector((state) => state.board);
   const dispatch = useDispatch();
   const length = boards.length;
-  // const [board, setBoard] = useState();
   return (
     <div className="w-96 p-5 bg-white dark:bg-gray-800 ">
       {/* || pl-6 h-full */}
@@ -20,7 +19,6 @@ export const Sidebar = () => {
       <div className="dark:text-slate-400 hover:text-violet-900">
         {boards?.map((board) => (
           <div
-            to={`/${board.id}`}
             board={board}
             columns={boards.columns}
             key={board.id}

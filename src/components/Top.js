@@ -12,7 +12,7 @@ export const Top = () => {
   const dispatch = useDispatch();
   const ref = useRef();
   const [isOpen, setOpen] = useState(false);
-  const { board } = useSelector((state) => state);
+  const { board } = useSelector((state) => state.board);
 
   const handleDelete = (evt) => {
     dispatch(deleteBoard(board.id));
