@@ -16,7 +16,7 @@ export const BoardContext = React.createContext();
 
 export const App = () => {
   const [light, setLight] = useState(true);
-
+  const board = useSelector((state) => state);
   const { taskOpen, infoOpen, columnOpen, boardOpen } = useSelector(
     (store) => store.modal
   );
@@ -37,15 +37,15 @@ export const App = () => {
         {boardOpen && <AddBoardModal />}
         <div className="">
           <Title />
-          <Top />
+          <Top board={board} />
           <div className="flex">
             <Sidebar />
             <div className="w-full">
-              <Board />
-              {/* <Routes>
+              {/* <Board /> */}
+              <Routes>
                 <Route path="/" element={<Navigate to="" />} />
                 <Route path="/:boardId" element={<Board />} />
-              </Routes> */}
+              </Routes>
             </div>
           </div>
         </div>
