@@ -31,12 +31,12 @@ export const Sidebar = () => {
             className="flex p-2"
           >
             <SidebarIcon />
-            <a
-              href={`/${board.title}`}
+            <Link
+              to={`/${board.title}`}
               className="pl-2 pb-8 dark:text-slate-400"
             >
               {board.title}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

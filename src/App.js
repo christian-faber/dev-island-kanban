@@ -45,7 +45,7 @@ export const App = () => {
               {/* <Board /> */}
               <Routes>
                 <Route path="/" element={<Navigate to="" />} />
-                <Route path="/:boardId" element={<Board />} />
+                <Route path="/:boardName" element={<Board />} />
               </Routes>
             </div>
           </div>
