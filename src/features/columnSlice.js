@@ -51,10 +51,15 @@ export const columnSlice = createSlice({
       });
     },
 
-    deleteColumn: () => {
-      console.log("Eat me!");
+    deleteColumn: (state, action) => {
+      console.log(state);
+      return state.filter((c) => c.id !== action.payload);
     },
-    editColumn: () => {},
+    editColumn: (state, action) => {
+      return state.map((c) =>
+        c.id === action.payload.id ? { ...c, title: action.payload.title } : c
+      );
+    },
   },
 });
 

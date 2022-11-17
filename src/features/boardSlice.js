@@ -26,8 +26,15 @@ export const boardSlice = createSlice({
       });
     },
 
-    deleteBoard: () => {},
-    editBoard: () => {},
+    deleteBoard: (state, action) => {
+      console.log(state);
+      return state.filter((b) => b.id !== action.payload);
+    },
+    editBoard: (state, action) => {
+      return state.map((b) =>
+        b.id === action.payload.id ? { ...b, title: action.payload.title } : b
+      );
+    },
   },
 });
 

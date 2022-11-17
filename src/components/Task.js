@@ -1,10 +1,15 @@
 import { Draggable } from "react-beautiful-dnd";
 import { openInfoModal } from "../features/modalSlice";
 import { useDispatch } from "react-redux";
+import { deleteTask } from "../features/taskSlice";
 
 export const Task = ({ task, index }) => {
   const length = task.subtasks.length;
   const dispatch = useDispatch();
+
+  const handleDelete = (evt) => {
+    dispatch(deleteTask(task.id));
+  };
 
   //dispatch delete task
 
@@ -22,7 +27,7 @@ export const Task = ({ task, index }) => {
           }}
         >
           <div>
-            <button className="">x</button>
+            <button onClick={handleDelete}>x</button>
             <h1 className="font-bold">{task.title}</h1>
           </div>
           <p>
