@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { v4 } from "uuid";
 import { addTaskToColumn } from "../../features/columnSlice";
+import { addSubtask } from "../../features/subtaskSlice";
 
 //need to add active ring/border of purple when clicked inside of textarea
 //need to add validation with danger/red ring/border
@@ -15,16 +16,19 @@ export const AddTaskModal = () => {
   const [column, setColumn] = useState("");
   const dispatch = useDispatch();
   const modalIsOpen = useSelector((state) => state.modal.taskOpen);
+  const subtask = useSelector((state) => state.subtask);
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const title = evt.target.elements.newTask.value;
     const description = evt.target.elements.newDescription.value;
     const columnId = evt.target.elements.column.value;
+    const subtasksTitle = evt.target.elements.subtask.value;
     if (!title) return;
     const id = v4();
     dispatch(addTask({ title, description, id }));
     dispatch(addTaskToColumn({ columnId, taskId: id }));
     dispatch(closeTaskModal());
+    dispatch(addSubtask({ subtasksTitle }));
     evt.target.elements.newTask.value = "";
   };
 
@@ -75,7 +79,12 @@ export const AddTaskModal = () => {
           <div className=" flex flex-col pt-2">
             <p className="dark:text-white text-light-gray">Subtasks</p>
             <span>
-              <input className="text:black dark:text-white w-60 p-2 rounded border dark:bg-[#2B2C37] "></input>
+              <input
+                className="text:black dark:text-white w-60 p-2 rounded border dark:bg-[#2B2C37] "
+                type="text"
+                name="subtask"
+                value={subtask.title}
+              ></input>
               {/* <button src="/" alt="X"></button> */}
             </span>
             {/* <span>{subtasks}</span> */}
