@@ -24,16 +24,20 @@ export const Sidebar = () => {
       <br />
       <ul className="dark:text-slate-400 hover:text-violet-900">
         {boards?.map((board) => (
-          <NavLink
-            to={`/${board.id}`}
+          <li
             board={board}
             columns={boards.columns}
             key={board.id}
             className="flex p-2"
           >
             <SidebarIcon />
-            <h2 className="pl-2 pb-8 dark:text-slate-400">{board.title}</h2>
-          </NavLink>
+            <a
+              href={`/${board.title}`}
+              className="pl-2 pb-8 dark:text-slate-400"
+            >
+              {board.title}
+            </a>
+          </li>
         ))}
       </ul>
       <button

@@ -5,6 +5,7 @@ import { AddColumnModal } from "./components/Modals/AddColumnModal";
 import { AddTaskModal } from "./components/Modals/AddTaskModal";
 import { TaskInfoModal } from "./components/Modals/TaskInfoModal";
 import { AddBoardModal } from "./components/Modals/AddBoardModal";
+import { EditBoardModal } from "./components/Modals/EditBoardModal";
 import { Sidebar } from "./components/Sidebar";
 import { Top } from "./components/Top";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -17,9 +18,8 @@ export const BoardContext = React.createContext();
 export const App = () => {
   const [light, setLight] = useState(true);
   const board = useSelector((state) => state);
-  const { taskOpen, infoOpen, columnOpen, boardOpen } = useSelector(
-    (store) => store.modal
-  );
+  const { taskOpen, infoOpen, columnOpen, boardOpen, editBoardOpen } =
+    useSelector((store) => store.modal);
   useEffect(() => {
     if (!light) {
       document.documentElement.classList.add("dark");
@@ -35,6 +35,7 @@ export const App = () => {
         {columnOpen && <AddColumnModal />}
         {infoOpen && <TaskInfoModal />}
         {boardOpen && <AddBoardModal />}
+        {editBoardOpen && <EditBoardModal />}
         <div className="">
           <Title />
           <Top board={board} />

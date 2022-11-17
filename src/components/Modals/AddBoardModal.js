@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { addBoard } from "../../features/boardSlice";
 import { closeBoardModal } from "../../features/modalSlice";
-
 // Title
 // Columns
 // Description
@@ -23,6 +22,7 @@ export const AddBoardModal = () => {
     <div
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
+
         "bg-gray-600  bg-opacity-50 overflow-y-auto h-full w-full z-10 flex justify-center align-center"
       )}
     >
