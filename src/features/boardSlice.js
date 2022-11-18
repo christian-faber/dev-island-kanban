@@ -28,7 +28,6 @@ export const boardSlice = createSlice({
     },
 
     deleteBoard: (state, action) => {
-      console.log(state);
       return state.filter((b) => b.id !== action.payload);
     },
     removeColumnFromBoard: (state, action) => {
@@ -48,7 +47,12 @@ export const boardSlice = createSlice({
   },
 });
 
-export const { addBoard, deleteBoard, editBoard, addColumnToBoard } =
-  boardSlice.actions;
+export const {
+  addBoard,
+  deleteBoard,
+  editBoard,
+  addColumnToBoard,
+  removeColumnFromBoard,
+} = boardSlice.actions;
 
 export default boardSlice.reducer;

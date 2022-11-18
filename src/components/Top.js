@@ -7,6 +7,7 @@ import { deleteBoard } from "../features/boardSlice";
 import { useSelector } from "react-redux";
 import { openEditBoard } from "../features/modalSlice";
 import { useParams } from "react-router-dom";
+import { Title } from "./Title";
 
 //need onclick and function for edit and delete board
 
@@ -51,7 +52,7 @@ export const Top = ({ board }) => {
         <p className="text-black  dark:text-white">Dev-Island Kanban App</p>
       </div> */}
       <div className="">
-        <h1>{board?.title}</h1>
+        <Title board={board} />
       </div>
       <div className="flex flex-row">
         <button

@@ -1,12 +1,13 @@
 import { Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
-import { useSelector, useDispatch } from "react-redux";
-import columnSlice, { deleteColumn } from "../features/columnSlice";
-
+import { useDispatch } from "react-redux";
+import { deleteColumn } from "../features/columnSlice";
+import { removeColumnFromBoard } from "../features/boardSlice";
 export const Column = ({ column, tasks }) => {
   const dispatch = useDispatch();
   const handleDelete = (evt) => {
     dispatch(deleteColumn(column.id));
+    dispatch(removeColumnFromBoard(column.id));
   };
 
   return (

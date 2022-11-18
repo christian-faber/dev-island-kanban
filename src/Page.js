@@ -22,8 +22,7 @@ export const Page = () => {
       {infoOpen && <TaskInfoModal />}
       {boardOpen && <AddBoardModal />}
       {editBoardOpen && <EditBoardModal />}
-      <div className="">
-        <Title />
+      <div className="dark:bg-[#2B2C37]">
         <Top board={board} />
         <div className="flex">
           <Sidebar />

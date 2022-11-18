@@ -6,6 +6,7 @@ const initialState = {
   infoOpen: false,
   boardOpen: false,
   editBoardOpen: false,
+  sidebarModalOpen: false,
 };
 
 export const modalSlice = createSlice({
