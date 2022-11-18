@@ -1,11 +1,9 @@
 import { Logo } from "./Logo";
 
-export const Title = () => {
+export default function Title() {
   return (
-    <div>
-      <div className="p-3">
-        <Logo />
-      </div>
+    <div className="p-3">
+      <Logo />
     </div>
   );
-};
+}

@@ -1,20 +1,20 @@
-export const loadState = () => {
-  try {
-    const serializedState = localStorage.getItem("state");
-    if (serializedState === null) {
-      return undefined;
-    }
-    return JSON.parse(serializedState);
-  } catch (err) {
-    return undefined;
-  }
-};
+// export const loadState = () => {
+//   try {
+//     const storageBoards = localStorage.getItem("boards");
+//     if (!storageBoards) {
+//       return boards;
+//     } else {
+//       return JSON.parse(storageBoards);
+//     }
+//   } catch (error) {
+//     return boards;
+//   }
+// };
 
-export const saveState = (state) => {
-  try {
-    const serializedState = JSON.stringify(state);
-    localStorage.setItem("state", serializedState);
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const saveState = (boards) => {
+//   try {
+//     localStorage.setItem("boards", JSON.stringify(boards));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
