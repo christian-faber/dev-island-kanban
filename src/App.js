@@ -40,7 +40,7 @@ export const App = () => {
         <div className=" dark:bg-[#2B2C37]">
           {/* <Logo /> */}
           <Top />
-          <div className="flex">
+          <div className="flex ">
             <Sidebar />
             <div className="w-full">
               <Board />

@@ -15,7 +15,7 @@ export default function ShowSidebar() {
       className={clsx(
         sidebar === "show"
           ? "hidden"
-          : "bg-indigo-800 z-50 absolute bottom-12 flex justify-center items-center rounded-r-full px-4 py-2 w-14 h-14 dark:hover:bg-indigo-800"
+          : "transition-all duration-500 bg-indigo-800  absolute bottom-40 flex justify-center items-center rounded-r-full px-4 py-2 w-14 h-14 dark:hover:bg-indigo-800"
       )}
     >
       <ShowSidebarIcon />
