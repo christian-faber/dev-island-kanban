@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { addColumn } from "../../features/columnSlice";
 import { closeColumnModal } from "../../features/modalSlice";
-import { Dropdown } from "./Dropdown";
+// import { Dropdown } from "./Dropdown";
 import { useState } from "react";
 import { addColumnToBoard } from "../../features/boardSlice";
 import { v4 } from "uuid";
@@ -46,7 +46,7 @@ export const AddColumnModal = () => {
 
             <input
               name="newColumn"
-              className="border dark:text-white rounded dark:bg-[#2B2C37] "
+              className="w-full text:black dark:text-white p-2 rounded border dark:bg-[#2B2C37] "
             ></input>
 
             {/* <div className="my-4 flex flex-col"> */}

@@ -36,18 +36,20 @@ export const AddBoardModal = () => {
             <button onClick={() => dispatch(closeBoardModal())}>x</button>
           </div>
           <div className="my-4 flex flex-col">
-            <p className="dark:text-white text-sm leading-8">Board name</p>
+            <p className="dark:text-white  text-sm leading-8">Board name</p>
             <input
               name="newBoard"
               placeholder=""
-              className="border rounded dark:bg-[#2B2C37] "
+              className="w-60 text:black dark:text-white p-2 rounded border dark:bg-[#2B2C37]"
             ></input>
           </div>
           <div className="my-4">
-            <p className="dark:text-white  text-sm leading-8">Columns</p>
+            <p className="dark:text-white dark:bg-[#2B2C37] text-sm leading-8">
+              Columns
+            </p>
             <textarea
               name="columns"
-              className="border dark:bg-[#2B2C37] "
+              className="w-60 p-2 border rounded dark:text-white dark:bg-[#2B2C37] "
             ></textarea>
           </div>
 

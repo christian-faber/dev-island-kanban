@@ -12,7 +12,7 @@ export const Board = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="bg-blue-50 h-full flex items-center justify-center dark:bg-gray-800">
+    <div className=" bg-blue-50 h-full flex items-center justify-center dark:bg-gray-800">
       <DragDropContext
         onDragEnd={(result) => dispatch(handleOnDragEnd(result))}
       >

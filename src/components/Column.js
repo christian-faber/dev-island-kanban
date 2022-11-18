@@ -2,14 +2,15 @@ import { Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
 import { useDispatch } from "react-redux";
 import { deleteColumn } from "../features/columnSlice";
+
 import { removeColumnFromBoard } from "../features/boardSlice";
+
 export const Column = ({ column, tasks }) => {
   const dispatch = useDispatch();
   const handleDelete = (evt) => {
     dispatch(deleteColumn(column.id));
     dispatch(removeColumnFromBoard(column.id));
   };
-
   return (
     <div className="flex flex-col">
       <p className="pl-6 dark:text-slate-400">
@@ -19,7 +20,6 @@ export const Column = ({ column, tasks }) => {
         {(provided) => (
           <div
             className="rounded-md md:p-4 flex flex-col justify-center items-center space-y-4 bg-transparent"
-            // "w-full h-full rounded-md text-black flex flex-col"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

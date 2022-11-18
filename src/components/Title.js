@@ -7,6 +7,7 @@ export const Title = ({ board }) => {
         <Logo />
         <h1>{board?.title}</h1>
       </div>
+
     </div>
   );
-};
+}

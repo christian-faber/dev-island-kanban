@@ -62,7 +62,7 @@ export const AddTaskModal = () => {
               placeholder="enter task here"
               type="text"
               required
-              className="w-60 p-2 border rounded dark:text-white dark:bg-[#2B2C37] "
+              className="w-full text:black dark:text-white p-2 rounded border dark:bg-[#2B2C37]"
             ></input>
           </div>
           <div className="flex flex-col ">

@@ -7,4 +7,3 @@ export const VerticalEllipsis = () => (
     </g>
   </svg>
 );
-//(Christian): I think this could have options with the columns. Like deleting and reordering.
