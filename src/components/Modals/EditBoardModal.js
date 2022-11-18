@@ -45,10 +45,10 @@ export const EditBoardModal = () => {
           </div>
           <div className="my-4">
             <p className="dark:text-white  text-sm leading-8">Columns</p>
-            <textarea
+            {/* <textarea
               name="columns"
               className="border dark:bg-[#2B2C37] "
-            ></textarea>
+            ></textarea> */}
           </div>
 
           <button

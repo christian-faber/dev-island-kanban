@@ -34,9 +34,8 @@ export const columnSlice = createSlice({
         ...state,
 
         {
-          id: v4(),
+          id: action.payload.id,
           title: action.payload.title,
-          board: action.payload.board,
           taskIds: [],
         },
       ];

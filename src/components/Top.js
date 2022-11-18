@@ -6,14 +6,16 @@ import { useState, useRef, useEffect } from "react";
 import { deleteBoard } from "../features/boardSlice";
 import { useSelector } from "react-redux";
 import { openEditBoard } from "../features/modalSlice";
+import { useParams } from "react-router-dom";
 
 //need onclick and function for edit and delete board
 
-export const Top = () => {
+export const Top = ({ board }) => {
+  const params = useParams();
+  console.log(params);
   const dispatch = useDispatch();
   const ref = useRef();
   const [isOpen, setOpen] = useState(false);
-  const board = useSelector((state) => state.board);
 
   const handleEdit = (evt) => {
     dispatch(openEditBoard());
@@ -21,7 +23,7 @@ export const Top = () => {
   };
 
   const handleDelete = (evt) => {
-    dispatch(deleteBoard(board));
+    dispatch(deleteBoard(board.id));
     console.log(board);
   };
   //
@@ -49,7 +51,7 @@ export const Top = () => {
         <p className="text-black  dark:text-white">Dev-Island Kanban App</p>
       </div> */}
       <div className="">
-        <h1>{board.title}</h1>
+        <h1>{board?.title}</h1>
       </div>
       <div className="flex flex-row">
         <button

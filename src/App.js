@@ -1,25 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Board } from "./components/Board";
-import { useSelector } from "react-redux";
-import { AddColumnModal } from "./components/Modals/AddColumnModal";
-import { AddTaskModal } from "./components/Modals/AddTaskModal";
-import { TaskInfoModal } from "./components/Modals/TaskInfoModal";
-import { AddBoardModal } from "./components/Modals/AddBoardModal";
-import { EditBoardModal } from "./components/Modals/EditBoardModal";
-import { Sidebar } from "./components/Sidebar";
-import { Top } from "./components/Top";
-import { Routes, Route, Navigate } from "react-router-dom";
-// import { useSelector } from "react-redux";
+import { Routes, Route } from "react-router-dom";
 import "./index.css";
-import { Title } from "./components/Title";
+import { Page } from "./Page";
+import { Start } from "./components/Start";
 export const LightContext = React.createContext();
 export const BoardContext = React.createContext();
 
 export const App = () => {
   const [light, setLight] = useState(true);
-  const board = useSelector((state) => state);
-  const { taskOpen, infoOpen, columnOpen, boardOpen, editBoardOpen } =
-    useSelector((store) => store.modal);
+
   useEffect(() => {
     if (!light) {
       document.documentElement.classList.add("dark");
@@ -31,25 +21,12 @@ export const App = () => {
   return (
     <LightContext.Provider value={{ light, setLight }}>
       <div className="font-jakarta overflow-x-auto bg-white dark:bg-gray-800">
-        {taskOpen && <AddTaskModal />}
-        {columnOpen && <AddColumnModal />}
-        {infoOpen && <TaskInfoModal />}
-        {boardOpen && <AddBoardModal />}
-        {editBoardOpen && <EditBoardModal />}
-        <div className="">
-          <Title />
-          <Top board={board} />
-          <div className="flex">
-            <Sidebar />
-            <div className="w-full">
-              {/* <Board /> */}
-              <Routes>
-                <Route path="/" element={<Navigate to="" />} />
-                <Route path="/:boardName" element={<Board />} />
-              </Routes>
-            </div>
-          </div>
-        </div>
+        <Routes>
+          <Route element={<Page />}>
+            <Route path="/" element={<Start />} />
+            <Route path="/:boardName" element={<Board />} />
+          </Route>
+        </Routes>
       </div>
     </LightContext.Provider>
   );

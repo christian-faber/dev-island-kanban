@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { addBoard } from "../../features/boardSlice";
 import { closeBoardModal } from "../../features/modalSlice";
+import { useNavigate } from "react-router-dom";
 // Title
 // Columns
 // Description
@@ -9,12 +10,14 @@ import { closeBoardModal } from "../../features/modalSlice";
 export const AddBoardModal = () => {
   const dispatch = useDispatch();
   const modalIsOpen = useSelector((state) => state.modal.boardOpen);
+  const navigate = useNavigate();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const title = evt.target.elements.newBoard.value;
     if (!title) return;
     dispatch(addBoard(title));
     dispatch(closeBoardModal());
+    navigate(`/${title}`);
     evt.target.elements.newBoard.value = "";
   };
 
