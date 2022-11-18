@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { SidebarIcon } from "../assets/SidebarIcon";
 import { ToggleSlider } from "./ToggleSlider";
 import { openBoardModal } from "../features/modalSlice";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+} from "react-router-dom";
 
 import clsx from "clsx";
 import HideSidebarButton from "./HidesideBarButton";

@@ -20,13 +20,7 @@ export const Column = ({ column, tasks }) => {
             ref={provided.innerRef}
           >
             <div className="flex-row">
-              <button
-                onClick={() => {
-                  dispatch(deleteColumn());
-                }}
-              >
-                X
-              </button>
+              <button onClick={handleDelete}>X</button>
             </div>
             {column.taskIds.map((id, index) => {
               const task = tasks.find((t) => t.id === id);

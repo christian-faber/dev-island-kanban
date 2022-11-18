@@ -12,6 +12,11 @@ export const Top = ({ board }) => {
   const dispatch = useDispatch();
   const ref = useRef();
   const [isOpen, setOpen] = useState(false);
+  const { board } = useSelector((state) => state.board);
+
+  const handleDelete = (evt) => {
+    dispatch(deleteBoard(board.id));
+  };
   //
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -89,7 +94,10 @@ export const Top = ({ board }) => {
                   1. text area titled "Board Name" 
                   2.editable text area pre populated with current "Board Columns",X's on right hand side of each textbox to delete
                   3. 2 btns (+Add new column) and (Save changes) */}
-              <li className="text-red-500 hover:bg-almost-white  rounded-lg p-1 dark:hover:bg-hover-purple">
+              <li
+                onClick={handleDelete}
+                className="text-red-500 hover:bg-almost-white  rounded-lg p-1 dark:hover:bg-hover-purple"
+              >
                 Delete Board
               </li>
               {/* delete board modal will have

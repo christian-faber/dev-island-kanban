@@ -7,6 +7,7 @@ import { TaskInfoModal } from "./components/Modals/TaskInfoModal";
 import { AddBoardModal } from "./components/Modals/AddBoardModal";
 import Sidebar from "./components/Sidebar";
 import { Top } from "./components/Top";
+import { Routes, Route, Navigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 import "./index.css";
 
