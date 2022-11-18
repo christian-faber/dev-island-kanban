@@ -4,8 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeInfoModal } from "../../features/modalSlice";
 // import { handleEditTask } from "../../features/taskSlice";
 import clsx from "clsx";
+import { Dropdown } from "./Dropdown";
+import { useState } from "react";
 
 export const TaskInfoModal = () => {
+  const [column, setColumn] = useState("");
+
   const data = initialdata;
   const length = data.subtasks.length;
   const dispatch = useDispatch();
@@ -18,9 +22,11 @@ export const TaskInfoModal = () => {
       )}
     >
       <form>
-        <div className="border bg-almost-white p-5  rounded-lg max-h-1/4 my-[40%]">
+        <div className="dark:bg-[#2B2C37] bg-almost-white p-5  rounded-lg max-h-1/4 my-[40%]">
           <div className="flex justify-between text-black w-96">
-            <h2>Title: {data.tasks.title}</h2>
+            <h2 className="font-bold dark:text-white">
+              Title: {data.tasks.title}
+            </h2>
             <button
               onClick={() => {
                 dispatch(closeInfoModal());
@@ -42,7 +48,7 @@ export const TaskInfoModal = () => {
           </div>
           <div>
             <p>Status</p>
-
+            <Dropdown name="column" column={column} handleColumn={setColumn} />
             {/* Dropdown below */}
             <></>
           </div>
