@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
-const initialState = [{ id: 1, title: "Example", columnIds: [] }];
+const initialState = [];
 
 export const boardSlice = createSlice({
   name: "board",
@@ -18,6 +18,7 @@ export const boardSlice = createSlice({
     },
     addColumnToBoard: (state, action) => {
       return state.map((board) => {
+        console.log({ board: board.id, action });
         if (action.payload.boardId !== board.id) return board;
         return {
           ...board,
@@ -27,8 +28,16 @@ export const boardSlice = createSlice({
     },
 
     deleteBoard: (state, action) => {
-      console.log(state);
       return state.filter((b) => b.id !== action.payload);
+    },
+    removeColumnFromBoard: (state, action) => {
+      return state.filter((board) => {
+        if (action.payload.boardId !== board.id) return board;
+        return {
+          ...board,
+          columnIds: [board.columnIds.filter((c) => c.id !== action.payload)],
+        };
+      });
     },
     editBoard: (state, action) => {
       return state.map((b) =>
@@ -38,6 +47,12 @@ export const boardSlice = createSlice({
   },
 });
 
-export const { addBoard, deleteBoard, editBoard } = boardSlice.actions;
+export const {
+  addBoard,
+  deleteBoard,
+  editBoard,
+  addColumnToBoard,
+  removeColumnFromBoard,
+} = boardSlice.actions;
 
 export default boardSlice.reducer;

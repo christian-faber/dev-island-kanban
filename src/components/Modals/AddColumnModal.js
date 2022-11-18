@@ -4,12 +4,15 @@ import { addColumn } from "../../features/columnSlice";
 import { closeColumnModal } from "../../features/modalSlice";
 // import { Dropdown } from "./Dropdown";
 import { useState } from "react";
+import { addColumnToBoard } from "../../features/boardSlice";
+import { v4 } from "uuid";
+import { useBoard } from "../../app/hooks/useBoard";
 
 //new column which appears on board is just a tiny modal
 //that has a text area that takes a "column name" with a purple add btn
 export const AddColumnModal = () => {
-  const [board, setBoard] = useState("");
   const dispatch = useDispatch();
+  const board = useBoard();
 
   const modalIsOpen = useSelector((state) => state.modal.columnOpen);
   const handleSubmit = (evt) => {
@@ -17,7 +20,9 @@ export const AddColumnModal = () => {
 
     const title = evt.target.elements.newColumn.value;
     if (!title) return;
-    dispatch(addColumn({ title }));
+    const columnId = v4();
+    dispatch(addColumn({ title, id: columnId }));
+    dispatch(addColumnToBoard({ columnId, boardId: board.id }));
     //grab state
     dispatch(closeColumnModal());
     evt.target.elements.newColumn.value = "";

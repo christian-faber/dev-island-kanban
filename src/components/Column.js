@@ -2,10 +2,14 @@ import { Droppable } from "react-beautiful-dnd";
 import { Task } from "./Task";
 import { useDispatch } from "react-redux";
 import { deleteColumn } from "../features/columnSlice";
+
+import { removeColumnFromBoard } from "../features/boardSlice";
+
 export const Column = ({ column, tasks }) => {
   const dispatch = useDispatch();
   const handleDelete = (evt) => {
     dispatch(deleteColumn(column.id));
+    dispatch(removeColumnFromBoard(column.id));
   };
   return (
     <div className="flex flex-col">

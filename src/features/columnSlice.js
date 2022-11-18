@@ -34,9 +34,8 @@ export const columnSlice = createSlice({
         ...state,
 
         {
-          id: v4(),
+          id: action.payload.id,
           title: action.payload.title,
-          board: action.payload.board,
           taskIds: [],
         },
       ];
@@ -52,7 +51,6 @@ export const columnSlice = createSlice({
     },
 
     deleteColumn: (state, action) => {
-      console.log(state);
       return state.filter((c) => c.id !== action.payload);
     },
     editColumn: (state, action) => {

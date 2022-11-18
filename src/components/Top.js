@@ -3,19 +3,35 @@ import { useDispatch } from "react-redux";
 import { VerticalEllipsis } from "../assets/VerticalEllipsis";
 import { openSidebarModal, openTaskModal } from "../features/modalSlice";
 import { useState, useRef, useEffect } from "react";
+
+import { deleteBoard } from "../features/boardSlice";
+import { useSelector } from "react-redux";
+import { openEditBoard } from "../features/modalSlice";
+import { useParams } from "react-router-dom";
+import { Title } from "./Title";
 import { ChevronDown } from "../assets/ChevronDown";
 // import { LogoMobile } from "../assets/LogoMobile";
+
 
 //need onclick and function for edit and delete board
 
 export const Top = ({ board }) => {
+
+  const params = useParams();
+  console.log(params);
+
   const dispatch = useDispatch();
   const ref = useRef();
   const [isOpen, setOpen] = useState(false);
-  const { board } = useSelector((state) => state.board);
+
+  const handleEdit = (evt) => {
+    dispatch(openEditBoard());
+    setOpen(false);
+  };
 
   const handleDelete = (evt) => {
     dispatch(deleteBoard(board.id));
+    console.log(board);
   };
   //
   useEffect(() => {
@@ -43,6 +59,7 @@ export const Top = ({ board }) => {
       {/* <div className="basis-9/12 flex flex-row">
         <p className="text-black  dark:text-white">Dev-Island Kanban App</p>
       </div> */}
+
       {/* <div className=""></div> */}
       <div className="absolute top-7  p-2 py-3 px-6">
         <h1>{board?.title}</h1>
@@ -66,6 +83,7 @@ export const Top = ({ board }) => {
             +Add New Task
           </button>
         </div>
+
         <button
           className=" lg:hidden text-white absolute top-7 right-16 p-2 py-3 px-6  rounded-full bg-purple-btn"
           onClick={() => {
@@ -87,18 +105,25 @@ export const Top = ({ board }) => {
             className="z-20 cursor-pointer absolute top-10 right-5 rounded-lg p-2 w-64 shadow-md bg-white dark:bg-gray-800 "
           >
             <ul className="py-2.5">
-              <li className="hover:bg-almost-white text-gray-600 rounded-lg p-1 dark:hover:bg-hover-purple">
-                Edit Boards
+              <li>
+                <button
+                  onClick={handleEdit}
+                  className="hover:bg-almost-white text-gray-600 rounded-lg p-1 dark:hover:bg-hover-purple"
+                >
+                  Edit Board
+                </button>
               </li>
               {/* edit board modal will have 
                   1. text area titled "Board Name" 
                   2.editable text area pre populated with current "Board Columns",X's on right hand side of each textbox to delete
                   3. 2 btns (+Add new column) and (Save changes) */}
-              <li
-                onClick={handleDelete}
-                className="text-red-500 hover:bg-almost-white  rounded-lg p-1 dark:hover:bg-hover-purple"
-              >
-                Delete Board
+              <li>
+                <button
+                  onClick={handleDelete}
+                  className="text-red-500 hover:bg-almost-white  rounded-lg p-1 dark:hover:bg-hover-purple"
+                >
+                  Delete Board
+                </button>
               </li>
               {/* delete board modal will have
                   1. Delete this board? red txt
