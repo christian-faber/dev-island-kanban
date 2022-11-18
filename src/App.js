@@ -12,15 +12,15 @@ import "./index.css";
 
 import { Logo } from "./components/Logo";
 import ShowSidebar from "./components/ShowSidebar";
+import { SidebarModal } from "./components/Modals/SidebarModal";
 export const LightContext = React.createContext();
 export const BoardContext = React.createContext();
 
 export const App = () => {
   const [light, setLight] = useState(true);
 
-  const { taskOpen, infoOpen, columnOpen, boardOpen } = useSelector(
-    (store) => store.modal
-  );
+  const { taskOpen, infoOpen, columnOpen, boardOpen, sidebarModalOpen } =
+    useSelector((store) => store.modal);
 
   useEffect(() => {
     if (!light) {
@@ -37,6 +37,7 @@ export const App = () => {
         {columnOpen && <AddColumnModal />}
         {infoOpen && <TaskInfoModal />}
         {boardOpen && <AddBoardModal />}
+        {sidebarModalOpen && <SidebarModal />}
         <div className=" dark:bg-[#2B2C37]">
           {/* <Logo /> */}
           <Top />

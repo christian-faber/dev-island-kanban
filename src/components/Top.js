@@ -1,14 +1,14 @@
 // import { AddTaskMobile } from "./Icons/AddTaskMobile";
 import { useDispatch } from "react-redux";
 import { VerticalEllipsis } from "../assets/VerticalEllipsis";
-import { openTaskModal } from "../features/modalSlice";
+import { openSidebarModal, openTaskModal } from "../features/modalSlice";
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "../assets/ChevronDown";
 // import { LogoMobile } from "../assets/LogoMobile";
 
 //need onclick and function for edit and delete board
 
-export const Top = () => {
+export const Top = ({ board }) => {
   const dispatch = useDispatch();
   const ref = useRef();
   const [isOpen, setOpen] = useState(false);
@@ -39,8 +39,16 @@ export const Top = () => {
         <p className="text-black  dark:text-white">Dev-Island Kanban App</p>
       </div> */}
       {/* <div className=""></div> */}
-      <div className="">
-        <ChevronDown />
+      <div className="absolute top-7  p-2 py-3 px-6">
+        <h1>{board?.title}</h1>
+        <button
+          className="cursor-pointer"
+          onClick={() => {
+            dispatch(openSidebarModal());
+          }}
+        >
+          <ChevronDown />
+        </button>
       </div>
       <div className=" flex">
         <div className="">

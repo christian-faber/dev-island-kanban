@@ -1,31 +1,29 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { SidebarIcon } from "../assets/SidebarIcon";
-import { ToggleSlider } from "./ToggleSlider";
-import { openBoardModal } from "../features/modalSlice";
-
 import clsx from "clsx";
-import HideSidebarButton from "./HidesideBarButton";
-import { Logo } from "./Logo";
-import { DarkThemeIcon } from "../assets/DarkThemeIcon";
-import { LightThemeIcon } from "../assets/LightThemeIcon";
+import { useDispatch, useSelector } from "react-redux";
+import { DarkThemeIcon } from "../../assets/DarkThemeIcon";
+import { LightThemeIcon } from "../../assets/LightThemeIcon";
+import { SidebarIcon } from "../../assets/SidebarIcon";
+import { addBoard } from "../../features/boardSlice";
+import { closeSidebarModal, openBoardModal } from "../../features/modalSlice";
+import { ToggleSlider } from "../ToggleSlider";
 
-export default function Sidebar() {
+export const SidebarModal = () => {
+  //use state for status?
+  const modalIsOpen = useSelector((state) => state.modal.sidebarModalOpen);
   const boards = useSelector((state) => state.board);
   const sidebar = useSelector((state) => state.sidebar);
   const dispatch = useDispatch();
   const length = boards.length;
-
-  //h-full  flex-col lg:w-[22%] w-[32%] overflow-y-hidden md:flex z-[100]
+  const handleClick = (evt) => {
+    dispatch(openBoardModal());
+    dispatch(closeSidebarModal());
+  };
   return (
-    <div className=" p-2">
-      <Logo />
+    <div className="bg-gray-600 bg-opacity-50 h-full w-full">
       <div
         className={clsx(
-          "transition-all duration-500  inset-y-0 border-r dark:border-r-[#272832] p-5 bg-white dark:bg-[#2B2C37] overflow-y-hidden",
-          sidebar === "show"
-            ? "z-40 translate-x-0 opacity-100"
-            : "-translate-x-[100%] -z-10 opacity-0"
+          { fixed: modalIsOpen, hidden: !modalIsOpen },
+          "bg-almost-white z-50 overflow-y-auto flex flex-col justify-center align-center"
         )}
       >
         <h1 className=" border-l-gray-300  dark:text-slate-400 ">
@@ -49,9 +47,7 @@ export default function Sidebar() {
         </div>
         <button
           className="flex font-semibold text-violet-800 justify-center items-center pb-5"
-          onClick={() => {
-            dispatch(openBoardModal());
-          }}
+          onClick={handleClick}
         >
           + Create New Board
         </button>
@@ -62,12 +58,7 @@ export default function Sidebar() {
             <LightThemeIcon />
           </div>
         </div>
-
-        <div className="flex p-2 ">
-          <HideSidebarButton />
-          <h2 className="flex dark:text-slate-400 pl-2">Hide Sidebar</h2>
-        </div>
       </div>
     </div>
   );
-}
+};
