@@ -5,7 +5,7 @@ import { AddColumnModal } from "./components/Modals/AddColumnModal";
 import { AddTaskModal } from "./components/Modals/AddTaskModal";
 import { TaskInfoModal } from "./components/Modals/TaskInfoModal";
 import { AddBoardModal } from "./components/Modals/AddBoardModal";
-import Sidebar from "./components/Sidebar";
+import { Sidebar } from "./components/Sidebar";
 import { Top } from "./components/Top";
 import { Routes, Route, Navigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
@@ -40,15 +40,16 @@ export const App = () => {
         {boardOpen && <AddBoardModal />}
         {sidebarModalOpen && <SidebarModal />}
         <div className=" dark:bg-[#2B2C37]">
-          {/* <Logo /> */}
           <Top />
-          <div className="flex ">
-            <Sidebar />
+          <div className="md:flex lg:flex">
+            <div className="md:flex lg:flex hidden ">
+              <Sidebar />
+            </div>
             <div className="w-full">
               <Board />
-              <div className="">
-                <ShowSidebar />
-              </div>
+            </div>
+            <div className="">
+              <ShowSidebar />
             </div>
           </div>
         </div>

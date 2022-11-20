@@ -1,14 +1,16 @@
 // import { AddTaskMobile } from "./Icons/AddTaskMobile";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { VerticalEllipsis } from "../assets/VerticalEllipsis";
 import { openSidebarModal, openTaskModal } from "../features/modalSlice";
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "../assets/ChevronDown";
+import { deleteBoard } from "../features/boardSlice";
+import { AddTaskMobile } from "../assets/AddTaskMobile";
 // import { LogoMobile } from "../assets/LogoMobile";
 
 //need onclick and function for edit and delete board
 
-export const Top = ({ board }) => {
+export const Top = () => {
   const dispatch = useDispatch();
   const ref = useRef();
   const [isOpen, setOpen] = useState(false);
@@ -17,7 +19,6 @@ export const Top = ({ board }) => {
   const handleDelete = (evt) => {
     dispatch(deleteBoard(board.id));
   };
-  //
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       // If the menu is open and the clicked target is not within the menu,
@@ -34,20 +35,12 @@ export const Top = ({ board }) => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
   }, [isOpen]);
-
-  //
-  //sharece: need to convert lines 15-30 into redux
-  //
   return (
     <div className="flex p-2  h-20">
-      {/* <div className="basis-9/12 flex flex-row">
-        <p className="text-black  dark:text-white">Dev-Island Kanban App</p>
-      </div> */}
-      {/* <div className=""></div> */}
       <div className="absolute top-7  p-2 py-3 px-6">
         <h1>{board?.title}</h1>
         <button
-          className="cursor-pointer"
+          className="cursor-pointer lg:-scale-0"
           onClick={() => {
             dispatch(openSidebarModal());
           }}
@@ -55,10 +48,10 @@ export const Top = ({ board }) => {
           <ChevronDown />
         </button>
       </div>
-      <div className=" flex">
+      <div className="">
         <div className="">
           <button
-            className="lg:flex hidden text-white top-7 right-16 p-2 py-3 px-6  rounded-full bg-purple-btn "
+            className="-scale-0 lg:scale-100 text-white absolute right-16 p-2 py-3 px-6 rounded-full bg-purple-btn "
             onClick={() => {
               dispatch(openTaskModal());
             }}
@@ -66,19 +59,22 @@ export const Top = ({ board }) => {
             +Add New Task
           </button>
         </div>
-        <button
-          className=" lg:hidden text-white absolute top-7 right-16 p-2 py-3 px-6  rounded-full bg-purple-btn"
-          onClick={() => {
-            dispatch(openTaskModal());
-          }}
-        >
-          +
-        </button>
-        <div
-          onClick={() => setOpen(!isOpen)}
-          className="top-0 right-0 p-10 absolute h-15 w-15  cursor-pointer"
-        >
-          <VerticalEllipsis />
+        <div className="">
+          <div
+            onClick={() => {
+              dispatch(openTaskModal());
+            }}
+            className="rounded-xl top-4 lg:hidden text-white absolute right-20 p-2
+           bg-purple-btn"
+          >
+            <AddTaskMobile />
+          </div>
+          <div
+            onClick={() => setOpen(!isOpen)}
+            className="top-5 right-9  absolute cursor-pointer"
+          >
+            <VerticalEllipsis />
+          </div>
         </div>
 
         {isOpen && (

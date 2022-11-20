@@ -15,9 +15,6 @@ export default function HideSidebarButton() {
           dispatch(hide());
         }}
       />
-      {/* <span className="text-gray-500 dark:text-[#828FA3] font-semibold text-[15px]">
-        Hide sidebar
-      </span> */}
     </div>
   );
 }
