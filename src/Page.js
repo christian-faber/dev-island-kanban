@@ -9,11 +9,18 @@ import { AddTaskModal } from "./components/Modals/AddTaskModal";
 import { TaskInfoModal } from "./components/Modals/TaskInfoModal";
 import { AddBoardModal } from "./components/Modals/AddBoardModal";
 import { EditBoardModal } from "./components/Modals/EditBoardModal";
+import { SidebarModal } from "./components/Modals/SidebarModal";
 
 export const Page = () => {
   const board = useBoard();
-  const { taskOpen, infoOpen, columnOpen, boardOpen, editBoardOpen } =
-    useSelector((store) => store.modal);
+  const {
+    taskOpen,
+    infoOpen,
+    columnOpen,
+    boardOpen,
+    editBoardOpen,
+    sidebarModalOpen,
+  } = useSelector((store) => store.modal);
 
   return (
     <>
@@ -22,6 +29,7 @@ export const Page = () => {
       {infoOpen && <TaskInfoModal />}
       {boardOpen && <AddBoardModal />}
       {editBoardOpen && <EditBoardModal />}
+      {sidebarModalOpen && <SidebarModal />}
       <div className="dark:bg-[#2B2C37]">
         <Top board={board} />
         <div className="flex">

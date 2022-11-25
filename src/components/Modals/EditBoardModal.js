@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
 import { editBoard } from "../../features/boardSlice";
 import { closeEditBoard } from "../../features/modalSlice";
+import { useRef } from "react";
 
 // Title
 // Columns
@@ -11,6 +12,12 @@ export const EditBoardModal = () => {
   const dispatch = useDispatch();
   const modalIsOpen = useSelector((state) => state.modal.editBoardOpen);
   const defaultTitle = useSelector((state) => state.board.title);
+  const handleClickOutside = (evt) => {
+    if (!menuRef.current.contains(evt.target)) {
+      dispatch(closeEditBoard());
+    }
+  };
+  const menuRef = useRef();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const title = evt.target.elements.editTitle.value;
@@ -22,12 +29,13 @@ export const EditBoardModal = () => {
 
   return (
     <div
+      onClick={handleClickOutside}
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
         "bg-gray-600  bg-opacity-50 overflow-y-auto h-full w-full z-50 flex justify-center align-center"
       )}
     >
-      <form onSubmit={handleSubmit}>
+      <form ref={menuRef} onSubmit={handleSubmit}>
         <div className=" dark:bg-[#2B2C37] bg-almost-white p-5  rounded-lg max-h-1/4 my-[10%]">
           <div className="dark:text-white font-bold flex justify-between text-black ">
             <h2>Edit Board</h2>

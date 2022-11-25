@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { addColumn } from "../../features/columnSlice";
 import { closeColumnModal } from "../../features/modalSlice";
 // import { Dropdown } from "./Dropdown";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { addColumnToBoard } from "../../features/boardSlice";
 import { v4 } from "uuid";
 import { useBoard } from "../../app/hooks/useBoard";
@@ -13,8 +13,13 @@ import { useBoard } from "../../app/hooks/useBoard";
 export const AddColumnModal = () => {
   const dispatch = useDispatch();
   const board = useBoard();
-
+  const menuRef = useRef();
   const modalIsOpen = useSelector((state) => state.modal.columnOpen);
+  const handleClickOutside = (evt) => {
+    if (!menuRef.current.contains(evt.target)) {
+      dispatch(closeColumnModal());
+    }
+  };
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
@@ -29,12 +34,13 @@ export const AddColumnModal = () => {
   };
   return (
     <div
+      onClick={handleClickOutside}
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
         " bg-gray-600  bg-opacity-50 h-full w-full z-20 flex justify-center align-center"
       )}
     >
-      <form onSubmit={handleSubmit}>
+      <form ref={menuRef} onSubmit={handleSubmit}>
         <div className=" bg-almost-white dark:bg-[#2B2C37]  p-5  w-64 rounded-lg max-h-1/4 my-[10%]">
           <div className="flex justify-between text-black dark:text-white">
             <h2>Column name</h2>

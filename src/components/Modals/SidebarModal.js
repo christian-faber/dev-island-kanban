@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DarkThemeIcon } from "../../assets/DarkThemeIcon";
 import { LightThemeIcon } from "../../assets/LightThemeIcon";
@@ -12,6 +13,12 @@ export const SidebarModal = () => {
   const modalIsOpen = useSelector((state) => state.modal.sidebarModalOpen);
   const boards = useSelector((state) => state.board);
   const sidebar = useSelector((state) => state.sidebar);
+  const handleClickOutside = (evt) => {
+    if (!menuRef.current.contains(evt.target)) {
+      dispatch(closeSidebarModal());
+    }
+  };
+  const menuRef = useRef();
   const dispatch = useDispatch();
   const length = boards.length;
   const handleClick = (evt) => {
@@ -19,8 +26,12 @@ export const SidebarModal = () => {
     dispatch(closeSidebarModal());
   };
   return (
-    <div className="bg-gray-600 bg-opacity-50 h-full w-full">
+    <div
+      onClick={handleClickOutside}
+      className="bg-gray-600 bg-opacity-50 h-full w-full"
+    >
       <div
+        ref={menuRef}
         className={clsx(
           { fixed: modalIsOpen, hidden: !modalIsOpen },
           "bg-almost-white z-50 overflow-y-auto flex flex-col justify-center align-center"

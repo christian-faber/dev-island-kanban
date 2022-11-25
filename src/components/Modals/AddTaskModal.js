@@ -3,7 +3,7 @@ import { closeTaskModal } from "../../features/modalSlice";
 import { addTask } from "../../features/taskSlice";
 import { Dropdown } from "./Dropdown";
 import clsx from "clsx";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { v4 } from "uuid";
 import { addTaskToColumn } from "../../features/columnSlice";
 import { addSubtask } from "../../features/subtaskSlice";
@@ -17,6 +17,12 @@ export const AddTaskModal = () => {
   const dispatch = useDispatch();
   const modalIsOpen = useSelector((state) => state.modal.taskOpen);
   const subtask = useSelector((state) => state.subtask);
+  const handleClickOutside = (evt) => {
+    if (!menuRef.current.contains(evt.target)) {
+      dispatch(closeTaskModal());
+    }
+  };
+  const menuRef = useRef();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const title = evt.target.elements.newTask.value;
@@ -34,12 +40,13 @@ export const AddTaskModal = () => {
 
   return (
     <div
+      onClick={handleClickOutside}
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
         "bg-gray-600 bg-opacity-50 z-10 overflow-y-auto h-full w-full  flex justify-center align-center"
       )}
     >
-      <form className="w-72" onSubmit={handleSubmit}>
+      <form ref={menuRef} className="w-72" onSubmit={handleSubmit}>
         <div className=" bg-almost-white dark:bg-[#2B2C37] p-5 rounded-lg max-h-1/4 my-[10%]  ">
           <div className="flex text-black w-20">
             <h2 className="absolute font-bold text-lg dark:text-white">
