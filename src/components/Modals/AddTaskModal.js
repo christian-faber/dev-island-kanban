@@ -3,9 +3,10 @@ import { closeTaskModal } from "../../features/modalSlice";
 import { addTask } from "../../features/taskSlice";
 import { Dropdown } from "./Dropdown";
 import clsx from "clsx";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { v4 } from "uuid";
 import { addTaskToColumn } from "../../features/columnSlice";
+import { addSubtask } from "../../features/subtaskSlice";
 
 //need to add active ring/border of purple when clicked inside of textarea
 //need to add validation with danger/red ring/border
@@ -15,27 +16,37 @@ export const AddTaskModal = () => {
   const [column, setColumn] = useState("");
   const dispatch = useDispatch();
   const modalIsOpen = useSelector((state) => state.modal.taskOpen);
+  const subtask = useSelector((state) => state.subtask);
+  const handleClickOutside = (evt) => {
+    if (!menuRef.current.contains(evt.target)) {
+      dispatch(closeTaskModal());
+    }
+  };
+  const menuRef = useRef();
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const title = evt.target.elements.newTask.value;
     const description = evt.target.elements.newDescription.value;
     const columnId = evt.target.elements.column.value;
+    const subtasksTitle = evt.target.elements.subtask.value;
     if (!title) return;
     const id = v4();
     dispatch(addTask({ title, description, id }));
     dispatch(addTaskToColumn({ columnId, taskId: id }));
     dispatch(closeTaskModal());
+    dispatch(addSubtask({ subtasksTitle }));
     evt.target.elements.newTask.value = "";
   };
 
   return (
     <div
+      onClick={handleClickOutside}
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
         "bg-gray-600 bg-opacity-50 z-10 overflow-y-auto h-full w-full  flex justify-center align-center"
       )}
     >
-      <form className="w-72" onSubmit={handleSubmit}>
+      <form ref={menuRef} className="w-72" onSubmit={handleSubmit}>
         <div className=" bg-almost-white dark:bg-[#2B2C37] p-5 rounded-lg max-h-1/4 my-[10%]  ">
           <div className="flex text-black w-20">
             <h2 className="absolute font-bold text-lg dark:text-white">
@@ -75,18 +86,26 @@ export const AddTaskModal = () => {
           <div className=" flex flex-col pt-2">
             <p className="dark:text-white text-light-gray">Subtasks</p>
             <span>
-              <input className="text:black dark:text-white w-60 p-2 rounded border dark:bg-[#2B2C37] "></input>
+              <input
+                className="text:black dark:text-white w-60 p-2 rounded border dark:bg-[#2B2C37] "
+                type="text"
+                name="subtask"
+                value={subtask.title}
+              ></input>
               {/* <button src="/" alt="X"></button> */}
             </span>
             {/* <span>{subtasks}</span> */}
-            <button className="align-center h-10 my-4 shadow-sm text-indigo-700 font-semibold bg-slate-200  hover:bg-medium-gray rounded-full">
+            <button
+              type="submit"
+              className="align-center h-10 my-4 shadow-sm text-indigo-700 font-semibold bg-slate-200  hover:bg-medium-gray rounded-full"
+            >
               + Add new Subtask
             </button>
           </div>
 
           <div className="my-4 dark:text-white">
             <span>
-              <p className="text-[#828FA3] text-sm font-semibold dark:text-white">
+              <p className="text-[#828FA3] text-sm font-semibold dark:text-white ">
                 Status
               </p>
               <Dropdown name="column" handleColumn={setColumn} />

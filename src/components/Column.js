@@ -13,7 +13,7 @@ export const Column = ({ column, tasks }) => {
         <p className=" pl-8 pr-2 dark:text-slate-400">{column.title}</p>
         <p className="pr-2">({tasks.length})</p>
         <button
-          className="bg-red-600 text-white rounded-lg"
+          className="bg-red-600 opacity-50 text-white rounded-lg"
           onClick={handleDelete}
         >
           x

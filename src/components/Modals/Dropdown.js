@@ -8,7 +8,7 @@ export const Dropdown = ({ handleColumn, name = "column" }) => {
   const columns = useSelector((state) => state.column);
 
   return (
-    <div className="pr-5 bg-white rounded-md shadow-md">
+    <div className="pr-5   bg-white   rounded-md shadow-md">
       <select
         name={name}
         onChange={handleChange}
@@ -16,7 +16,7 @@ export const Dropdown = ({ handleColumn, name = "column" }) => {
       >
         <option>Select Column</option>
         {columns?.map(({ title, id }) => (
-          <option key={id} value={id}>
+          <option key={id} value={title}>
             {title}
           </option>
         ))}

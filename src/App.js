@@ -41,21 +41,37 @@ export const App = () => {
         {sidebarModalOpen && <SidebarModal />}
         <div className=" dark:bg-[#2B2C37]">
           <Top />
-          <div className="md:flex lg:flex">
-            <div className="md:flex lg:flex hidden ">
+          <div className="flex">
+            <div className="hidden md:flex lg:flex">
               <Sidebar />
             </div>
-            <div className="w-full">
+            <div className="flex-1 ">
               <Board />
-            </div>
-            <div className="">
-              <ShowSidebar />
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex">
+        <ShowSidebar />
       </div>
     </LightContext.Provider>
   );
 };
 
 export default App;
+//after 32:
+// return (
+//   <LightContext.Provider value={{ light, setLight }} store={store}>
+//     <div className="font-jakarta overflow-x-auto bg-white dark:bg-gray-800">
+//       <Routes>
+//         <Route element={<Page />}>
+//           <Route path="/" element={<Start />} />
+//           <Route path="/:boardName" element={<Board />} />
+//         </Route>
+//       </Routes>
+//     </div>
+//   </LightContext.Provider>
+// );
+// };
+
+// export default App;

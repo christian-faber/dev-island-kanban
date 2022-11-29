@@ -5,6 +5,9 @@ const initialState = {
   columnOpen: false,
   infoOpen: false,
   boardOpen: false,
+
+  editBoardOpen: false,
+
   sidebarModalOpen: false,
 };
 
@@ -24,6 +27,11 @@ export const modalSlice = createSlice({
     openBoardModal: (state, actions) => {
       state.boardOpen = true;
     },
+
+    openEditBoard: (state, actions) => {
+      state.editBoardOpen = true;
+    },
+
     openSidebarModal: (state, actions) => {
       state.sidebarModalOpen = true;
     },
@@ -39,6 +47,11 @@ export const modalSlice = createSlice({
     closeBoardModal: (state, actions) => {
       state.boardOpen = false;
     },
+
+    closeEditBoard: (state, actions) => {
+      state.editBoardOpen = false;
+    },
+
     closeSidebarModal: (state, actions) => {
       state.sidebarModalOpen = false;
     },
@@ -50,11 +63,18 @@ export const {
   openColumnModal,
   openInfoModal,
   openBoardModal,
+
+  openEditBoard,
+
   openSidebarModal,
+
   closeColumnModal,
   closeInfoModal,
   closeTaskModal,
   closeBoardModal,
+
+  closeEditBoard,
+
   closeSidebarModal,
 } = modalSlice.actions;
 

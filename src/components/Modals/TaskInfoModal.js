@@ -5,7 +5,7 @@ import { closeInfoModal } from "../../features/modalSlice";
 // import { handleEditTask } from "../../features/taskSlice";
 import clsx from "clsx";
 import { Dropdown } from "./Dropdown";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export const TaskInfoModal = () => {
   const [column, setColumn] = useState("");
@@ -13,15 +13,22 @@ export const TaskInfoModal = () => {
   const data = initialdata;
   const length = data.subtasks.length;
   const dispatch = useDispatch();
+  const handleClickOutside = (evt) => {
+    if (!menuRef.current.contains(evt.target)) {
+      dispatch(closeInfoModal());
+    }
+  };
+  const menuRef = useRef();
   const modalIsOpen = useSelector((state) => state.modal.infoOpen);
   return (
     <div
+      onClick={handleClickOutside}
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
         "bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-10 flex justify-center align-center"
       )}
     >
-      <form>
+      <form ref={menuRef}>
         <div className="dark:bg-[#2B2C37] bg-almost-white p-5  rounded-lg max-h-1/4 my-[40%]">
           <div className="flex justify-between text-black w-96">
             <h2 className="font-bold dark:text-white">
