@@ -63,6 +63,35 @@ export const Sidebar = () => {
           ALL BOARDS ({length})
         </h1>
         <br />
+        <ul className="dark:text-slate-400 hover:text-violet-900">
+          {boards?.map((board) => (
+            <li
+              board={board}
+              columns={boards.columns}
+              key={board.id}
+              className="flex p-2"
+            >
+              <SidebarIcon />
+              <Link
+                to={`/${board.title}`}
+                className="pl-2 pb-8 dark:text-slate-400"
+              >
+                {board.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        {/* <button
+        className="text-violet-900"
+        onClick={() => {
+          dispatch(openBoardModal());
+        }}
+
+      > */}
+        {/* <h1 className=" border-l-gray-300  dark:text-slate-400 ">
+          ALL BOARDS ({length})
+        </h1>
+        <br />
         <div className="dark:text-slate-400 hover:text-violet-900">
           {boards?.map((board) => (
             <option
@@ -78,6 +107,7 @@ export const Sidebar = () => {
             </option>
           ))}
         </div> */}
+
         <div className="flex">
           <SidebarIcon />
           <button
@@ -89,6 +119,7 @@ export const Sidebar = () => {
             + Create New Board
           </button>
         </div>
+
         <div className="flex  bg-indigo-100 dark:bg-[#20212C] rounded-md h-12 justify-center items-center">
           <div className="flex space-x-8">
             <DarkThemeIcon />

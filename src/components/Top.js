@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { VerticalEllipsis } from "../assets/VerticalEllipsis";
 import { openSidebarModal, openTaskModal } from "../features/modalSlice";
 import { useState, useRef, useEffect } from "react";
+
 import { deleteBoard } from "../features/boardSlice";
 import { useSelector } from "react-redux";
 import { openEditBoard } from "../features/modalSlice";
@@ -13,9 +14,11 @@ import { LogoMobile } from "../assets/LogoMobile";
 import { Logo } from "./Logo";
 // import { LogoMobile } from "../assets/LogoMobile";
 
+
 //need onclick and function for edit and delete board
 
 export const Top = ({ board }) => {
+
   const params = useParams();
   console.log(params);
 
@@ -57,6 +60,18 @@ export const Top = ({ board }) => {
       </div> */}
       <div className="hidden md:flex lg:flex">
         <Logo />
+
+      {/* <div className=""></div> */}
+      <div className="absolute top-7  p-2 py-3 px-6">
+        <h1>{board?.title}</h1>
+        <button
+          className="cursor-pointer"
+          onClick={() => {
+            dispatch(openSidebarModal());
+          }}
+        >
+          <ChevronDown />
+        </button>
       </div>
       <div className="flex p-2">
         <div className="p-2 md:hidden lg:hidden">
@@ -75,6 +90,7 @@ export const Top = ({ board }) => {
             </button>
           </div>
         </div>
+
         <div className=" flex">
           <div className="hidden lg:flex lg:top-7 lg:right-16 lg:p-2 lg:py-3 lg:px-6">
             <button
@@ -102,6 +118,7 @@ export const Top = ({ board }) => {
               <VerticalEllipsis />
             </div>
           </div>
+
         </div>
         {isOpen && (
           <div

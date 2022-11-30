@@ -1,9 +1,13 @@
 import { Logo } from "./Logo";
 
-export default function Title() {
+export const Title = ({ board }) => {
   return (
-    <div className="p-3">
-      <Logo />
+    <div>
+      <div className="p-3">
+        <Logo />
+        <h1>{board?.title}</h1>
+      </div>
+
     </div>
   );
 }

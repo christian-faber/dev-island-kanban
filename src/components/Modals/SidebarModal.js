@@ -23,6 +23,9 @@ export const SidebarModal = () => {
     }
   };
 
+  const menuRef = useRef();
+  const dispatch = useDispatch();
+
   const length = boards.length;
   const handleClick = (evt) => {
     dispatch(openBoardModal());
@@ -31,6 +34,7 @@ export const SidebarModal = () => {
   return (
     <div
       onClick={handleClickOutside}
+
       className={clsx(
         { fixed: modalIsOpen, hidden: !modalIsOpen },
         "bg-gray-600  bg-opacity-50 z-10 overflow-y-auto h-full w-full  font-semibold flex justify-center align-center"
@@ -39,6 +43,7 @@ export const SidebarModal = () => {
       <div
         ref={menuRef}
         className="h-72 bg-almost-white dark:bg-[#2B2C37] text-gray-400  p-5 rounded-lg max-h-1/4 my-[10%] flex flex-col justify-center"
+
       >
         <h1 className="  ">ALL BOARDS ({length})</h1>
         <br />
