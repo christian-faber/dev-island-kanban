@@ -24,16 +24,6 @@ export const taskSlice = createSlice({
       ];
     },
 
-    //updating column when task is
-    // updateColumn: (state, action) => {
-    //   return {
-    //     ...state,
-    //     columns: state.columns.map((col) =>
-    //       if (col.id !== action.payload.columnId) return col;
-    //     ),
-    //   };
-    // },
-
     deleteTask: (state, action) => {
       return state.filter((t) => t.id !== action.payload);
     },

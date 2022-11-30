@@ -41,6 +41,7 @@ export const columnSlice = createSlice({
 
     addTaskToColumn: (state, action) => {
       return state.map((column) => {
+        console.log({ column: column.id, action });
         if (action.payload.columnId !== column.id) return column;
         return {
           ...column,

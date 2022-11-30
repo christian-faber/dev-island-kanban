@@ -30,9 +30,10 @@ export const AddTaskModal = () => {
     const columnId = evt.target.elements.column.value;
     const subtasksTitle = evt.target.elements.subtask.value;
     if (!title) return;
-    const id = v4();
-    dispatch(addTask({ title, description, id }));
-    dispatch(addTaskToColumn({ columnId, taskId: id }));
+    const taskId = v4();
+    dispatch(addTask({ title, description, id: taskId }));
+    console.log(column);
+    dispatch(addTaskToColumn({ columnId, taskId: taskId }));
     dispatch(closeTaskModal());
     dispatch(addSubtask({ subtasksTitle }));
     evt.target.elements.newTask.value = "";
