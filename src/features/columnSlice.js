@@ -34,12 +34,12 @@ export const columnSlice = createSlice({
         ...state,
 
         {
-          id: action.payload.id,
-          title: action.payload.title,
           taskIds: [],
+          ...action.payload,
         },
       ];
     },
+
     addTaskToColumn: (state, action) => {
       return state.map((column) => {
         if (action.payload.columnId !== column.id) return column;
@@ -53,6 +53,7 @@ export const columnSlice = createSlice({
     deleteColumn: (state, action) => {
       return state.filter((c) => c.id !== action.payload);
     },
+
     editColumn: (state, action) => {
       return state.map((c) =>
         c.id === action.payload.id ? { ...c, title: action.payload.title } : c

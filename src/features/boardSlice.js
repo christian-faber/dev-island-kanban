@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
+
 const initialState = [];
 
 export const boardSlice = createSlice({
@@ -16,6 +17,7 @@ export const boardSlice = createSlice({
         },
       ];
     },
+
     addColumnToBoard: (state, action) => {
       return state.map((board) => {
         console.log({ board: board.id, action });
