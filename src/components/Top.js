@@ -14,11 +14,9 @@ import { LogoMobile } from "../assets/LogoMobile";
 import { Logo } from "./Logo";
 // import { LogoMobile } from "../assets/LogoMobile";
 
-
 //need onclick and function for edit and delete board
 
 export const Top = ({ board }) => {
-
   const params = useParams();
   console.log(params);
 
@@ -60,7 +58,7 @@ export const Top = ({ board }) => {
       </div> */}
       <div className="hidden md:flex lg:flex">
         <Logo />
-
+      </div>
       {/* <div className=""></div> */}
       <div className="absolute top-7  p-2 py-3 px-6">
         <h1>{board?.title}</h1>
@@ -118,7 +116,6 @@ export const Top = ({ board }) => {
               <VerticalEllipsis />
             </div>
           </div>
-
         </div>
         {isOpen && (
           <div

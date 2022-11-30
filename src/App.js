@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Board } from "./components/Board";
 import { Routes, Route } from "react-router-dom";
-
+import ShowSidebar from "./components/ShowSidebar";
 import "./index.css";
 import { Page } from "./Page";
 import { Start } from "./components/Start";
