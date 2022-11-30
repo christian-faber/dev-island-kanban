@@ -71,86 +71,68 @@ export const Top = ({ board }) => {
           <ChevronDown />
         </button>
       </div>
-      <div className="flex p-2">
-        <div className="p-2 md:hidden lg:hidden">
-          <LogoMobile />
-          <div className=" absolute top-2  p-2 py-3 px-10">
-            <h1 className="dark:text-white pl-3  h-full flex items-center justify-center">
-              {board?.title}
-            </h1>
-            <button
-              className="cursor-pointer"
-              onClick={() => {
-                dispatch(openSidebarModal());
-              }}
-            >
-              <ChevronDown />
-            </button>
-          </div>
-        </div>
 
-        <div className=" flex">
-          <div className="hidden lg:flex lg:top-7 lg:right-16 lg:p-2 lg:py-3 lg:px-6">
-            <button
-              className="lg:flex text-white lg:absolute lg:top-7 lg:right-16 lg:p-2 lg:pb-2 lg:py-3 lg:px-6  rounded-full bg-purple-btn"
-              onClick={() => {
-                dispatch(openTaskModal());
-              }}
-            >
-              +Add New Task
-            </button>
-          </div>
-          <div className="">
-            <button
-              className="lg:hidden text-white absolute top-5 right-16 p-2 pb-2 py-3 px-6  rounded-full bg-purple-btn"
-              onClick={() => {
-                dispatch(openTaskModal());
-              }}
-            >
-              +
-            </button>
-            <div
-              onClick={() => setOpen(!isOpen)}
-              className="top-0 right-0 p-8 absolute h-15 w-15  cursor-pointer"
-            >
-              <VerticalEllipsis />
-            </div>
+      <div className=" flex">
+        <div className="hidden lg:flex lg:top-7 lg:right-16 lg:p-2 lg:py-3 lg:px-6">
+          <button
+            className="lg:flex text-white lg:absolute lg:top-7 lg:right-16 lg:p-2 lg:pb-2 lg:py-3 lg:px-6  rounded-full bg-purple-btn"
+            onClick={() => {
+              dispatch(openTaskModal());
+            }}
+          >
+            +Add New Task
+          </button>
+        </div>
+        <div className="">
+          <button
+            className="lg:hidden text-white absolute top-5 right-16 p-2 pb-2 py-3 px-6  rounded-full bg-purple-btn"
+            onClick={() => {
+              dispatch(openTaskModal());
+            }}
+          >
+            +
+          </button>
+          <div
+            onClick={() => setOpen(!isOpen)}
+            className="top-0 right-0 p-8 absolute h-15 w-15  cursor-pointer"
+          >
+            <VerticalEllipsis />
           </div>
         </div>
-        {isOpen && (
-          <div
-            ref={ref}
-            className="z-20 cursor-pointer absolute top-10 right-5 rounded-lg p-2 w-64 shadow-md bg-white dark:bg-gray-800 "
-          >
-            <ul className="py-2.5">
-              <li>
-                <button
-                  onClick={handleEdit}
-                  className="hover:bg-almost-white text-gray-600 rounded-lg p-1 dark:hover:bg-hover-purple"
-                >
-                  Edit Board
-                </button>
-              </li>
-              {/* edit board modal will have 
+      </div>
+      {isOpen && (
+        <div
+          ref={ref}
+          className="z-20 cursor-pointer absolute top-10 right-5 rounded-lg p-2 w-64 shadow-md bg-white dark:bg-gray-800 "
+        >
+          <ul className="py-2.5">
+            <li>
+              <button
+                onClick={handleEdit}
+                className="hover:bg-almost-white text-gray-600 rounded-lg p-1 dark:hover:bg-hover-purple"
+              >
+                Edit Board
+              </button>
+            </li>
+            {/* edit board modal will have 
                   1. text area titled "Board Name" 
                   2.editable text area pre populated with current "Board Columns",X's on right hand side of each textbox to delete
                   3. 2 btns (+Add new column) and (Save changes) */}
-              <li>
-                <button
-                  onClick={handleDelete}
-                  className="text-red-500 hover:bg-almost-white  rounded-lg p-1 dark:hover:bg-hover-purple"
-                >
-                  Delete Board
-                </button>
-              </li>
-              {/* delete board modal will have
+            <li>
+              <button
+                onClick={handleDelete}
+                className="text-red-500 hover:bg-almost-white  rounded-lg p-1 dark:hover:bg-hover-purple"
+              >
+                Delete Board
+              </button>
+            </li>
+            {/* delete board modal will have
                   1. Delete this board? red txt
                   2.<p>Are you sure you want to delete the a'board? This action can remove all columns and task and cannot be reversed.</p> text:gray
                   3. 2btns (Cancel) (Delete) red  */}
-            </ul>
-          </div>
-        )}
-      </div>
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
