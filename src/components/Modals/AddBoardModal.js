@@ -61,16 +61,6 @@ export const AddBoardModal = () => {
               className="w-60 p-2 border rounded dark:text-white dark:bg-[#2B2C37] "
             ></textarea>
           </div>
-
-          {/* <div className="my-4 flex flex-col"> */}
-          {/* <span> */}
-          {/* <p className="text-light-gray text-sm leading-8">Board</p> */}
-          {/* dropdown in fragment below! */}
-          {/* <input
-                placeholder="dropdown coming soon!"
-                className="border w-96"
-              ></input> */}
-          {/* </span> */}
           <button
             type="submit"
             className="align-center p-2 h-10 my-4  shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"

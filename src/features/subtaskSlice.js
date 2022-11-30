@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { data } from "autoprefixer";
 import initialdata from "../data/initial-data";
+
 import { v4 } from "uuid";
 
 // import initialdata from "../data/initial-data";

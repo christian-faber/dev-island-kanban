@@ -3,6 +3,7 @@ import taskReducer from "../features/taskSlice";
 import modalReducer from "../features/modalSlice";
 import boardReducer from "../features/boardSlice";
 import subtaskReducer from "../features/subtaskSlice";
+
 import sidebarReducer from "../features/sidebarSlice";
 import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
 import { save, load } from "redux-localstorage-simple";

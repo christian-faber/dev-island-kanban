@@ -17,7 +17,7 @@ export const Task = ({ task, index }) => {
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
         <div
-          className="bg-white dark:bg-light-gray dark:text-white w-60 h-min shadow-lg p-2 m-5 gap-5 rounded "
+          className="bg-white dark:bg-light-gray dark:text-white w-60 h-min shadow-lg p-2 gap-5 rounded "
           snapshot={snapshot}
           ref={provided.innerRef}
           {...provided.draggableProps}
