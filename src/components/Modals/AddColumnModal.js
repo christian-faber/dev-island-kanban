@@ -6,13 +6,13 @@ import { closeColumnModal } from "../../features/modalSlice";
 import { useRef, useState } from "react";
 import { addColumnToBoard } from "../../features/boardSlice";
 import { v4 } from "uuid";
-import { useBoard } from "../../app/hooks/useBoard";
+// import { useBoard } from "../../app/hooks/useBoard";
 
 //new column which appears on board is just a tiny modal
 //that has a text area that takes a "column name" with a purple add btn
 export const AddColumnModal = () => {
   const dispatch = useDispatch();
-  const board = useBoard();
+  const board = useSelector((state) => state.boards);
   const menuRef = useRef();
   const modalIsOpen = useSelector((state) => state.modal.columnOpen);
   const handleClickOutside = (evt) => {

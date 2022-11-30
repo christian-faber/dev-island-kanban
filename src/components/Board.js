@@ -4,10 +4,10 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
 import { handleOnDragEnd } from "../features/columnSlice";
 import { useSelector } from "react-redux";
-import { useBoard } from "../app/hooks/useBoard";
+// import { useBoard } from "../app/hooks/useBoard";
 
 export const Board = () => {
-  const board = useBoard();
+  const board = useSelector((state) => state.boards);
   const { column: columns, task } = useSelector((state) => state);
   const dispatch = useDispatch();
 

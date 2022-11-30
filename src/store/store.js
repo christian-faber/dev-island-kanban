@@ -4,19 +4,19 @@ import modalReducer from "../features/modalSlice";
 import boardReducer from "../features/boardSlice";
 import subtaskReducer from "../features/subtaskSlice";
 import sidebarReducer from "../features/sidebarSlice";
-import { loadState } from "../localStorage";
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
+import { save, load } from "redux-localstorage-simple";
 
-const persistedState = loadState();
+const createStoreWithMiddleware = applyMiddleware(save())(configureStore);
+
 const initialStore = {
   boards: [],
   columns: [],
   tasks: [],
   subtasks: [],
-  persistedState,
 };
 
-export const store = configureStore(
+export const store = createStoreWithMiddleware(
   {
     reducer: {
       column: columnReducer,
@@ -27,7 +27,5 @@ export const store = configureStore(
       sidebar: sidebarReducer,
     },
   },
-  persistedState
+  load()
 );
-
-//create

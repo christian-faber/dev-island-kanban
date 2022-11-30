@@ -1,22 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
-import localStorage from "";
 
-const boards =
-  localStorage.getItem("kanbanBoards") !== null
-    ? JSON.parse(localStorage.getItem("kanbanBoards"))
-    : [];
-
-// const setBoardsFn = (board) => {
-//   localStorage.setItem(
-//     "kanbanBoards",
-//     JSON.stringify(state.kanbanBoards.map((board) => board))
-//   );
-// };
-
-const initialState = {
-  kanbanBoards: [boards],
-};
+const initialState = [];
 
 export const boardSlice = createSlice({
   name: "board",
@@ -31,10 +16,6 @@ export const boardSlice = createSlice({
           columnIds: [],
         },
       ];
-      localStorage.setItem(
-        "kanbanBoards",
-        JSON.stringify(state.kanbanBoards.map((board) => board))
-      );
     },
     addColumnToBoard: (state, action) => {
       return state.map((board) => {
