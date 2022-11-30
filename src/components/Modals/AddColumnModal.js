@@ -6,13 +6,14 @@ import { closeColumnModal } from "../../features/modalSlice";
 import { useRef, useState } from "react";
 import { addColumnToBoard } from "../../features/boardSlice";
 import { v4 } from "uuid";
-// import { useBoard } from "../../app/hooks/useBoard";
+import { useBoard } from "../../app/hooks/useBoard";
 
 //new column which appears on board is just a tiny modal
 //that has a text area that takes a "column name" with a purple add btn
 export const AddColumnModal = () => {
   const dispatch = useDispatch();
-  const board = useSelector((state) => state.board);
+  const board = useBoard();
+  const column = useSelector((state) => state.column);
   const menuRef = useRef();
   const modalIsOpen = useSelector((state) => state.modal.columnOpen);
   const handleClickOutside = (evt) => {
@@ -24,14 +25,17 @@ export const AddColumnModal = () => {
     evt.preventDefault();
 
     const title = evt.target.elements.newColumn.value;
-    if (!title) return;
     const columnId = v4();
-    dispatch(addColumn({ title, columnId }));
-    dispatch(addColumnToBoard({ columnId, boardId: board.id }));
+    if (!title) return;
+
+    dispatch(addColumn({ title, id: columnId }));
+    console.log(board);
+    dispatch(addColumnToBoard({ columnId: columnId, boardId: board.id }));
     //grab state
     dispatch(closeColumnModal());
     evt.target.elements.newColumn.value = "";
   };
+  console.log(board);
   return (
     <div
       onClick={handleClickOutside}

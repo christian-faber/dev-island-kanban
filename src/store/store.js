@@ -9,23 +9,14 @@ import { save, load } from "redux-localstorage-simple";
 
 const createStoreWithMiddleware = applyMiddleware(save())(configureStore);
 
-const initialStore = {
-  boards: [],
-  columns: [],
-  tasks: [],
-  subtasks: [],
-};
-
-export const store = createStoreWithMiddleware(
-  {
-    reducer: {
-      column: columnReducer,
-      task: taskReducer,
-      modal: modalReducer,
-      board: boardReducer,
-      subtask: subtaskReducer,
-      sidebar: sidebarReducer,
-    },
+export const store = createStoreWithMiddleware({
+  reducer: {
+    column: columnReducer,
+    task: taskReducer,
+    modal: modalReducer,
+    board: boardReducer,
+    subtask: subtaskReducer,
+    sidebar: sidebarReducer,
   },
-  load()
-);
+  preloadedState: load(),
+});

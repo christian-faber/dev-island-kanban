@@ -17,6 +17,7 @@ export const boardSlice = createSlice({
         },
       ];
     },
+
     addColumnToBoard: (state, action) => {
       return state.map((board) => {
         console.log({ board: board.id, action });

@@ -25,6 +25,7 @@ export const SidebarModal = () => {
     dispatch(openBoardModal());
     dispatch(closeSidebarModal());
   };
+
   return (
     <div
       onClick={handleClickOutside}
