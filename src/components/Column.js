@@ -13,19 +13,24 @@ export const Column = ({ column, tasks }) => {
   };
   return (
     <div className="flex flex-col">
-      <p className="pl-6 dark:text-slate-400">
-        {column.title}({tasks.length})
-      </p>
+      <div className="flex w-72">
+        <p className=" pl-8 pr-2 dark:text-slate-400">{column.title}</p>
+        <p className="pr-2">({tasks.length})</p>
+        <button
+          className="bg-red-600 opacity-50 text-white rounded-lg"
+          onClick={handleDelete}
+        >
+          x
+        </button>
+      </div>
       <Droppable droppableId={column.id}>
         {(provided) => (
           <div
-            className="rounded-md md:p-4 flex flex-col justify-center items-center space-y-4 bg-transparent"
+            className="rounded-md  flex flex-col justify-center items-center space-y-4 bg-transparent"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >
-            <div className="flex-row">
-              <button onClick={handleDelete}>X</button>
-            </div>
+            <div className="flex-row"></div>
             {column.taskIds.map((id, index) => {
               const task = tasks.find((t) => t.id === id);
               return !task ? null : (

@@ -95,14 +95,17 @@ export const AddTaskModal = () => {
               {/* <button src="/" alt="X"></button> */}
             </span>
             {/* <span>{subtasks}</span> */}
-            <button className="align-center h-10 my-4 shadow-sm text-indigo-700 font-semibold bg-slate-200  hover:bg-medium-gray rounded-full">
+            <button
+              type="submit"
+              className="align-center h-10 my-4 shadow-sm text-indigo-700 font-semibold bg-slate-200  hover:bg-medium-gray rounded-full"
+            >
               + Add new Subtask
             </button>
           </div>
 
           <div className="my-4 dark:text-white">
             <span>
-              <p className="text-[#828FA3] text-sm font-semibold dark:text-white">
+              <p className="text-[#828FA3] text-sm font-semibold dark:text-white ">
                 Status
               </p>
               <Dropdown name="column" handleColumn={setColumn} />

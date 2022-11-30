@@ -6,7 +6,6 @@ import { closeColumnModal } from "../../features/modalSlice";
 import { useRef, useState } from "react";
 import { addColumnToBoard } from "../../features/boardSlice";
 import { v4 } from "uuid";
-import { useBoard } from "../../app/hooks/useBoard";
 
 //new column which appears on board is just a tiny modal
 //that has a text area that takes a "column name" with a purple add btn

@@ -29,7 +29,9 @@ export const modalSlice = createSlice({
     },
 
     openEditBoard: (state, actions) => {
-      state.editBoardOpen = true;},
+      state.editBoardOpen = true;
+    },
+
 
     openSidebarModal: (state, actions) => {
       state.sidebarModalOpen = true;
@@ -49,7 +51,10 @@ export const modalSlice = createSlice({
     },
 
     closeEditBoard: (state, actions) => {
-      state.editBoardOpen = false;},
+
+      state.editBoardOpen = false;
+    },
+
 
     closeSidebarModal: (state, actions) => {
       state.sidebarModalOpen = false;

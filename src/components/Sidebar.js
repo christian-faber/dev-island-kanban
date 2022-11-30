@@ -24,17 +24,42 @@ export const Sidebar = () => {
 
   //h-full  flex-col lg:w-[22%] w-[32%] overflow-y-hidden md:flex z-[100]
   return (
-    <div className=" p-2">
-      <Logo />
+    <div className="">
       <div
         className={clsx(
-          "transition-all duration-500  inset-y-0 border-r dark:border-r-[#272832] p-5 bg-white dark:bg-[#2B2C37] overflow-y-hidden",
+          "transition-all duration-500   border-r dark:border-r-[#272832] p-5 bg-white dark:bg-[#2B2C37] overflow-y-hidden",
           sidebar === "show"
             ? "z-40 translate-x-0 opacity-100"
             : "-translate-x-[100%] -z-10 opacity-0"
         )}
       >
-        <h1 className=" border-l-gray-300  dark:text-slate-400 ">
+        <h1 className="  dark:text-slate-400 ">ALL BOARDS ({length})</h1>
+        <br />
+        <ul className="dark:text-slate-400 hover:text-violet-900">
+          {boards?.map((board) => (
+            <li
+              board={board}
+              columns={boards.columns}
+              key={board.id}
+              className="flex"
+            >
+              <SidebarIcon />
+              <Link
+                to={`/${board.title}`}
+                className="pl-2 pb-8 dark:text-slate-400"
+              >
+                {board.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        {/* <button
+        className="text-violet-900"
+        onClick={() => {
+          dispatch(openBoardModal());
+        }}
+      > */}
+        {/* <h1 className=" border-l-gray-300  dark:text-slate-400 ">
           ALL BOARDS ({length})
         </h1>
         <br />
@@ -82,14 +107,19 @@ export const Sidebar = () => {
             </option>
           ))}
         </div> */}
-        <button
-          className="flex font-semibold text-violet-800 justify-center items-center pb-5"
-          onClick={() => {
-            dispatch(openBoardModal());
-          }}
-        >
-          + Create New Board
-        </button>
+
+        <div className="flex">
+          <SidebarIcon />
+          <button
+            className="flex pl-2 font-semibold text-violet-800 justify-center items-center pb-52"
+            onClick={() => {
+              dispatch(openBoardModal());
+            }}
+          >
+            + Create New Board
+          </button>
+        </div>
+
         <div className="flex  bg-indigo-100 dark:bg-[#20212C] rounded-md h-12 justify-center items-center">
           <div className="flex space-x-8">
             <DarkThemeIcon />
