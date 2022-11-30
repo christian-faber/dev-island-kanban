@@ -7,15 +7,17 @@ import { useRef, useState } from "react";
 import { v4 } from "uuid";
 import { addTaskToColumn } from "../../features/columnSlice";
 import { addSubtask } from "../../features/subtaskSlice";
+import { useColumn } from "../../app/hooks/useColumn";
 
 //need to add active ring/border of purple when clicked inside of textarea
 //need to add validation with danger/red ring/border
 //validation - title and description can't be empty
 
 export const AddTaskModal = () => {
-  const [column, setColumn] = useState("");
+  const [c, setColumn] = useState("");
   const dispatch = useDispatch();
   const modalIsOpen = useSelector((state) => state.modal.taskOpen);
+  const column = useColumn();
   const subtask = useSelector((state) => state.subtask);
   const handleClickOutside = (evt) => {
     if (!menuRef.current.contains(evt.target)) {
@@ -32,8 +34,7 @@ export const AddTaskModal = () => {
     if (!title) return;
     const taskId = v4();
     dispatch(addTask({ title, description, id: taskId }));
-    console.log(column);
-    dispatch(addTaskToColumn({ columnId, taskId: taskId }));
+    dispatch(addTaskToColumn({ columnId: columnId, taskId: taskId }));
     dispatch(closeTaskModal());
     dispatch(addSubtask({ subtasksTitle }));
     evt.target.elements.newTask.value = "";
