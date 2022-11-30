@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 // import { useBoard } from "../app/hooks/useBoard";
 
 export const Board = () => {
-  const board = useSelector((state) => state.boards);
+  const board = useSelector((state) => state.board);
   const { column: columns, task } = useSelector((state) => state);
   const dispatch = useDispatch();
 

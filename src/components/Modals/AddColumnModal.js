@@ -12,7 +12,7 @@ import { v4 } from "uuid";
 //that has a text area that takes a "column name" with a purple add btn
 export const AddColumnModal = () => {
   const dispatch = useDispatch();
-  const board = useSelector((state) => state.boards);
+  const board = useSelector((state) => state.board);
   const menuRef = useRef();
   const modalIsOpen = useSelector((state) => state.modal.columnOpen);
   const handleClickOutside = (evt) => {
@@ -26,7 +26,7 @@ export const AddColumnModal = () => {
     const title = evt.target.elements.newColumn.value;
     if (!title) return;
     const columnId = v4();
-    dispatch(addColumn({ title, id: columnId }));
+    dispatch(addColumn({ title, columnId }));
     dispatch(addColumnToBoard({ columnId, boardId: board.id }));
     //grab state
     dispatch(closeColumnModal());
