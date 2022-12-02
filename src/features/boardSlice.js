@@ -30,7 +30,8 @@ export const boardSlice = createSlice({
     },
 
     deleteBoard: (state, action) => {
-      return state.filter((b) => b.id !== action.payload);
+      console.log("board", action.payload);
+      return state.filter((b) => b.id !== action.payload.id);
     },
 
     editBoard: (state, action) => {
