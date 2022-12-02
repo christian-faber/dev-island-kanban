@@ -14,7 +14,6 @@ export const Dropdown = ({ handleColumn, name = "column" }) => {
         onChange={handleChange}
         className="outline-none rounded-md p-5 text-gray-500"
       >
-        <option>Select Column</option>
         {columns?.map(({ title, id }) => (
           <option key={id} value={id}>
             {title}
