@@ -12,13 +12,14 @@ import { Title } from "./Title";
 import { ChevronDown } from "../assets/ChevronDown";
 import { LogoMobile } from "../assets/LogoMobile";
 import { Logo } from "./Logo";
+import { useBoard } from "../app/hooks/useBoard";
 // import { LogoMobile } from "../assets/LogoMobile";
 
 //need onclick and function for edit and delete board
 
-export const Top = ({ board }) => {
+export const Top = () => {
   const params = useParams();
-
+  const board = useBoard();
   const dispatch = useDispatch();
   const ref = useRef();
   const [isOpen, setOpen] = useState(false);
@@ -29,7 +30,7 @@ export const Top = ({ board }) => {
   };
 
   const handleDelete = (evt) => {
-    dispatch(deleteBoard(board.id));
+    dispatch(deleteBoard({ id: board.id }));
   };
   //
   useEffect(() => {

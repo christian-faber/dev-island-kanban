@@ -49,6 +49,7 @@ export const columnSlice = createSlice({
     // },
 
     deleteColumn: (state, action) => {
+      console.log("column", action.payload);
       return state.filter((c) => c.id !== action.payload.columnId);
     },
 
