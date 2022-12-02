@@ -12,13 +12,18 @@ import { Title } from "./Title";
 import { ChevronDown } from "../assets/ChevronDown";
 import { LogoMobile } from "../assets/LogoMobile";
 import { Logo } from "./Logo";
+
+import clsx from "clsx";
+
 import { useBoard } from "../app/hooks/useBoard";
+
 // import { LogoMobile } from "../assets/LogoMobile";
 
 //need onclick and function for edit and delete board
 
 export const Top = () => {
   const params = useParams();
+  const sidebar = useSelector((state) => state.sidebar);
   const board = useBoard();
   const dispatch = useDispatch();
   const ref = useRef();
@@ -55,20 +60,26 @@ export const Top = () => {
       {/* <div className="basis-9/12 flex flex-row">
         <p className="text-black  dark:text-white">Dev-Island Kanban App</p>
       </div> */}
-      <div className="hidden md:flex lg:flex">
+      <div
+        className={clsx(
+          "transition-all duration-500   border-r dark:border-r-[#272832] p-5 bg-white dark:bg-[#2B2C37] overflow-y-hidden",
+          sidebar === "show" ? "hidden" : " md:flex lg:flex"
+        )}
+      >
         <Logo />
-      </div>
-      {/* <div className=""></div> */}
-      <div className="absolute top-7  p-2 py-3 px-6">
-        <h1>{board?.title}</h1>
-        <button
-          className="cursor-pointer"
-          onClick={() => {
-            dispatch(openSidebarModal());
-          }}
-        >
-          <ChevronDown />
-        </button>
+
+        {/* <div className=""></div> */}
+        <div className="absolute top-7  p-2 py-3 px-6">
+          <h1>{board?.title}</h1>
+          <button
+            className="cursor-pointer p-2"
+            onClick={() => {
+              dispatch(openSidebarModal());
+            }}
+          >
+            <ChevronDown />
+          </button>
+        </div>
       </div>
 
       <div className=" flex">
