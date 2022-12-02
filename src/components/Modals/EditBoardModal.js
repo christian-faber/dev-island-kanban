@@ -51,13 +51,6 @@ export const EditBoardModal = () => {
               className="border rounded dark:bg-[#2B2C37] "
             ></input>
           </div>
-          <div className="my-4">
-            <p className="dark:text-white  text-sm leading-8">Columns</p>
-            {/* <textarea
-              name="columns"
-              className="border dark:bg-[#2B2C37] "
-            ></textarea> */}
-          </div>
 
           <button
             type="submit"
