@@ -28,11 +28,12 @@ export const Sidebar = () => {
       <div
         className={clsx(
           "transition-all duration-500   border-r dark:border-r-[#272832] p-5 bg-white dark:bg-[#2B2C37] overflow-y-hidden",
-          sidebar === "show"
-            ? "z-40 translate-x-0 opacity-100"
-            : "-translate-x-[100%] -z-10 opacity-0"
+          sidebar === "show" ? "z-40 translate-x-0 opacity-100 " : "hidden"
         )}
       >
+        <div className="">
+          <Logo />
+        </div>
         <h1 className="  dark:text-slate-400 ">ALL BOARDS ({length})</h1>
         <br />
         <ul className="dark:text-slate-400 hover:text-violet-900">
