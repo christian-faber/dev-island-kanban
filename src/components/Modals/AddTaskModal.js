@@ -33,8 +33,8 @@ export const AddTaskModal = () => {
     const subtasksTitle = evt.target.elements.subtask.value;
     if (!title) return;
     const taskId = v4();
-    dispatch(addTask({ title, description, id: taskId }));
-    dispatch(addTaskToColumn({ columnId: columnId, taskId: taskId }));
+    dispatch(addTask({ title, description, id: taskId, columnId: columnId }));
+    // dispatch(addTaskToColumn({ columnId: columnId, taskId: taskId }));
     dispatch(closeTaskModal());
     dispatch(addSubtask({ subtasksTitle }));
     evt.target.elements.newTask.value = "";

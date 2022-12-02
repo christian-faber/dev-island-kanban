@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { addTask, deleteTask } from "./taskSlice";
 
 const initialState = [];
 
@@ -8,8 +9,6 @@ export const columnSlice = createSlice({
   reducers: {
     handleOnDragEnd: (state, { payload }) => {
       if (!payload.destination) return;
-
-      console.log(payload);
 
       const { droppableId: sourceList } = payload.source;
       const { draggableId } = payload;
@@ -39,19 +38,18 @@ export const columnSlice = createSlice({
       ];
     },
 
-    addTaskToColumn: (state, action) => {
-      return state.map((column) => {
-        console.log({ column: column.id, action });
-        if (action.payload.columnId !== column.id) return column;
-        return {
-          ...column,
-          taskIds: [...column.taskIds, action.payload.taskId],
-        };
-      });
-    },
+    // addTaskToColumn: (state, action) => {
+    //   return state.map((column) => {
+    //     if (action.payload.columnId !== column.id) return column;
+    //     return {
+    //       ...column,
+    //       taskIds: [...column.taskIds, action.payload.taskId],
+    //     };
+    //   });
+    // },
 
     deleteColumn: (state, action) => {
-      return state.filter((c) => c.id !== action.payload);
+      return state.filter((c) => c.id !== action.payload.columnId);
     },
 
     editColumn: (state, action) => {
@@ -59,6 +57,30 @@ export const columnSlice = createSlice({
         c.id === action.payload.id ? { ...c, title: action.payload.title } : c
       );
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addMatcher(isAnyOf(deleteTask), (state, action) =>
+        state.map((column) => {
+          if (action.payload.columnId !== column.id) return column;
+
+          return {
+            ...column,
+            taskIds: column.taskIds.filter((taskId) => {
+              return taskId !== action.payload.taskId;
+            }),
+          };
+        })
+      )
+      .addMatcher(isAnyOf(addTask), (state, action) =>
+        state.map((column) => {
+          if (action.payload.columnId !== column.id) return column;
+          return {
+            ...column,
+            taskIds: [...column.taskIds, action.payload.id],
+          };
+        })
+      );
   },
 });
 

@@ -30,13 +30,11 @@ export const AddColumnModal = () => {
     if (!title) return;
 
     dispatch(addColumn({ title, id: columnId }));
-    console.log(board);
     dispatch(addColumnToBoard({ columnId: columnId, boardId: board.id }));
     //grab state
     dispatch(closeColumnModal());
     evt.target.elements.newColumn.value = "";
   };
-  console.log(board);
   return (
     <div
       onClick={handleClickOutside}

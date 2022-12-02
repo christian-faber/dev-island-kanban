@@ -16,7 +16,7 @@ export const Dropdown = ({ handleColumn, name = "column" }) => {
       >
         <option>Select Column</option>
         {columns?.map(({ title, id }) => (
-          <option key={id} value={title}>
+          <option key={id} value={id}>
             {title}
           </option>
         ))}

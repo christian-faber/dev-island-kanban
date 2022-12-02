@@ -3,13 +3,14 @@ import { Task } from "./Task";
 import { useDispatch } from "react-redux";
 import { deleteColumn } from "../features/columnSlice";
 
-import { removeColumnFromBoard } from "../features/boardSlice";
+import { useBoard } from "../app/hooks/useBoard";
 
 export const Column = ({ column, tasks }) => {
+  console.log(column.id);
   const dispatch = useDispatch();
+  const board = useBoard();
   const handleDelete = (evt) => {
-    dispatch(deleteColumn(column.id));
-    dispatch(removeColumnFromBoard(column.id));
+    dispatch(deleteColumn({ columnId: column.id, boardId: board.id }));
   };
   return (
     <div className="flex flex-col">
@@ -26,7 +27,7 @@ export const Column = ({ column, tasks }) => {
       <Droppable droppableId={column.id}>
         {(provided) => (
           <div
-            className="rounded-md  flex flex-col justify-center items-center space-y-4 bg-transparent"
+            className="rounded-md  flex flex-col justify-center items-center space-y-4 bg-transparent h-8"
             {...provided.droppableProps}
             ref={provided.innerRef}
           >

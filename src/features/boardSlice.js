@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
+import { deleteColumn } from "./columnSlice";
 
 const initialState = [];
 
@@ -20,7 +21,6 @@ export const boardSlice = createSlice({
 
     addColumnToBoard: (state, action) => {
       return state.map((board) => {
-        console.log({ board: board.id, action });
         if (action.payload.boardId !== board.id) return board;
         return {
           ...board,
@@ -32,32 +32,30 @@ export const boardSlice = createSlice({
     deleteBoard: (state, action) => {
       return state.filter((b) => b.id !== action.payload);
     },
-    removeColumnFromBoard: (state, action) => {
-      return state.filter((board) => {
-        if (action.payload.boardId !== board.id) return board;
-        return {
-          ...board,
-          columnIds: [board.columnIds.filter((c) => c.id !== action.payload)],
-        };
-      });
-    },
+
     editBoard: (state, action) => {
       return state.map((b) =>
         b.id === action.payload.id ? { ...b, title: action.payload.title } : b
       );
     },
   },
+  extraReducers: (builder) => {
+    builder.addMatcher(isAnyOf(deleteColumn), (state, action) =>
+      state.map((board) => {
+        if (action.payload.boardId !== board.id) return board;
+
+        return {
+          ...board,
+          columnIds: board.columnIds.filter((columnId) => {
+            return columnId !== action.payload.columnId;
+          }),
+        };
+      })
+    );
+  },
 });
 
-
-
-export const {
-  addBoard,
-  deleteBoard,
-  editBoard,
-  addColumnToBoard,
-  removeColumnFromBoard,
-} = boardSlice.actions;
-
+export const { addBoard, deleteBoard, editBoard, addColumnToBoard } =
+  boardSlice.actions;
 
 export default boardSlice.reducer;

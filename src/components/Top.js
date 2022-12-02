@@ -18,7 +18,6 @@ import { Logo } from "./Logo";
 
 export const Top = ({ board }) => {
   const params = useParams();
-  console.log(params);
 
   const dispatch = useDispatch();
   const ref = useRef();
@@ -31,7 +30,6 @@ export const Top = ({ board }) => {
 
   const handleDelete = (evt) => {
     dispatch(deleteBoard(board.id));
-    console.log(board);
   };
   //
   useEffect(() => {
