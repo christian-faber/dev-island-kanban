@@ -1,12 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import clsx from "clsx";
-import { addBoard, addColumnToBoard } from "../../features/boardSlice";
+import { addBoard } from "../../features/boardSlice";
 import { closeBoardModal } from "../../features/modalSlice";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-// Title
-// Columns
-// Description
 
 export const AddBoardModal = () => {
   const menuRef = useRef();
@@ -24,7 +21,6 @@ export const AddBoardModal = () => {
     const title = evt.target.elements.newBoard.value;
     if (!title) return;
     dispatch(addBoard(title));
-    // dispatch(addColumnToBoard([]));
     dispatch(closeBoardModal());
     navigate(`/${title}`);
     evt.target.elements.newBoard.value = "";
@@ -52,15 +48,7 @@ export const AddBoardModal = () => {
               className="w-60 text:black dark:text-white p-2 rounded border dark:bg-[#2B2C37]"
             ></input>
           </div>
-          <div className="my-4">
-            <p className="dark:text-white dark:bg-[#2B2C37] text-sm leading-8">
-              Columns
-            </p>
-            <textarea
-              name="columns"
-              className="w-60 p-2 border rounded dark:text-white dark:bg-[#2B2C37] "
-            ></textarea>
-          </div>
+
           <button
             type="submit"
             className="align-center p-2 h-10 my-4  shadow-sm text-white bg-purple-btn hover:bg-hover-purple rounded-full w-90"
