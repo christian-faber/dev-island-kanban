@@ -8,6 +8,7 @@ import { v4 } from "uuid";
 import { addTaskToColumn } from "../../features/columnSlice";
 import { addSubtask } from "../../features/subtaskSlice";
 import { useColumn } from "../../app/hooks/useColumn";
+import { AddSubtask } from "./Subtasks/AddSubtasks";
 
 //need to add active ring/border of purple when clicked inside of textarea
 //need to add validation with danger/red ring/border
@@ -88,12 +89,7 @@ export const AddTaskModal = () => {
           <div className=" flex flex-col pt-2">
             <p className="dark:text-white text-light-gray">Subtasks</p>
             <span>
-              <input
-                className="text:black dark:text-white w-60 p-2 rounded border dark:bg-[#2B2C37] "
-                type="text"
-                name="subtask"
-                value={subtask.title}
-              ></input>
+              <AddSubtask />
               {/* <button src="/" alt="X"></button> */}
             </span>
             {/* <span>{subtasks}</span> */}
